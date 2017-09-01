@@ -5,14 +5,14 @@
 ## Login   <marc.perez@epitech.eu>
 ## 
 ## Started on  Fri Aug 25 13:40:52 2017 Marc PEREZ
-## Last update Fri Aug 25 15:12:28 2017 Marc PEREZ
+## Last update Fri Sep  1 23:11:52 2017 Marc PEREZ
 ##
 
 NAME		=	../tek_client
 
 CC		=	gcc
 
-CFLAGS		=	-O2 -W -Wall -Wextra
+CFLAGS		=	-pipe -march=native -fopenmp -Ofast -W -Wall -Wextra
 
 CFLAGS_DEBUG	=	-Og -g3 -DDEBUG -W -Wall -Wextra
 
