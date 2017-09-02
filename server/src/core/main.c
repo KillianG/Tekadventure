@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Sat Sep  2 14:18:38 2017 Marc PEREZ
+** Last update Sat Sep  2 14:52:09 2017 Marc PEREZ
 */
 
 #include <stdio.h>
@@ -19,7 +19,8 @@
 #include <arpa/inet.h>
 #include "client.h"
 
-t_client	g_clients[MAX_CLIENTS];
+t_client	g_clients[FD_SETSIZE];
+fd_set		g_readfds;
 
 int	bind_serv(struct sockaddr_in *serv, int fd, int port)
 {
@@ -57,7 +58,9 @@ int			server(int port)
       write(2, "Cannot accept client\n", 21);
       return (-1);
     }
+#ifdef DEBUG
   printf("ip: %s\n", inet_ntoa(((struct sockaddr_in *)&client)->sin_addr));
+#endif
   return (final);
 }
 
@@ -76,7 +79,6 @@ int	main(int argc, char **argv)
   return (0);
 }
 /*
-fd_set readfds;
 struct timeval tv;
 char buf1[256], buf2[256];
 
