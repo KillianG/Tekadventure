@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Fri Sep  1 22:54:01 2017 Marc PEREZ
+** Last update Sat Sep  2 14:15:04 2017 Marc PEREZ
 */
 
 #include <stdio.h>
@@ -17,7 +17,7 @@
 #include <sys/socket.h>
 #include "client.h"
 
-static t_list	*g_list;
+t_client	g_clients[MAX_CLIENTS];
 
 int			make_socket(char *host, char *port)
 {
@@ -65,12 +65,8 @@ void		attack(char *host, char *port)
     {
       socket = make_socket(host, port);
     }
-  //test
-  char	*str;
-  str = malloc(sizeof(char) * 5);
-  strcpy(str, "test");
-//test end
-  if (send(socket, str, sizeof(char) * 5, 0) <= 0)
+  strcpy(g_clients[0].str, "test");
+  if (send(socket, g_clients[0].str, MAX_STR, 0) <= 0)
     {
       close(socket);
       socket = 0;
@@ -81,10 +77,7 @@ int	main(int argc, char **argv)
 {
   signal(SIGPIPE, SIG_IGN);
   if (argc == 3)
-    {//test
-      if (!(g_list = malloc(sizeof(*g_list))))
-	return (84);
-      //test end
+    {
       attack(argv[1], argv[2]);
     }
   else

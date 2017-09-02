@@ -5,7 +5,7 @@
 ## Login   <marc.perez@epitech.eu>
 ## 
 ## Started on  Fri Aug 25 13:40:52 2017 Marc PEREZ
-## Last update Fri Sep  1 23:12:35 2017 Marc PEREZ
+## Last update Sat Sep  2 14:06:42 2017 Marc PEREZ
 ##
 
 NAME		=	../tek_server
@@ -21,8 +21,7 @@ CPPFLAGS	+=	-I ./inc
 RM		=	rm -f
 
 SRCS		=						\
-		src/core/main.c					\
-		src/utils/list.c
+		src/core/main.c
 
 OBJS		=	$(SRCS:.c=.o)
 
