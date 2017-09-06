@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Wed Sep  6 15:16:22 2017 Killian
+** Last update Wed Sep  6 19:13:20 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -56,6 +56,7 @@ typedef struct		s_weapon
   sfVector2f		start;
   sfSprite		*sprite;
   int			damages;
+  int			is_hand;
 }			t_weapon;
 
 typedef struct		s_house
@@ -87,7 +88,7 @@ typedef struct		s_displayer
 
 /* __________ FUNCTIONS _________*/
 
-void		draw_screen();
+void		draw_game();
 t_displayer	*init_displayer();
 sfRenderWindow	*create_window(char *, int, int);
 sfSprite	*init_sprite(char *, sfVector2f, sfVector2f);
@@ -108,5 +109,8 @@ void		update(t_displayer *);
 int		collide(t_displayer *);
 t_weapon	*init_weapon();
 void		draw_houses(t_displayer *);
+void		update_weapon(t_weapon *, t_displayer *);
+void		interact(t_displayer *);
+int		menu();
 
 #endif

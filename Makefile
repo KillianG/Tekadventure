@@ -5,7 +5,7 @@
 ## Login   <killian.gardahaut@epitech.eu>
 ## 
 ## Started on  Wed Sep  6 15:01:02 2017 Killian
-## Last update Wed Sep  6 15:20:30 2017 Killian
+## Last update Wed Sep  6 19:12:27 2017 Killian
 ##
 
 NAME		=	TEK
@@ -23,6 +23,7 @@ PLAYERDIR	=	$(SRCDIR)/player
 SCREENDIR	=	$(SRCDIR)/screen
 UTILSDIR	=	$(SRCDIR)/utils
 WEAPONSDIR	=	$(SRCDIR)/weapons
+MENUDIR		=	$(SRCDIR)/menu
 
 
 INCDIR		=	include
@@ -30,7 +31,7 @@ INCDIR		=	include
 RM		=	rm -f
 
 CC		=	gcc
-CFLAGS		=	-W -Wall -Wextra -g3 -lm			\
+CFLAGS		=	-W -Wall -Wextra -g3 -lm		\
 			-ansi -pedantic				\
 			-I$(INCDIR)
 
@@ -47,6 +48,7 @@ SRC		+=	$(ENTRIESDIR)/get_entries.c		\
 			$(ENTRIESDIR)/move_left.c		\
 			$(ENTRIESDIR)/move_up.c			\
 			$(ENTRIESDIR)/move_right.c		\
+			$(ENTRIESDIR)/interact.c		\
 
 SRC		+=	$(HOUSEDIR)/collide.c			\
 			$(HOUSEDIR)/draw_houses.c		\
@@ -70,6 +72,9 @@ SRC		+=	$(SCREENDIR)/draw_screen.c		\
 
 SRC		+=	$(WEAPONSDIR)/init_weapon.c		\
 			$(WEAPONSDIR)/update_weapon.c		\
+
+SRC		+=	$(MENUDIR)/initializer.c		\
+			$(MENUDIR)/menu.c			\
 
 
 OBJ		=	$(SRC:.c=.o)
