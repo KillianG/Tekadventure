@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 19:09:00 2017 Marc PEREZ
-** Last update Wed Sep  6 19:09:04 2017 Marc PEREZ
+** Last update Wed Sep  6 21:09:41 2017 Marc PEREZ
 */
 
 #include <sys/types.h>
@@ -109,6 +109,7 @@ int			main(void)
     err(1, "failed to set server socket to non-blocking");
   event_assign(&ev_accept, g_evbase, listen_fd, EV_READ | EV_PERSIST,
 	       on_accept, NULL);
-  event_add(&ev_accept, NULL);  event_base_dispatch(g_evbase);
+  event_add(&ev_accept, NULL);
+  event_base_dispatch(g_evbase);
   return (0);
 }
