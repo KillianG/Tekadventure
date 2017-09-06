@@ -5,12 +5,12 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Tue Sep  5 10:13:22 2017 ratch7t
-** Last update Wed Sep  6 17:00:22 2017 ratch7t
+** Last update Wed Sep  6 19:15:25 2017 Killian
 */
 
 #include "rudy.h"
 
-sfRenderWindow          *create_window(char *name, int width, int height)
+sfRenderWindow          *create_window_menu(char *name, int width, int height)
 {
   sfRenderWindow        *window;
   sfVideoMode           mode;
@@ -42,7 +42,14 @@ void		menu_loop(t_displayer *displayer, t_sprite *sprite)
       if (sprite->mouse_pos.x <= 600 && sprite->mouse_pos.x > 50)
 	{
           if (sprite->mouse_pos.y <= 140 && sprite->mouse_pos.y > 60)
-	    sfRenderWindow_drawSprite(displayer->window, sprite->nw_game, NULL);
+	    {
+	      sfRenderWindow_drawSprite(displayer->window, sprite->nw_game, NULL);
+	      if (sfMouse_isButtonPressed(sfMouseLeft))
+		{
+		  sfRenderWindow_close(displayer->window);
+		  draw_game();
+		}
+	    }
           else if (sprite->mouse_pos.y <= 270 && sprite->mouse_pos.y > 180)
             sfRenderWindow_drawSprite(displayer->window, sprite->multi, NULL);
           else if (sprite->mouse_pos.y <= 370 && sprite->mouse_pos.y > 280)
@@ -64,7 +71,7 @@ int		menu()
   t_displayer	*displayer;
   t_sprite	*sprite;
 
-  displayer = init_displayer();
+  displayer = init_displayer_menu();
   sprite = init_str_sprite();
   menu_loop(displayer, sprite);
   free(displayer);
