@@ -5,11 +5,14 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:07:25 2017 Marc PEREZ
-** Last update Wed Sep  6 22:10:32 2017 Marc PEREZ
+** Last update Wed Sep  6 22:24:09 2017 Marc PEREZ
 */
 
 #ifndef CLIENT_H_
 # define CLIENT_H_
+
+# include <err.h>
+# include <sys/queue.h>
 
 # define SERVER_PORT			12345
 # define DATA_SIZE			8192

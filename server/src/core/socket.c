@@ -5,26 +5,12 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 19:09:13 2017 Marc PEREZ
-** Last update Wed Sep  6 19:09:14 2017 Marc PEREZ
+** Last update Wed Sep  6 22:24:15 2017 Marc PEREZ
 */
 
-#include <sys/types.h>
-#include <sys/socket.h>
 #include <netinet/in.h>
-#include <arpa/inet.h>
-#include <sys/time.h>
-#include <stdlib.h>
-#include <stdio.h>
 #include <string.h>
 #include <fcntl.h>
-#include <unistd.h>
-#include <errno.h>
-#include <err.h>
-#include <sys/queue.h>
-#include <event2/event.h>
-#include <event2/event_struct.h>
-#include <event2/bufferevent.h>
-#include <event2/buffer.h>
 #include "server.h"
 
 int	setnonblock(int fd)

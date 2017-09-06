@@ -5,26 +5,17 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 19:09:00 2017 Marc PEREZ
-** Last update Wed Sep  6 22:11:02 2017 Marc PEREZ
+** Last update Wed Sep  6 22:25:00 2017 Marc PEREZ
 */
 
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
 #include <arpa/inet.h>
-#include <sys/time.h>
 #include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <fcntl.h>
 #include <unistd.h>
-#include <errno.h>
 #include <err.h>
 #include <sys/queue.h>
 #include <event2/event.h>
 #include <event2/event_struct.h>
 #include <event2/bufferevent.h>
-#include <event2/buffer.h>
 #include "server.h"
 
 static struct event_base	*g_evbase;
@@ -71,8 +62,8 @@ void	buffered_on_error(struct bufferevent *bev, short what, void *arg)
 void			on_accept(int fd, short ev, void *arg)
 {
   struct sockaddr_in	client_addr;
-  int			client_fd;
   socklen_t		client_len;
+  int			client_fd;
   t_client		*client;
 
   (void)ev;
