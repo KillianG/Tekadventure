@@ -5,7 +5,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Thu Aug 31 14:18:33 2017 ratch7t
-** Last update Wed Sep  6 16:38:58 2017 ratch7t
+** Last update Wed Sep  6 19:14:00 2017 Killian
 */
 
 #ifndef RUDY_H_
@@ -24,13 +24,13 @@ Lib
 Macro
 */
 
-# define BACKGROUND "sprite/Menu_basic.png"
-# define NEWGAME "sprite/Menu_new_game.png"
-# define MULTI "sprite/Menu_multi_player.png"
-# define OPTION "sprite/Menu_options.png"
-# define EXIT "sprite/Menu_exit.png"
+# define BACKGROUND "images/Menu_basic.png"
+# define NEWGAME "images/Menu_new_game.png"
+# define MULTI "images/Menu_multi_player.png"
+# define OPTION "images/Menu_options.png"
+# define EXIT "images/Menu_exit.png"
 # define GAME_NAME "MENU"
-# define MOUSE "sprite/cursor.png"
+# define MOUSE "images/cursor.png"
 # define SCREEN_WIDTH 1280
 # define SCREEN_HEIGHT 720
 
@@ -63,7 +63,8 @@ typedef struct		s_sprite
 menu
 */
 
-sfRenderWindow	*create_window(char *, int, int);
+void		draw_game();
+sfRenderWindow	*create_window_menu(char *, int, int);
 void		menu_loop(t_displayer *, t_sprite *);
 int		menu();
 void		get_mouse_on_screen(t_displayer *, t_sprite *);
@@ -72,8 +73,8 @@ void		get_mouse_on_screen(t_displayer *, t_sprite *);
 initializer
 */
 
-sfSprite	*init_sprite(char *);
-t_displayer	*init_displayer();
+sfSprite	*init_sprite_menu(char *);
+t_displayer	*init_displayer_menu();
 t_sprite	*init_str_sprite();
 
 /*
