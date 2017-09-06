@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Thu Aug 31 13:26:15 2017 Killian
-** Last update Wed Sep  6 12:51:09 2017 Killian
+** Last update Wed Sep  6 15:13:28 2017 Killian
 */
 
 #include "tekadv.h"
@@ -15,8 +15,6 @@ t_house		*init_house(sfVector2f pos, t_displayer *displayer)
   t_house	*house;
   sfSprite	*sprite;
 
-  //  pos.x *= -1;
-  //pos.y *= -1;
   house = malloc(sizeof(t_house));
   if (house == NULL)
     return (NULL);
