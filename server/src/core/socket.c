@@ -5,12 +5,13 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 19:09:13 2017 Marc PEREZ
-** Last update Wed Sep  6 22:24:15 2017 Marc PEREZ
+** Last update Wed Sep  6 22:54:22 2017 Marc PEREZ
 */
 
 #include <netinet/in.h>
 #include <string.h>
 #include <fcntl.h>
+#include <stdlib.h>
 #include "server.h"
 
 int	setnonblock(int fd)
@@ -26,7 +27,7 @@ int	setnonblock(int fd)
   return (0);
 }
 
-void			init_socket(int *listen_fd)
+void			init_socket(char **argv, int *listen_fd)
 {
   struct sockaddr_in	listen_addr;
   int			reuseaddr_on;
@@ -37,7 +38,7 @@ void			init_socket(int *listen_fd)
   memset(&listen_addr, 0, sizeof(listen_addr));
   listen_addr.sin_family = AF_INET;
   listen_addr.sin_addr.s_addr = INADDR_ANY;
-  listen_addr.sin_port = htons(SERVER_PORT);
+  listen_addr.sin_port = htons((argv[1] != NULL) ? atoi(argv[1]) : DFL_PORT);
   if (bind(*listen_fd, (struct sockaddr *)&listen_addr,
 	   sizeof(listen_addr)) == -1)
     err(1, "bind failed");

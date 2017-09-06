@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 19:09:00 2017 Marc PEREZ
-** Last update Wed Sep  6 22:25:00 2017 Marc PEREZ
+** Last update Wed Sep  6 22:53:27 2017 Marc PEREZ
 */
 
 #include <arpa/inet.h>
@@ -31,7 +31,7 @@ void		buffered_on_read(struct bufferevent *bev, void *arg)
       n = bufferevent_read(bev, data, sizeof(data));
       if (n <= 0)
 	break;
-      TAILQ_FOREACH(client, &client_tailq_head, entries)
+      TAILQ_FOREACH(client, &g_client_tailq_head, entries)
 	{
 	  if (client != (t_client *)arg)
 	    {
@@ -53,7 +53,7 @@ void	buffered_on_error(struct bufferevent *bev, short what, void *arg)
     {
       warn("Client socket error, disconnecting.\n");
     }
-  TAILQ_REMOVE(&client_tailq_head, (t_client *)arg, entries);
+  TAILQ_REMOVE(&g_client_tailq_head, (t_client *)arg, entries);
   bufferevent_free(((t_client *)arg)->buf_ev);
   close(((t_client *)arg)->fd);
   free(arg);
@@ -84,18 +84,19 @@ void			on_accept(int fd, short ev, void *arg)
   bufferevent_setcb(client->buf_ev, buffered_on_read, NULL,
 		    buffered_on_error, client);
   bufferevent_enable(client->buf_ev, EV_READ);
-  TAILQ_INSERT_TAIL(&client_tailq_head, client, entries);
+  TAILQ_INSERT_TAIL(&g_client_tailq_head, client, entries);
   printf("Accepted connection from %s\n", inet_ntoa(client_addr.sin_addr));
 }
 
-int			main(void)
+int			main(int argc, char **argv)
 {
   struct event		ev_accept;
   int			listen_fd;
 
+  (void)argc;
   g_evbase = event_base_new();
-  TAILQ_INIT(&client_tailq_head);
-  init_socket(&listen_fd);
+  TAILQ_INIT(&g_client_tailq_head);
+  init_socket(argv, &listen_fd);
   if (setnonblock(listen_fd) < 0)
     err(1, "failed to set server socket to non-blocking");
   event_assign(&ev_accept, g_evbase, listen_fd, EV_READ | EV_PERSIST,
