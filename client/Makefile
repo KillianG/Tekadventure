@@ -5,10 +5,10 @@
 ## Login   <marc.perez@epitech.eu>
 ## 
 ## Started on  Fri Aug 25 13:40:52 2017 Marc PEREZ
-## Last update Sat Sep  2 14:06:27 2017 Marc PEREZ
+## Last update Wed Sep  6 19:08:09 2017 Marc PEREZ
 ##
 
-NAME		=	../tek_client
+NAME		=	../cli
 
 CC		=	gcc
 

@@ -1,123 +1,114 @@
 /*
-** main.c for tekadventure in /home/segfault/Delivery/Alpha/tekadventure/mark
+** main.c for tekadventure in /home/segfault/Desktop/tekaventure
 ** 
 ** Made by Marc PEREZ
 ** Login   <marc.perez@epitech.eu>
 ** 
-** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Sat Sep  2 14:52:09 2017 Marc PEREZ
+** Started on  Wed Sep  6 19:09:00 2017 Marc PEREZ
+** Last update Wed Sep  6 19:09:04 2017 Marc PEREZ
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <netdb.h>
-#include <signal.h>
+#include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include "client.h"
+#include <sys/time.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <errno.h>
+#include <err.h>
+#include <sys/queue.h>
+#include <event2/event.h>
+#include <event2/event_struct.h>
+#include <event2/bufferevent.h>
+#include <event2/buffer.h>
+#include "server.h"
 
-t_client	g_clients[FD_SETSIZE];
-fd_set		g_readfds;
+static struct event_base	*g_evbase;
 
-int	bind_serv(struct sockaddr_in *serv, int fd, int port)
+void		buffered_on_read(struct bufferevent *bev, void *arg)
 {
-  serv->sin_addr.s_addr = INADDR_ANY;
-  serv->sin_family = AF_INET;
-  serv->sin_port = htons(port);
-  if (bind(fd, (struct sockaddr *)serv, sizeof(*serv)) == -1)
+  t_client	*client;
+  uint8_t	data[DATA_SIZE];
+  size_t	n;
+
+  while (1)
     {
-      write(2, "Cannot start server\n", 20);
-      return (1);
+      n = bufferevent_read(bev, data, sizeof(data));
+      if (n <= 0)
+	break;
+      TAILQ_FOREACH(client, &client_tailq_head, entries)
+	{
+	  if (client != (t_client *)arg)
+	    {
+	      bufferevent_write(client->buf_ev, data, n);
+	    }
+	}
     }
-  return (0);
+
 }
 
-int			server(int port)
+void	buffered_on_error(struct bufferevent *bev, short what, void *arg)
 {
-  struct sockaddr_in	serv;
-  struct sockaddr	client;
-  int			fd;
-  int			final;
-  int			socket_size;
-
-  if ((fd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
+  if (what & BEV_EVENT_EOF)
     {
-      write(2, "Cannot create socket\n", 21);
-      return (-1);
-    }
-  if (bind_serv(&serv, fd, port) == 1)
-    return (-1);
-  listen(fd, 1);
-  socket_size = sizeof(struct sockaddr);
-  if ((final = accept(fd, &client,
-		      (socklen_t *)&socket_size)) < 0)
-    {
-      write(2, "Cannot accept client\n", 21);
-      return (-1);
-    }
-#ifdef DEBUG
-  printf("ip: %s\n", inet_ntoa(((struct sockaddr_in *)&client)->sin_addr));
-#endif
-  return (final);
-}
-
-int	main(int argc, char **argv)
-{
-  int	socket;
-
-  if (argc == 2)
-    {
-      socket = server(atoi(argv[1]));
-      recv(socket, g_clients[0].str, MAX_STR, 0);
-      printf("string = %s\n", g_clients[0].str);
+      printf("Client disconnected.\n");
     }
   else
-    printf("USAGE: %s PORT\n", argv[0]);
+    {
+      warn("Client socket error, disconnecting.\n");
+    }
+  TAILQ_REMOVE(&client_tailq_head, (t_client *)arg, entries);
+  bufferevent_free(((t_client *)arg)->buf_ev);
+  close(((t_client *)arg)->fd);
+  free(arg);
+}
+
+void			on_accept(int fd, short ev, void *arg)
+{
+  struct sockaddr_in	client_addr;
+  int			client_fd;
+  socklen_t		client_len;
+  t_client		*client;
+
+  client_len = sizeof(client_addr);
+  client_fd = accept(fd, (struct sockaddr *)&client_addr, &client_len);
+  if (client_fd < 0)
+    {
+      warn("accept failed");
+      return;
+    }
+  if (setnonblock(client_fd) < 0)
+    warn("failed to set client socket non-blocking");
+  if ((client = calloc(1, sizeof(*client))) == NULL)
+    {
+      err(1, "malloc failed");
+      exit(1);
+    }
+  client->fd = client_fd;
+  client->buf_ev = bufferevent_socket_new(g_evbase, client_fd, 0);
+  bufferevent_setcb(client->buf_ev, buffered_on_read, NULL,
+		    buffered_on_error, client);
+  bufferevent_enable(client->buf_ev, EV_READ);
+  TAILQ_INSERT_TAIL(&client_tailq_head, client, entries);
+  printf("Accepted connection from %s\n", inet_ntoa(client_addr.sin_addr));
+}
+
+int			main(void)
+{
+  struct event		ev_accept;
+  int			listen_fd;
+
+  g_evbase = event_base_new();
+  TAILQ_INIT(&client_tailq_head);
+  init_socket(&listen_fd);
+  if (setnonblock(listen_fd) < 0)
+    err(1, "failed to set server socket to non-blocking");
+  event_assign(&ev_accept, g_evbase, listen_fd, EV_READ | EV_PERSIST,
+	       on_accept, NULL);
+  event_add(&ev_accept, NULL);  event_base_dispatch(g_evbase);
   return (0);
 }
-/*
-struct timeval tv;
-char buf1[256], buf2[256];
-
-// pretend we've connected both to a server at this point
-//s1 = socket(...);
-//s2 = socket(...);
-//connect(s1, ...)...
-//connect(s2, ...)...
-
-// clear the set ahead of time
-FD_ZERO(&readfds);
-
-// add our descriptors to the set
-FD_SET(s1, &readfds);
-FD_SET(s2, &readfds);
-
-// since we got s2 second, it's the "greater", so we use that for
-// the n param in select()
-n = s2 + 1;
-
-// wait until either socket has data ready to be recv()d (timeout 10.5 secs)
-tv.tv_sec = 60;
-tv.tv_usec = 0;
-
-
-if ((rv = select(n, &readfds, NULL, NULL, &tv)) == -1)
-    perror("select");
- else if (rv == 0)
-     printf("Timeout occurred!  No data after %i seconds.\n", tv->tv_sec);
- else
-   {
-
-     if (FD_ISSET(s1, &readfds))
-       {
-	 recv(s1, buf1, sizeof buf1, 0);
-       }
-     if (FD_ISSET(s2, &readfds))
-       {
-	 recv(s2, buf2, sizeof buf2, 0);
-       }
-   }
-*/
