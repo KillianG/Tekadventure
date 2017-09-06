@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Wed Aug 30 18:30:22 2017 Killian
+** Last update Wed Sep  6 13:42:33 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -36,10 +36,25 @@
 # define TO_RAD(a) (M_PI * a / 180)
 # define SQUARE(a) (a*a)
 
+/* __________ HOUSES UTILS __________ */
+
+# define NB_HOUSES 5
+
 /* _________ SPRITES ________ */
 
 # define BACKGROUND "images/background.jpg"
 # define PLAYER "images/players.png"
+# define HOUSE "images/house.png"
+
+/* __________ STRUCTURES __________ */
+
+typedef struct		s_house
+{
+  sfSprite		*sprite;
+  sfIntRect		hitbox;
+  sfVector2f		pos;
+  sfVector2f		start;
+}			t_house;
 
 typedef struct          s_player
 {
@@ -56,6 +71,7 @@ typedef struct		s_displayer
   sfRenderWindow	*window;
   sfSprite		*map;
   t_player		*player;
+  t_house		*houses[NB_HOUSES];
 }			t_displayer;
 
 /* __________ FUNCTIONS _________*/
@@ -74,5 +90,10 @@ void		move_right(t_displayer *);
 void		move_up(t_displayer *);
 void		move_down(t_displayer *);
 void		update_map(t_displayer *);
+t_house		*init_house(sfVector2f, t_displayer *);
+t_displayer	*init_houses(t_displayer *);
+void		update_house(t_house *, t_displayer *);
+void		update(t_displayer *);
+int		collide(t_displayer *);
 
 #endif

@@ -4,10 +4,10 @@
 ## Made by root
 ## Login   <kentin.pratelli@epitech.eu>
 ## Started on  Tue May  2 13:21:14 2017 root
-## Last update Wed Aug 30 18:31:25 2017 Killian
+## Last update Wed Sep  6 13:39:00 2017 Killian
 ## 
 
-CC      =       gcc -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio -lm
+CC      =       gcc -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio -lm -g3
 
 CFLAGS  +=      -I include/
 
@@ -28,7 +28,12 @@ SRCS    =       main.c			\
 		entries/move_right.c	\
 		entries/move_up.c	\
 		entries/move_down.c	\
-		utils/map.c
+		utils/map.c		\
+		house/init_house.c	\
+		house/update_house.c	\
+		house/houses.c		\
+		house/collide.c		\
+		utils/update.c
 
 OBJS    =       $(SRCS:.c=.o)
 

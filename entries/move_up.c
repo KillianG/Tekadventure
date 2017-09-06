@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 18:04:35 2017 Killian
-** Last update Wed Aug 30 18:27:15 2017 Killian
+** Last update Wed Sep  6 13:38:31 2017 Killian
 */
 
 #include "tekadv.h"
@@ -20,6 +20,9 @@ void		move_up(t_displayer *displayer)
   if (displayer->player->sprite_pos > 3)
     displayer->player->sprite_pos = 0;
   displayer->player->pos.y += SPEED;
+  update(displayer);
+  if (collide(displayer))
+    displayer->player->pos.y -= SPEED;
   displayer->player->hitbox = int_rect(64 * 3,
 				       displayer->player->sprite_pos * 64,
 				       64, 64);
