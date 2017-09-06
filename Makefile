@@ -5,7 +5,7 @@
 ## Login   <killian.gardahaut@epitech.eu>
 ## 
 ## Started on  Wed Sep  6 15:01:02 2017 Killian
-## Last update Wed Sep  6 19:12:27 2017 Killian
+## Last update Wed Sep  6 21:22:36 2017 Killian
 ##
 
 NAME		=	TEK
@@ -67,11 +67,14 @@ SRC		+=	$(UTILSDIR)/angle.c			\
 			$(UTILSDIR)/update.c			\
 			$(UTILSDIR)/vectors.c			\
 			$(UTILSDIR)/windows.c			\
+			$(UTILSDIR)/move_forward.c		\
 
 SRC		+=	$(SCREENDIR)/draw_screen.c		\
 
 SRC		+=	$(WEAPONSDIR)/init_weapon.c		\
 			$(WEAPONSDIR)/update_weapon.c		\
+			$(WEAPONSDIR)/hand_weapon.c		\
+			$(WEAPONSDIR)/shoot.c			\
 
 SRC		+=	$(MENUDIR)/initializer.c		\
 			$(MENUDIR)/menu.c			\
@@ -82,7 +85,7 @@ OBJ		=	$(SRC:.c=.o)
 all		:	title $(NAME)
 
 title		:
-			@$(ECHO) $(GREEN)Tek$(TEAL)Adventure$(DEFAULT)
+			@$(ECHO) $(GREEN)"\tTek"$(TEAL)"Adventure\n"$(DEFAULT)
 
 $(NAME)		:	$(OBJ)
 			@$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(LDFLAGS) &&	\

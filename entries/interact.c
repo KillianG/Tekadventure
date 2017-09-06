@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 16:47:58 2017 Killian
-** Last update Wed Sep  6 17:00:45 2017 Killian
+** Last update Wed Sep  6 20:13:40 2017 Killian
 */
 
 #include "tekadv.h"
@@ -20,6 +20,7 @@ void		interact(t_displayer *displayer)
   if (sfFloatRect_intersects(&player, &weapon, NULL))
     {
       displayer->player->has_weapon = 1;
+      displayer->player->hand = displayer->weapon;
       displayer->weapon->is_hand = 1;
     }
 }

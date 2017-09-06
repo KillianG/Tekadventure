@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Wed Sep  6 19:13:20 2017 Killian
+** Last update Wed Sep  6 21:03:43 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -47,6 +47,7 @@
 # define PLAYER "images/players.png"
 # define HOUSE "images/house.png"
 # define AK47 "images/ak47.png"
+# define BULLET "images/bullet.png"
 
 /* __________ STRUCTURES __________ */
 
@@ -74,11 +75,15 @@ typedef struct          s_player
   int                   has_weapon;
   sfSprite              *sprite;
   sfIntRect             hitbox;
+  t_weapon		*hand;
   int			sprite_pos;
+  int			shoot;
+  float			shooting_angle;
 }                       t_player;
 
 typedef struct		s_displayer
 {
+  sfSprite		*bullet;
   sfRenderWindow	*window;
   sfSprite		*map;
   t_player		*player;
@@ -112,5 +117,10 @@ void		draw_houses(t_displayer *);
 void		update_weapon(t_weapon *, t_displayer *);
 void		interact(t_displayer *);
 int		menu();
+void		draw_hand_weapon(t_displayer *);
+float		get_angle_from_mouse(t_displayer *);
+sfVector2f	move_forward(sfVector2f, float, float);
+void		shoot(t_displayer *);
+void		continue_shooting(t_displayer *);
 
 #endif

@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:32:50 2017 Killian
-** Last update Wed Sep  6 14:56:01 2017 Killian
+** Last update Wed Sep  6 21:10:21 2017 Killian
 */
 
 #include "tekadv.h"
@@ -21,8 +21,8 @@ t_displayer		*init_displayer()
   float			y;
 
   srand(time(NULL));
-  x = (rand() % MAP_SIZEX) * -1;
-  y = (rand() % MAP_SIZEY) * -1;
+  x = 0;/*(rand() % MAP_SIZEX) * -1;*/
+  y = 0;/*(rand() % MAP_SIZEY) * -1;*/
   window = create_window(GAME_NAME, SCREEN_WIDTH, SCREEN_HEIGHT);
   sprite = init_sprite(BACKGROUND, vector2f(x, y), vector2f(1, 1));
   if ((displayer = malloc(sizeof(t_displayer))) == NULL)
@@ -32,6 +32,7 @@ t_displayer		*init_displayer()
   displayer->player = init_player();
   displayer->player->pos.x = x;
   displayer->player->pos.y = y;
+  displayer->bullet = init_sprite(BULLET, vector2f(0, 0), vector2f(0.2, 0.2));
   displayer->weapon = init_weapon(vector2f(0, 0));
   init_houses(displayer);
   return (displayer);

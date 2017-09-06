@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Wed Sep  6 19:04:56 2017 Killian
+** Last update Wed Sep  6 21:02:56 2017 Killian
 */
 
 #include "tekadv.h"
@@ -25,6 +25,8 @@ void		draw_game()
 	sfRenderWindow_drawSprite(displayer->window, displayer->weapon->sprite, NULL);
       draw_houses(displayer);
       sfRenderWindow_drawSprite(displayer->window, displayer->player->sprite, NULL);
+      draw_hand_weapon(displayer);
+      continue_shooting(displayer);
       sfRenderWindow_display(displayer->window);
       sfRenderWindow_clear(displayer->window, sfBlack);
     }
