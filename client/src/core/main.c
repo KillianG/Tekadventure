@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Sat Sep  2 14:53:03 2017 Marc PEREZ
+** Last update Wed Sep  6 22:13:38 2017 Marc PEREZ
 */
 
 #include <stdio.h>
@@ -66,7 +66,7 @@ void		attack(char *host, char *port)
       socket = make_socket(host, port);
     }
   strcpy(g_clients[0].str, "test");
-  if (send(socket, g_clients[0].str, MAX_STR, 0) <= 0)
+  if (send(socket, g_clients[0].str, DATA_MAX, 0) <= 0)
     {
       close(socket);
       socket = 0;

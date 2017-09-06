@@ -5,14 +5,16 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:07:25 2017 Marc PEREZ
-** Last update Wed Sep  6 19:05:33 2017 Marc PEREZ
+** Last update Wed Sep  6 22:10:32 2017 Marc PEREZ
 */
 
 #ifndef CLIENT_H_
 # define CLIENT_H_
 
-# define SERVER_PORT	12345
-# define DATA_SIZE	8192
+# define SERVER_PORT			12345
+# define DATA_SIZE			8192
+
+# define ERR_EXIT(fd, str, code)	{ err(fd, str); exit(code); }
 
 typedef struct		s_client
 {

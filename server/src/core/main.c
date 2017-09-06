@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 19:09:00 2017 Marc PEREZ
-** Last update Wed Sep  6 21:09:41 2017 Marc PEREZ
+** Last update Wed Sep  6 22:11:02 2017 Marc PEREZ
 */
 
 #include <sys/types.h>
@@ -32,7 +32,7 @@ static struct event_base	*g_evbase;
 void		buffered_on_read(struct bufferevent *bev, void *arg)
 {
   t_client	*client;
-  uint8_t	data[DATA_SIZE];
+  char		data[DATA_SIZE];
   size_t	n;
 
   while (1)
@@ -53,6 +53,7 @@ void		buffered_on_read(struct bufferevent *bev, void *arg)
 
 void	buffered_on_error(struct bufferevent *bev, short what, void *arg)
 {
+  (void)bev;
   if (what & BEV_EVENT_EOF)
     {
       printf("Client disconnected.\n");
@@ -74,6 +75,8 @@ void			on_accept(int fd, short ev, void *arg)
   socklen_t		client_len;
   t_client		*client;
 
+  (void)ev;
+  (void)arg;
   client_len = sizeof(client_addr);
   client_fd = accept(fd, (struct sockaddr *)&client_addr, &client_len);
   if (client_fd < 0)
@@ -84,10 +87,7 @@ void			on_accept(int fd, short ev, void *arg)
   if (setnonblock(client_fd) < 0)
     warn("failed to set client socket non-blocking");
   if ((client = calloc(1, sizeof(*client))) == NULL)
-    {
-      err(1, "malloc failed");
-      exit(1);
-    }
+    ERR_EXIT(1, "calloc failed", 1);
   client->fd = client_fd;
   client->buf_ev = bufferevent_socket_new(g_evbase, client_fd, 0);
   bufferevent_setcb(client->buf_ev, buffered_on_read, NULL,
