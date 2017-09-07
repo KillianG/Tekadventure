@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Thu Sep  7 14:48:45 2017 Killian
-** Last update Thu Sep  7 16:42:49 2017 Killian
+** Last update Thu Sep  7 16:50:49 2017 Killian
 */
 
 #include "tekadv.h"
@@ -18,8 +18,12 @@ void		init_zone(t_displayer *displayer)
   sfVector2f	pos;
 
   srand(time(NULL));
-  pos.x = (rand() % MAP_SIZEX) - 100;
-  pos.y = (rand() % MAP_SIZEY) - 100;
+  pos.x = (rand() % MAP_SIZEX) - RADIUS;
+  pos.y = (rand() % MAP_SIZEY) - RADIUS;
+  if (pos.x < 0)
+    pos.x *= -1;
+  if (pos.y < 0)
+    pos.y *= -1;
   blue = sfCircleShape_create();
   sfCircleShape_setPosition(blue, pos);
   sfCircleShape_setRadius(blue, 100);
