@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:32:50 2017 Killian
-** Last update Wed Sep  6 21:10:21 2017 Killian
+** Last update Thu Sep  7 10:08:37 2017 Killian
 */
 
 #include "tekadv.h"
@@ -33,7 +33,7 @@ t_displayer		*init_displayer()
   displayer->player->pos.x = x;
   displayer->player->pos.y = y;
   displayer->bullet = init_sprite(BULLET, vector2f(0, 0), vector2f(0.2, 0.2));
-  displayer->weapon = init_weapon(vector2f(0, 0));
   init_houses(displayer);
+  init_weapons(displayer);
   return (displayer);
 }

@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Wed Sep  6 21:03:43 2017 Killian
+** Last update Thu Sep  7 10:40:59 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -48,6 +48,15 @@
 # define HOUSE "images/house.png"
 # define AK47 "images/ak47.png"
 # define BULLET "images/bullet.png"
+# define AUG "images/aug.png"
+# define FAMAS "images/Famas.png"
+# define M416 "images/M416.png"
+# define MK14 "images/mk14.png"
+# define PKP "images/PKP.png"
+
+/* __________ WEAPONS UTILS __________*/
+
+# define NB_WEAPONS 4
 
 /* __________ STRUCTURES __________ */
 
@@ -75,7 +84,7 @@ typedef struct          s_player
   int                   has_weapon;
   sfSprite              *sprite;
   sfIntRect             hitbox;
-  t_weapon		*hand;
+  t_weapon		*weapon;
   int			sprite_pos;
   int			shoot;
   float			shooting_angle;
@@ -88,7 +97,7 @@ typedef struct		s_displayer
   sfSprite		*map;
   t_player		*player;
   t_house		*houses[NB_HOUSES];
-  t_weapon		*weapon;
+  t_weapon		*weapons[NB_WEAPONS];
 }			t_displayer;
 
 /* __________ FUNCTIONS _________*/
@@ -122,5 +131,9 @@ float		get_angle_from_mouse(t_displayer *);
 sfVector2f	move_forward(sfVector2f, float, float);
 void		shoot(t_displayer *);
 void		continue_shooting(t_displayer *);
+t_displayer	*init_weapons(t_displayer *);
+void		update_weapons(t_displayer *);
+void		draw_weapons(t_displayer *);
+void		drop_weapon(t_displayer *);
 
 #endif

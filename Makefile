@@ -5,7 +5,7 @@
 ## Login   <killian.gardahaut@epitech.eu>
 ## 
 ## Started on  Wed Sep  6 15:01:02 2017 Killian
-## Last update Wed Sep  6 21:22:36 2017 Killian
+## Last update Thu Sep  7 10:20:37 2017 Killian
 ##
 
 NAME		=	TEK
@@ -75,6 +75,9 @@ SRC		+=	$(WEAPONSDIR)/init_weapon.c		\
 			$(WEAPONSDIR)/update_weapon.c		\
 			$(WEAPONSDIR)/hand_weapon.c		\
 			$(WEAPONSDIR)/shoot.c			\
+			$(WEAPONSDIR)/draw_weapons.c		\
+			$(WEAPONSDIR)/weapons.c			\
+			$(WEAPONSDIR)/drop_weapon.c		\
 
 SRC		+=	$(MENUDIR)/initializer.c		\
 			$(MENUDIR)/menu.c			\
