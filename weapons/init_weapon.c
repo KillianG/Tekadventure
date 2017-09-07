@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 14:37:40 2017 Killian
-** Last update Thu Sep  7 10:44:33 2017 Killian
+** Last update Thu Sep  7 16:40:45 2017 Killian
 */
 
 #include "tekadv.h"
@@ -19,16 +19,17 @@ t_weapon	*init_weapon(sfVector2f pos, int id)
   weapon->pos = pos;
   weapon->start = pos;
   weapon->is_hand = 0;
-  if (id == 0)
-    weapon->sprite = init_sprite(AK47, vector2f(pos.x, pos.y), vector2f(0.3, 0.3));
-  else if (id == 1)
-    weapon->sprite = init_sprite(AUG, vector2f(pos.x, pos.y), vector2f(0.3, 0.3));
-  else if (id == 2)
-    weapon->sprite = init_sprite(FAMAS, vector2f(pos.x, pos.y), vector2f(0.3, 0.3));
-  else if (id == 3)
-    weapon->sprite = init_sprite(M416, vector2f(pos.x, pos.y), vector2f(0.3, 0.3));
-  else
-    weapon->sprite = init_sprite(AK47, vector2f(pos.x, pos.y), vector2f(0.3, 0.3));
+  weapon->sprite = init_sprite(AK47, vector2f(pos.x, pos.y), vector2f(0.25, 0.25));
   weapon->damages = 10;
+  if (id == 0 && (weapon->damages = AK_DMG))
+    weapon->sprite = init_sprite(AK47, vector2f(pos.x, pos.y), vector2f(0.25, 0.25));
+  if (id == 1 && (weapon->damages = AUG_DMG))
+    weapon->sprite = init_sprite(AUG, vector2f(pos.x, pos.y), vector2f(0.25, 0.25));
+  if (id == 2 && (weapon->damages = FAMAS_DMG))
+    weapon->sprite = init_sprite(FAMAS, vector2f(pos.x, pos.y), vector2f(0.25, 0.25));
+  if (id == 3 && (weapon->damages = M416_DMG))
+    weapon->sprite = init_sprite(M416, vector2f(pos.x, pos.y), vector2f(0.25, 0.25));
+  if (id == 4 && (weapon->damages = MK14_DMG))
+    weapon->sprite = init_sprite(MK14, vector2f(pos.x, pos.y), vector2f(0.25, 0.25));
   return (weapon);
 }

@@ -5,10 +5,34 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 20:43:14 2017 Killian
-** Last update Wed Sep  6 21:18:53 2017 Killian
+** Last update Thu Sep  7 14:36:56 2017 Killian
 */
 
 #include "tekadv.h"
+
+void		check_hit(t_displayer *displayer)
+{
+  sfFloatRect	bullet;
+  sfFloatRect	hitbox;
+  sfFloatRect	result;
+  int		cpt;
+  int		collide;
+
+  collide = 0;
+  cpt = -1;
+  bullet = sfSprite_getGlobalBounds(displayer->bullet);
+  while (displayer->ennemies[++cpt] != NULL && !collide)
+    {
+      hitbox = sfSprite_getGlobalBounds(displayer->ennemies[cpt]->sprite);
+      if (sfFloatRect_intersects(&bullet, &hitbox, &result) &&
+	  displayer->ennemies[cpt]->hp > 0)
+        {
+	  displayer->player->shoot = 0;
+	  displayer->ennemies[cpt]->hp -= displayer->player->weapon->damages;
+          collide = 1;
+        }
+    }
+}
 
 int     is_outofbound(sfVector2f pos)
 {
@@ -41,5 +65,6 @@ void			continue_shooting(t_displayer *displayer)
 				    displayer->player->shooting_angle, 0.8));
   if (is_outofbound(sfSprite_getPosition(displayer->bullet)))
         displayer->player->shoot = 0;
+  check_hit(displayer);
   sfRenderWindow_drawSprite(displayer->window, displayer->bullet, NULL);
 }

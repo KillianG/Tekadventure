@@ -5,7 +5,7 @@
 ## Login   <killian.gardahaut@epitech.eu>
 ## 
 ## Started on  Wed Sep  6 15:01:02 2017 Killian
-## Last update Thu Sep  7 10:20:37 2017 Killian
+## Last update Thu Sep  7 15:45:07 2017 Killian
 ##
 
 NAME		=	TEK
@@ -24,6 +24,9 @@ SCREENDIR	=	$(SRCDIR)/screen
 UTILSDIR	=	$(SRCDIR)/utils
 WEAPONSDIR	=	$(SRCDIR)/weapons
 MENUDIR		=	$(SRCDIR)/menu
+ENNEMYDIR	=	$(SRCDIR)/ennemy
+HUDDIR		=	$(SRCDIR)/HUD
+ZONEDIR		=	$(SRCDIR)/zones
 
 
 INCDIR		=	include
@@ -31,7 +34,7 @@ INCDIR		=	include
 RM		=	rm -f
 
 CC		=	gcc
-CFLAGS		=	-W -Wall -Wextra -g3 -lm		\
+CFLAGS		=	-W -Wall -Wextra -g3 -lm -O3		\
 			-ansi -pedantic				\
 			-I$(INCDIR)
 
@@ -50,8 +53,7 @@ SRC		+=	$(ENTRIESDIR)/get_entries.c		\
 			$(ENTRIESDIR)/move_right.c		\
 			$(ENTRIESDIR)/interact.c		\
 
-SRC		+=	$(HOUSEDIR)/collide.c			\
-			$(HOUSEDIR)/draw_houses.c		\
+SRC		+=	$(HOUSEDIR)/draw_houses.c		\
 			$(HOUSEDIR)/houses.c			\
 			$(HOUSEDIR)/init_house.c		\
 			$(HOUSEDIR)/update_house.c		\
@@ -68,6 +70,8 @@ SRC		+=	$(UTILSDIR)/angle.c			\
 			$(UTILSDIR)/vectors.c			\
 			$(UTILSDIR)/windows.c			\
 			$(UTILSDIR)/move_forward.c		\
+			$(UTILSDIR)/collide.c			\
+			$(UTILSDIR)/my_itoa.c			\
 
 SRC		+=	$(SCREENDIR)/draw_screen.c		\
 
@@ -81,6 +85,19 @@ SRC		+=	$(WEAPONSDIR)/init_weapon.c		\
 
 SRC		+=	$(MENUDIR)/initializer.c		\
 			$(MENUDIR)/menu.c			\
+
+SRC		+=	$(ENNEMYDIR)/ennemies.c			\
+			$(ENNEMYDIR)/init_ennemy.c		\
+			$(ENNEMYDIR)/update_ennemy.c		\
+			$(ENNEMYDIR)/draw_ennemies.c		\
+
+SRC		+=	$(HUDDIR)/hp.c				\
+			$(HUDDIR)/arrow.c			\
+
+SRC		+=	$(ZONEDIR)/init_zone.c			\
+			$(ZONEDIR)/draw_zone.c			\
+			$(ZONEDIR)/update_zone.c		\
+			$(ZONEDIR)/check_in.c			\
 
 
 OBJ		=	$(SRC:.c=.o)

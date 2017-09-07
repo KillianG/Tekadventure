@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Thu Sep  7 10:40:59 2017 Killian
+** Last update Thu Sep  7 16:29:28 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -15,21 +15,26 @@
 # include <SFML/Window.h>
 # include <math.h>
 # include <stdlib.h>
+# include <string.h>
 
 /* __________ WINDOW UTILS _________ */
 
 # define GAME_NAME "Tekadventure"
 # define SCREEN_WIDTH 800
 # define SCREEN_HEIGHT 800
+# define FONT "utils/font.ttf"
 
 /* __________ PLAYER UTILS _________ */
 
 # define SPEED 0.2
+# define RADIUS 3000
+# define ZONE_DMG 0.001
+# define ZONE_SPEED 0.1
 
 /* __________ MAP __________ */
 
-# define MAP_SIZEX 3000
-# define MAP_SIZEY 3000
+# define MAP_SIZEX 4000
+# define MAP_SIZEY 4000
 
 /* __________ MATH UTILS _________ */
 
@@ -53,10 +58,21 @@
 # define M416 "images/M416.png"
 # define MK14 "images/mk14.png"
 # define PKP "images/PKP.png"
+# define ARROW "images/blue_arrow.png"
 
 /* __________ WEAPONS UTILS __________*/
 
 # define NB_WEAPONS 4
+# define AK_DMG 15
+# define AUG_DMG 8
+# define FAMAS_DMG 10
+# define M416_DMG 20
+# define MK14_DMG 30
+
+/* __________ ENNEMY UTILS _________ */
+
+# define NB_ENNEMY 2
+# define ENNEMY "images/Ganon.png"
 
 /* __________ STRUCTURES __________ */
 
@@ -77,9 +93,17 @@ typedef struct		s_house
   sfVector2f		start;
 }			t_house;
 
-typedef struct          s_player
+typedef struct          s_ennemy
 {
   int                   hp;
+  sfVector2f            pos;
+  sfVector2f		start;
+  sfSprite              *sprite;
+}                       t_ennemy;
+
+typedef struct          s_player
+{
+  float                 hp;
   sfVector2f            pos;
   int                   has_weapon;
   sfSprite              *sprite;
@@ -92,12 +116,18 @@ typedef struct          s_player
 
 typedef struct		s_displayer
 {
+  sfSprite		*arrow;
+  float			blue_radius;
+  sfVector2f		blue_start;
+  sfCircleShape		*blue_zone;
   sfSprite		*bullet;
   sfRenderWindow	*window;
   sfSprite		*map;
   t_player		*player;
-  t_house		*houses[NB_HOUSES];
-  t_weapon		*weapons[NB_WEAPONS];
+  t_house		*houses[NB_HOUSES + 1];
+  t_weapon		*weapons[NB_WEAPONS + 1];
+  t_ennemy		*ennemies[NB_ENNEMY + 1];
+  sfText		*hp;
 }			t_displayer;
 
 /* __________ FUNCTIONS _________*/
@@ -135,5 +165,19 @@ t_displayer	*init_weapons(t_displayer *);
 void		update_weapons(t_displayer *);
 void		draw_weapons(t_displayer *);
 void		drop_weapon(t_displayer *);
+t_ennemy	*init_ennemy(sfVector2f);
+void		init_ennemies(t_displayer *);
+void		draw_ennemies(t_displayer *);
+void		update_ennemies(t_displayer *);
+char		*my_itoa(int);
+void		init_hp(t_displayer *);
+void		update_hp(t_displayer *);
+void		init_zone(t_displayer *);
+void		draw_zone(t_displayer *);
+void		update_zone(t_displayer *);
+void		check_in(t_displayer *);
+float		get_angle_from_pos(sfVector2f);
+void		init_arrow(t_displayer *);
+void		draw_arrow(t_displayer *);
 
 #endif
