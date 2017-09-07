@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Thu Sep  7 21:51:09 2017 Marc PEREZ
+** Last update Thu Sep  7 22:15:18 2017 Marc PEREZ
 */
 
 #include <stdio.h>
@@ -19,6 +19,15 @@
 #include "client.h"
 
 t_client	g_clients[FD_SETSIZE];
+
+void	setnonblock(int fd)
+{
+  int	flags;
+
+  flags = fcntl(fd, F_GETFL);
+  flags |= O_NONBLOCK;
+  fcntl(fd, F_SETFL, flags);
+}
 
 int			make_socket(char *host, char *port)
 {
@@ -39,7 +48,7 @@ int			make_socket(char *host, char *port)
   for (p = servinfo; p != NULL; p = p->ai_next)
     {
       if ((sock = socket(p->ai_family, p->ai_socktype, p->ai_protocol)) == -1)
-	  continue;
+	continue;
       if (connect(sock, p->ai_addr, p->ai_addrlen) == -1)
 	{
 	  close(sock);
@@ -55,32 +64,28 @@ int			make_socket(char *host, char *port)
     }
   if (servinfo)
     freeaddrinfo(servinfo);
+  setnonblock(sock);
   return (sock);
 }
 
 void		attack(char *host, char *port)
 {
   static int	socket;
-  char		**str;
+  char		str[8192];
 
   if (socket == 0)
     {
       socket = make_socket(host, port);
     }
-  int	flags;
-
-  flags = fcntl(socket, F_GETFL);
-  flags |= O_NONBLOCK;
-  fcntl(socket, F_SETFL, flags);
-  getline((str = NULL), 0, 0);
-  if (str != NULL)
-    if (send(socket, str, DATA_MAX, 0) <= 0)
+  /*  getline((str = NULL), 0, 0);
+      if (str != NULL)
+      if (send(socket, *str, DATA_MAX, 0) <= 0)
       {
-	close(socket);
-	socket = 0;
-      }
-  while (getline((str = NULL), 0, socket) != -1)
-    printf("%s\n", *str);
+      close(socket);
+      socket = 0;
+      }*/
+  while (read(socket, str, 8192) > 0)
+    printf("%s", str);
 }
 
 int	main(int argc, char **argv)
@@ -88,11 +93,7 @@ int	main(int argc, char **argv)
   signal(SIGPIPE, SIG_IGN);
   if (argc == 3)
     {
-      int flags;
-
-      flags = fcntl(0, F_GETFL);
-      flags |= O_NONBLOCK;
-      fcntl(0, F_SETFL, flags);
+      setnonblock(0);
       while (1)
 	{
 	  attack(argv[1], argv[2]);
