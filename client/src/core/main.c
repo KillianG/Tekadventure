@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Thu Sep  7 22:22:25 2017 Marc PEREZ
+** Last update Thu Sep  7 22:35:14 2017 Marc PEREZ
 */
 
 #include <stdio.h>
@@ -77,12 +77,15 @@ void		attack(char *host, char *port)
       socket = make_socket(host, port);
       setnonblock(socket);
     }
-  if (read(0, str, DATA_MAX) != -1)
-    if (send(socket, str, DATA_MAX, 0) <= 0)
-      {
-	close(socket);
-	socket = 0;
-      }
+  memset(str, 0, DATA_MAX * sizeof(char));
+  if (read(0, str, DATA_MAX) > 0)
+    {
+      if (send(socket, str, DATA_MAX, 0) <= 0)
+	{
+	  close(socket);
+	  socket = 0;
+	}
+    }
   while (read(socket, str, DATA_MAX) > 0)
     printf("%s", str);
 }

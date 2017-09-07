@@ -5,7 +5,7 @@
 ## Login   <marc.perez@epitech.eu>
 ## 
 ## Started on  Fri Aug 25 13:40:52 2017 Marc PEREZ
-## Last update Wed Sep  6 19:08:09 2017 Marc PEREZ
+## Last update Thu Sep  7 22:25:46 2017 Marc PEREZ
 ##
 
 NAME		=	../cli
@@ -16,12 +16,13 @@ CFLAGS		=	-pipe -march=native -fopenmp -Ofast -W -Wall -Wextra
 
 CFLAGS_DEBUG	=	-Og -g3 -DDEBUG -W -Wall -Wextra
 
-CPPFLAGS	+=	-I ./inc
+CPPFLAGS	+=	-I ./inc -I ./utils/GNL
 
 RM		=	rm -f
 
 SRCS		=						\
-		src/core/main.c
+		src/core/main.c					\
+		utils/GNL/GNL.c
 
 OBJS		=	$(SRCS:.c=.o)
 
