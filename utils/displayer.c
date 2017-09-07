@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:32:50 2017 Killian
-** Last update Wed Sep  6 14:56:01 2017 Killian
+** Last update Thu Sep  7 16:27:13 2017 Killian
 */
 
 #include "tekadv.h"
@@ -32,7 +32,13 @@ t_displayer		*init_displayer()
   displayer->player = init_player();
   displayer->player->pos.x = x;
   displayer->player->pos.y = y;
-  displayer->weapon = init_weapon(vector2f(0, 0));
+  displayer->bullet = init_sprite(BULLET, vector2f(0, 0), vector2f(0.2, 0.2));
+  displayer->blue_radius = RADIUS;
+  init_arrow(displayer);
+  init_zone(displayer);
   init_houses(displayer);
+  init_weapons(displayer);
+  init_ennemies(displayer);
+  init_hp(displayer);
   return (displayer);
 }
