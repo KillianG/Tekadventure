@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Thu Sep  7 22:15:18 2017 Marc PEREZ
+** Last update Thu Sep  7 22:22:25 2017 Marc PEREZ
 */
 
 #include <stdio.h>
@@ -64,27 +64,26 @@ int			make_socket(char *host, char *port)
     }
   if (servinfo)
     freeaddrinfo(servinfo);
-  setnonblock(sock);
   return (sock);
 }
 
 void		attack(char *host, char *port)
 {
   static int	socket;
-  char		str[8192];
+  char		str[DATA_MAX];
 
   if (socket == 0)
     {
       socket = make_socket(host, port);
+      setnonblock(socket);
     }
-  /*  getline((str = NULL), 0, 0);
-      if (str != NULL)
-      if (send(socket, *str, DATA_MAX, 0) <= 0)
+  if (read(0, str, DATA_MAX) != -1)
+    if (send(socket, str, DATA_MAX, 0) <= 0)
       {
-      close(socket);
-      socket = 0;
-      }*/
-  while (read(socket, str, 8192) > 0)
+	close(socket);
+	socket = 0;
+      }
+  while (read(socket, str, DATA_MAX) > 0)
     printf("%s", str);
 }
 
