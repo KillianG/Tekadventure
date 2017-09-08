@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Fri Sep  8 19:17:12 2017 Marc PEREZ
+** Last update Fri Sep  8 20:01:44 2017 Marc PEREZ
 */
 
 #include <stdio.h>
@@ -24,54 +24,55 @@ static int	g_socket;
 static char	*g_host;
 static char	*g_port;
 
-static inline void	setnonblock(int fd)
+static inline void	make_socket(struct addrinfo *p,
+				    struct addrinfo *servinfo)
 {
-  int			flags;
-
-  flags = fcntl(fd, F_GETFL);
-  flags |= O_NONBLOCK;
-  fcntl(fd, F_SETFL, flags);
+  p = servinfo;
+  while (p != NULL)
+    {
+      if ((g_socket =
+	   socket(p->ai_family, p->ai_socktype, p->ai_protocol)) == -1)
+	{
+	  p = p->ai_next;
+	  continue;
+	}
+      if (connect(g_socket, p->ai_addr, p->ai_addrlen) == -1)
+	{
+	  close(g_socket);
+	  p = p->ai_next;
+	  continue;
+	}
+      break;
+    }
+  if (p == NULL)
+    {
+      if (servinfo)
+	freeaddrinfo(servinfo);
+      exit(0);
+    }
+  if (servinfo)
+    freeaddrinfo(servinfo);
 }
 
-static inline void	make_socket(void)
+static inline int	socket_create(void)
 {
   struct addrinfo	hints;
   struct addrinfo	*servinfo;
   struct addrinfo	*p;
   int			r;
 
-  memset(&hints, 0, sizeof(hints));
-  hints.ai_family = AF_UNSPEC;
-  hints.ai_socktype = SOCK_STREAM;
-  if ((r = getaddrinfo(g_host, g_port, &hints, &servinfo)) != 0)
-    {
-      fprintf(stderr, "Host %s at port %s DOWN\n", g_host, g_port);
-      exit(1);
-    }
-  for (p = servinfo; p != NULL; p = p->ai_next)
-    {
-      if ((g_socket =
-	   socket(p->ai_family, p->ai_socktype, p->ai_protocol)) == -1)
-	continue;
-      if (connect(g_socket, p->ai_addr, p->ai_addrlen) == -1)
-	{
-	  close(g_socket);
-	  continue;
-	}
-      break;
-    }
-  if (servinfo)
-    freeaddrinfo(servinfo);
-  if (p == NULL)
-    exit(0);
-}
-
-static inline int	socket_create(void)
-{
   if (g_socket == 0)
     {
-      make_socket();
-      setnonblock(g_socket);
+      memset(&hints, 0, sizeof(hints));
+      hints.ai_family = AF_UNSPEC;
+      hints.ai_socktype = SOCK_STREAM;
+      if ((r = getaddrinfo(g_host, g_port, &hints, &servinfo)) != 0)
+	{
+	  fprintf(stderr, "Host %s at port %s DOWN\n", g_host, g_port);
+	  exit(1);
+	}
+      make_socket(p, servinfo);
+      fcntl(g_socket, F_SETFL, fcntl(g_socket, F_GETFL) | O_NONBLOCK);
     }
   return (g_socket);
 }
@@ -120,7 +121,7 @@ int		main(int argc, char **argv)
 
   if (argc == 3)
     {
-      setnonblock(0); //test
+      fcntl(0, F_SETFL, fcntl(0, F_GETFL) | O_NONBLOCK); //test
       init_connection(argv[1], argv[2]);
       while (1)
 	{
@@ -133,8 +134,7 @@ int		main(int argc, char **argv)
 	  if (read(0, data->name, sizeof(data->name)) != -1) //test
 	    send_data(data);
 	  free(data);//test
-	  data = receive_data();
-	  if (data != NULL) //test
+	  if ((data = receive_data()) != NULL)
 	    printf("%s", data->name); //test
 	  free(data);
 	}
