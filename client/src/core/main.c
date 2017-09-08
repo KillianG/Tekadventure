@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Fri Sep  8 16:17:37 2017 Marc PEREZ
+** Last update Fri Sep  8 17:01:00 2017 Marc PEREZ
 */
 
 #include <stdio.h>
@@ -86,7 +86,7 @@ int	send_data(t_player *data)
 
   if ((code = send(g_socket, data, sizeof(data), 0)) == -1)
     {
-      printf("Can't send datato socket %i\n", g_socket);
+      printf("Can't send data to socket %i\n", g_socket);
       close(g_socket);
       g_socket = 0;
       socket_create();
@@ -103,15 +103,19 @@ void	init_connection(char *host, char *port)
 
 t_player	*receive_data(void)
 {
+  t_player	temp;
   t_player	*data;
 
-  if (!(data = malloc(sizeof(t_player))))
+  if (read(g_socket, &temp, sizeof(temp)) > 0)
     {
-      err(1, "Malloc failed");
-      exit(1);
+      if (!(data = malloc(sizeof(t_player))))
+	{
+	  err(1, "Malloc failed");
+	  exit(1);
+	}
+      memcpy(data, &temp, sizeof(*data));
+      return (data);
     }
-  if (read(g_socket, data, sizeof(data)) > 0)
-    return (data);
   return (NULL);
 }
 
@@ -125,16 +129,19 @@ int		main(int argc, char **argv)
       init_connection(argv[1], argv[2]);
       while (1)
 	{
-	  if (!(data = malloc(sizeof(data)))) //test
+	  if (!(data = malloc(sizeof(*data)))) //test
 	    { //test
 	      err(1, "Malloc failed"); //test
 	      exit(1); //test
 	    } //test
 	  memset(data, 0, sizeof(*data)); //test
-	  if (read(0, data, sizeof(data)) != -1) //test
+	  if (read(0, data->name, sizeof(data->name)) != -1) //test
 	    send_data(data);
+	  free(data);//test
 	  data = receive_data();
-	  printf("%s", data->name);
+	  if (data != NULL) //test
+	    printf("%s", data->name); //test
+	  free(data);
 	}
     }
   else
