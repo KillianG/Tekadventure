@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Fri Sep  8 17:01:00 2017 Marc PEREZ
+** Last update Fri Sep  8 18:54:03 2017 Marc PEREZ
 */
 
 #include <stdio.h>
@@ -84,7 +84,7 @@ int	send_data(t_player *data)
 {
   int	code;
 
-  if ((code = send(g_socket, data, sizeof(data), 0)) == -1)
+  if ((code = send(g_socket, data, sizeof(*data), 0)) == -1)
     {
       printf("Can't send data to socket %i\n", g_socket);
       close(g_socket);
