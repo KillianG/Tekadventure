@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Fri Sep  8 18:54:03 2017 Marc PEREZ
+** Last update Fri Sep  8 18:58:24 2017 Marc PEREZ
 */
 
 #include <stdio.h>
@@ -103,19 +103,18 @@ void	init_connection(char *host, char *port)
 
 t_player	*receive_data(void)
 {
-  t_player	temp;
   t_player	*data;
 
-  if (read(g_socket, &temp, sizeof(temp)) > 0)
+  if (!(data = malloc(sizeof(*data))))
     {
-      if (!(data = malloc(sizeof(t_player))))
-	{
-	  err(1, "Malloc failed");
-	  exit(1);
-	}
-      memcpy(data, &temp, sizeof(*data));
+      err(1, "Malloc failed");
+      exit(1);
+    }
+  if (read(g_socket, data, sizeof(*data)) > 0)
+    {
       return (data);
     }
+  free(data);
   return (NULL);
 }
 
