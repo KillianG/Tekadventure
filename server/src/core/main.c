@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 19:09:00 2017 Marc PEREZ
-** Last update Wed Sep  6 22:53:27 2017 Marc PEREZ
+** Last update Fri Sep  8 14:52:56 2017 Marc PEREZ
 */
 
 #include <arpa/inet.h>
@@ -17,25 +17,27 @@
 #include <event2/event_struct.h>
 #include <event2/bufferevent.h>
 #include "server.h"
+#include "game.h"
 
 static struct event_base	*g_evbase;
 
 void		buffered_on_read(struct bufferevent *bev, void *arg)
 {
   t_client	*client;
-  char		data[DATA_SIZE];
+  //  char		data[DATA_SIZE];
+  t_player	data;
   size_t	n;
 
   while (1)
     {
-      n = bufferevent_read(bev, data, sizeof(data));
+      n = bufferevent_read(bev, &data, sizeof(data));
       if (n <= 0)
 	break;
       TAILQ_FOREACH(client, &g_client_tailq_head, entries)
 	{
 	  if (client != (t_client *)arg)
 	    {
-	      bufferevent_write(client->buf_ev, data, n);
+	      bufferevent_write(client->buf_ev, &data, n);
 	    }
 	}
     }
@@ -88,10 +90,10 @@ void			on_accept(int fd, short ev, void *arg)
   printf("Accepted connection from %s\n", inet_ntoa(client_addr.sin_addr));
 }
 
-int			main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
-  struct event		ev_accept;
-  int			listen_fd;
+  struct event	ev_accept;
+  int		listen_fd;
 
   (void)argc;
   g_evbase = event_base_new();

@@ -5,11 +5,11 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:07:25 2017 Marc PEREZ
-** Last update Wed Sep  6 22:52:48 2017 Marc PEREZ
+** Last update Fri Sep  8 13:11:26 2017 Marc PEREZ
 */
 
-#ifndef CLIENT_H_
-# define CLIENT_H_
+#ifndef SERVER_H_
+# define SERVER_H_
 
 # include <err.h>
 # include <sys/queue.h>
@@ -31,4 +31,4 @@ TAILQ_HEAD(, s_client)	g_client_tailq_head;
 int	setnonblock(int fd);
 void	init_socket(char **argv, int *listen_fd);
 
-#endif /* !CLIENT_H_ */
+#endif /* !SERVER_H_ */

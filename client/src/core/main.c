@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Thu Sep  7 22:35:14 2017 Marc PEREZ
+** Last update Fri Sep  8 14:51:47 2017 Marc PEREZ
 */
 
 #include <stdio.h>
@@ -17,12 +17,11 @@
 #include <sys/socket.h>
 #include <fcntl.h>
 #include "client.h"
+#include "game.h"
 
-t_client	g_clients[FD_SETSIZE];
-
-void	setnonblock(int fd)
+static inline void	setnonblock(int fd)
 {
-  int	flags;
+  int			flags;
 
   flags = fcntl(fd, F_GETFL);
   flags |= O_NONBLOCK;
@@ -70,24 +69,25 @@ int			make_socket(char *host, char *port)
 void		attack(char *host, char *port)
 {
   static int	socket;
-  char		str[DATA_MAX];
+  //  char		str[DATA_MAX];
+  t_player	data;
 
   if (socket == 0)
     {
       socket = make_socket(host, port);
       setnonblock(socket);
     }
-  memset(str, 0, DATA_MAX * sizeof(char));
-  if (read(0, str, DATA_MAX) > 0)
+  memset(&data, 0, sizeof(data));
+  if (read(0, data.name, NAME_LENGTH) > 0)
     {
-      if (send(socket, str, DATA_MAX, 0) <= 0)
+      if (send(socket, &data, sizeof(data), 0) <= 0)
 	{
 	  close(socket);
 	  socket = 0;
 	}
     }
-  while (read(socket, str, DATA_MAX) > 0)
-    printf("%s", str);
+  while (read(socket, &data, sizeof(data)) > 0)
+    printf("%s", data.name);
 }
 
 int	main(int argc, char **argv)
