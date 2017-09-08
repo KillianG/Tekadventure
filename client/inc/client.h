@@ -5,20 +5,30 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:07:25 2017 Marc PEREZ
-** Last update Wed Sep  6 22:13:24 2017 Marc PEREZ
+** Last update Fri Sep  8 20:11:44 2017 Marc PEREZ
 */
 
 #ifndef CLIENT_H_
 # define CLIENT_H_
 
-# define DATA_MAX	8192
+# include "game.h"
 
-typedef struct	s_client
-{
-  int		socket;
-  char		str[DATA_MAX];
-}		t_client;
+/*
+** Place this at the beginning of the program
+*/
 
-extern t_client	g_clients[FD_SETSIZE];
+void		init_connection(char *host, char *port);
+
+/*
+** Receives 1 malloc'd structure (or NULL)
+*/
+
+t_player	*receive_data(void);
+
+/*
+** Sends 1 structure to everyone but the sender
+*/
+
+int		send_data(t_player *data);
 
 #endif /* !CLIENT_H_ */

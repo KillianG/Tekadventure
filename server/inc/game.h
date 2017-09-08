@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:07:25 2017 Marc PEREZ
-** Last update Fri Sep  8 13:26:32 2017 Marc PEREZ
+** Last update Fri Sep  8 20:07:29 2017 Marc PEREZ
 */
 
 #ifndef GAME_H_
@@ -26,13 +26,13 @@ typedef struct	s_weapon
 
 typedef struct	s_player
 {
-  char		name[NAME_LENGTH];
-  float		hp;
   sfVector2f	pos;
   sfVector2f	start;
-  int		has_weapon;
   sfSprite	*sprite;
   sfIntRect	hitbox;
+  char		name[NAME_LENGTH];
+  float		hp;
+  int		has_weapon;
   t_weapon	*weapon;
   int		sprite_pos;
   int		shoot;
