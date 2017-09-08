@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 19:09:00 2017 Marc PEREZ
-** Last update Fri Sep  8 14:52:56 2017 Marc PEREZ
+** Last update Fri Sep  8 15:19:30 2017 Marc PEREZ
 */
 
 #include <arpa/inet.h>
@@ -24,7 +24,6 @@ static struct event_base	*g_evbase;
 void		buffered_on_read(struct bufferevent *bev, void *arg)
 {
   t_client	*client;
-  //  char		data[DATA_SIZE];
   t_player	data;
   size_t	n;
 
@@ -95,15 +94,19 @@ int		main(int argc, char **argv)
   struct event	ev_accept;
   int		listen_fd;
 
-  (void)argc;
+  if (argc == 2)
+    {
   g_evbase = event_base_new();
   TAILQ_INIT(&g_client_tailq_head);
-  init_socket(argv, &listen_fd);
+  init_socket(argv[1], &listen_fd);
   if (setnonblock(listen_fd) < 0)
     err(1, "failed to set server socket to non-blocking");
   event_assign(&ev_accept, g_evbase, listen_fd, EV_READ | EV_PERSIST,
 	       on_accept, NULL);
   event_add(&ev_accept, NULL);
   event_base_dispatch(g_evbase);
+    }
+  else
+    printf("USAGE: %s PORT\n", argv[0]);
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Fri Sep  8 14:51:47 2017 Marc PEREZ
+** Last update Fri Sep  8 16:17:37 2017 Marc PEREZ
 */
 
 #include <stdio.h>
@@ -16,8 +16,13 @@
 #include <signal.h>
 #include <sys/socket.h>
 #include <fcntl.h>
+#include <err.h>
 #include "client.h"
 #include "game.h"
+
+static int	g_socket;
+static char	*g_host;
+static char	*g_port;
 
 static inline void	setnonblock(int fd)
 {
@@ -28,29 +33,29 @@ static inline void	setnonblock(int fd)
   fcntl(fd, F_SETFL, flags);
 }
 
-int			make_socket(char *host, char *port)
+static inline void	make_socket(void)
 {
   struct addrinfo	hints;
   struct addrinfo	*servinfo;
   struct addrinfo	*p;
-  int			sock;
   int			r;
 
   memset(&hints, 0, sizeof(hints));
   hints.ai_family = AF_UNSPEC;
   hints.ai_socktype = SOCK_STREAM;
-  if ((r = getaddrinfo(host, port, &hints, &servinfo)) != 0)
+  if ((r = getaddrinfo(g_host, g_port, &hints, &servinfo)) != 0)
     {
-      fprintf(stderr, "Host %s at port %s DOWN\n", host, port);
+      fprintf(stderr, "Host %s at port %s DOWN\n", g_host, g_port);
       exit(1);
     }
   for (p = servinfo; p != NULL; p = p->ai_next)
     {
-      if ((sock = socket(p->ai_family, p->ai_socktype, p->ai_protocol)) == -1)
+      if ((g_socket =
+	   socket(p->ai_family, p->ai_socktype, p->ai_protocol)) == -1)
 	continue;
-      if (connect(sock, p->ai_addr, p->ai_addrlen) == -1)
+      if (connect(g_socket, p->ai_addr, p->ai_addrlen) == -1)
 	{
-	  close(sock);
+	  close(g_socket);
 	  continue;
 	}
       break;
@@ -63,42 +68,73 @@ int			make_socket(char *host, char *port)
     }
   if (servinfo)
     freeaddrinfo(servinfo);
-  return (sock);
 }
 
-void		attack(char *host, char *port)
+static inline int	socket_create(void)
 {
-  static int	socket;
-  //  char		str[DATA_MAX];
-  t_player	data;
-
-  if (socket == 0)
+  if (g_socket == 0)
     {
-      socket = make_socket(host, port);
-      setnonblock(socket);
+      make_socket();
+      setnonblock(g_socket);
     }
-  memset(&data, 0, sizeof(data));
-  if (read(0, data.name, NAME_LENGTH) > 0)
-    {
-      if (send(socket, &data, sizeof(data), 0) <= 0)
-	{
-	  close(socket);
-	  socket = 0;
-	}
-    }
-  while (read(socket, &data, sizeof(data)) > 0)
-    printf("%s", data.name);
+  return (g_socket);
 }
 
-int	main(int argc, char **argv)
+int	send_data(t_player *data)
 {
-  signal(SIGPIPE, SIG_IGN);
+  int	code;
+
+  if ((code = send(g_socket, data, sizeof(data), 0)) == -1)
+    {
+      printf("Can't send datato socket %i\n", g_socket);
+      close(g_socket);
+      g_socket = 0;
+      socket_create();
+    }
+  return (code);
+}
+
+void	init_connection(char *host, char *port)
+{
+  g_host = host;
+  g_port = port;
+  socket_create();
+}
+
+t_player	*receive_data(void)
+{
+  t_player	*data;
+
+  if (!(data = malloc(sizeof(t_player))))
+    {
+      err(1, "Malloc failed");
+      exit(1);
+    }
+  if (read(g_socket, data, sizeof(data)) > 0)
+    return (data);
+  return (NULL);
+}
+
+int		main(int argc, char **argv)
+{
+  t_player	*data;
+
   if (argc == 3)
     {
-      setnonblock(0);
+      setnonblock(0); //test
+      init_connection(argv[1], argv[2]);
       while (1)
 	{
-	  attack(argv[1], argv[2]);
+	  if (!(data = malloc(sizeof(data)))) //test
+	    { //test
+	      err(1, "Malloc failed"); //test
+	      exit(1); //test
+	    } //test
+	  memset(data, 0, sizeof(*data)); //test
+	  if (read(0, data, sizeof(data)) != -1) //test
+	    send_data(data);
+	  data = receive_data();
+	  printf("%s", data->name);
 	}
     }
   else

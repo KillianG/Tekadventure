@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:07:25 2017 Marc PEREZ
-** Last update Fri Sep  8 13:11:26 2017 Marc PEREZ
+** Last update Fri Sep  8 15:31:51 2017 Marc PEREZ
 */
 
 #ifndef SERVER_H_
@@ -29,6 +29,6 @@ typedef struct		s_client
 TAILQ_HEAD(, s_client)	g_client_tailq_head;
 
 int	setnonblock(int fd);
-void	init_socket(char **argv, int *listen_fd);
+void	init_socket(char *port, int *listen_fd);
 
 #endif /* !SERVER_H_ */
