@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Fri Sep  8 00:33:06 2017 Killian
+** Last update Sat Sep  9 14:56:56 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -29,7 +29,7 @@
 # define SPEED 0.2
 # define RADIUS 3000
 # define ZONE_DMG 0.001
-# define ZONE_SPEED 0.01
+# define ZONE_SPEED 0.005
 
 /* __________ MAP __________ */
 
