@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Thu Sep  7 16:48:55 2017 Killian
+** Last update Fri Sep  8 00:33:06 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -175,7 +175,7 @@ void		update_hp(t_displayer *);
 void		init_zone(t_displayer *);
 void		draw_zone(t_displayer *);
 void		update_zone(t_displayer *);
-void		check_in(t_displayer *);
+int		check_in(t_displayer *);
 float		get_angle_from_pos(sfVector2f);
 void		init_arrow(t_displayer *);
 void		draw_arrow(t_displayer *);
