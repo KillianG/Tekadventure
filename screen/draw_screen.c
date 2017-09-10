@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Sun Sep 10 17:09:16 2017 Killian
+** Last update Sun Sep 10 17:51:13 2017 Killian
 */
 
 #include "tekadv.h"
@@ -32,7 +32,7 @@ void		draw_game()
       sfRenderWindow_drawSprite(displayer->window, displayer->player->sprite, NULL);
       if (distant != NULL)
 	{
-	  sfSprite_setPosition(sprite, vector2f((distant->pos.x * -1) + SCREEN_WIDTH/2, (distant->pos.y * -1) + SCREEN_HEIGHT/2));
+	  sfSprite_setPosition(sprite, vector2f((distant->pos.x * -1) + SCREEN_WIDTH/2 + displayer->player->pos.x, (distant->pos.y * -1) + SCREEN_HEIGHT/2 + displayer->player->pos.y));
 	  sfRenderWindow_drawSprite(displayer->window, sprite, NULL);
 	}
       draw_hand_weapon(displayer);
