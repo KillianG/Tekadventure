@@ -5,11 +5,8 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 19:09:00 2017 Marc PEREZ
-<<<<<<< HEAD:server/src/core/server.c
-** Last update Sun Sep 10 13:15:19 2017 Killian
-=======
+** Last update Sun Sep 10 13:29:03 2017 Killian
 ** Last update Fri Sep  8 15:19:30 2017 Marc PEREZ
->>>>>>> 29937771bfc938a13c7170c11e65c5cc56e2a990:server/src/core/main.c
 */
 
 #include <arpa/inet.h>
@@ -92,8 +89,6 @@ void			on_accept(int fd, short ev, void *arg)
   TAILQ_INSERT_TAIL(&g_client_tailq_head, client, entries);
   printf("Accepted connection from %s\n", inet_ntoa(client_addr.sin_addr));
 }
-<<<<<<< HEAD:server/src/core/server.c
-=======
 
 int		main(int argc, char **argv)
 {
@@ -116,4 +111,3 @@ int		main(int argc, char **argv)
     printf("USAGE: %s PORT\n", argv[0]);
   return (0);
 }
->>>>>>> 29937771bfc938a13c7170c11e65c5cc56e2a990:server/src/core/main.c

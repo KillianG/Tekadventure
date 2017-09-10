@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Thu Sep  7 15:44:40 2017 Killian
+** Last update Sun Sep 10 13:48:55 2017 Killian
 */
 
 #include "tekadv.h"
@@ -18,6 +18,10 @@ void		draw_game()
   while (!sfKeyboard_isKeyPressed(sfKeyEscape))
     {
       update(displayer);
+      send_data(displayer->player);
+      printf("local player %.2f\n", displayer->player->hp);
+      if (receive_data() != NULL && receive_data()->hp != 0)
+	printf("received player %.2f\n", receive_data()->hp);
       displayer->player = update_player(displayer->player);
       get_entries(displayer);      
       sfRenderWindow_drawSprite(displayer->window, displayer->map, NULL);
