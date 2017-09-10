@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Sat Sep  2 14:53:03 2017 Marc PEREZ
+** Last update Sun Sep 10 13:14:43 2017 Killian
 */
 
 #include <stdio.h>
@@ -71,16 +71,4 @@ void		attack(char *host, char *port)
       close(socket);
       socket = 0;
     }
-}
-
-int	main(int argc, char **argv)
-{
-  signal(SIGPIPE, SIG_IGN);
-  if (argc == 3)
-    {
-      attack(argv[1], argv[2]);
-    }
-  else
-    printf("USAGE: %s IP PORT\n", argv[0]);
-  return (0);
 }

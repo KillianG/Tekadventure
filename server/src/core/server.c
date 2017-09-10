@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 19:09:00 2017 Marc PEREZ
-** Last update Wed Sep  6 19:09:04 2017 Marc PEREZ
+** Last update Sun Sep 10 13:15:19 2017 Killian
 */
 
 #include <sys/types.h>
@@ -95,20 +95,4 @@ void			on_accept(int fd, short ev, void *arg)
   bufferevent_enable(client->buf_ev, EV_READ);
   TAILQ_INSERT_TAIL(&client_tailq_head, client, entries);
   printf("Accepted connection from %s\n", inet_ntoa(client_addr.sin_addr));
-}
-
-int			main(void)
-{
-  struct event		ev_accept;
-  int			listen_fd;
-
-  g_evbase = event_base_new();
-  TAILQ_INIT(&client_tailq_head);
-  init_socket(&listen_fd);
-  if (setnonblock(listen_fd) < 0)
-    err(1, "failed to set server socket to non-blocking");
-  event_assign(&ev_accept, g_evbase, listen_fd, EV_READ | EV_PERSIST,
-	       on_accept, NULL);
-  event_add(&ev_accept, NULL);  event_base_dispatch(g_evbase);
-  return (0);
 }
