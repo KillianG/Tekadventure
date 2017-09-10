@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Thu Sep  7 14:57:13 2017 Killian
-** Last update Fri Sep  8 00:40:17 2017 Killian
+** Last update Sat Sep  9 14:39:50 2017 Killian
 */
 
 #include "tekadv.h"
@@ -21,5 +21,7 @@ void		update_zone(t_displayer *displayer)
   check_in(displayer);
   sfCircleShape_setRadius(displayer->blue_zone, displayer->blue_radius);
   sfCircleShape_setPosition(displayer->blue_zone, pos);
-  sfCircleShape_setOrigin(displayer->blue_zone, vector2f(displayer->blue_radius, displayer->blue_radius));
+  sfCircleShape_setOrigin(displayer->blue_zone,
+			  vector2f(displayer->blue_radius,
+				   displayer->blue_radius));
 }

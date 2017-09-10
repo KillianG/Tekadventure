@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Fri Sep  8 00:33:06 2017 Killian
+** Last update Sun Sep 10 13:40:21 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -29,7 +29,7 @@
 # define SPEED 0.2
 # define RADIUS 3000
 # define ZONE_DMG 0.001
-# define ZONE_SPEED 0.01
+# define ZONE_SPEED 0.005
 
 /* __________ MAP __________ */
 
@@ -38,7 +38,6 @@
 
 /* __________ MATH UTILS _________ */
 
-# define M_PI 3.14159265359
 # define TO_RAD(a) (M_PI * a / 180)
 # define SQUARE(a) (a*a)
 
@@ -179,5 +178,7 @@ int		check_in(t_displayer *);
 float		get_angle_from_pos(sfVector2f);
 void		init_arrow(t_displayer *);
 void		draw_arrow(t_displayer *);
+int		send_data(t_player *);
+t_player	*receive_data(void);
 
 #endif

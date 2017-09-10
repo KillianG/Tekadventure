@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Thu Sep  7 15:37:13 2017 Killian
-** Last update Fri Sep  8 00:39:28 2017 Killian
+** Last update Sat Sep  9 14:59:47 2017 Killian
 */
 
 #include "tekadv.h"
@@ -15,11 +15,12 @@ void		draw_arrow(t_displayer *displayer)
   sfVector2f	pos;
 
   pos = sfCircleShape_getPosition(displayer->blue_zone);
-  pos.x += displayer->blue_radius;
-  pos.y += displayer->blue_radius;
   sfSprite_setRotation(displayer->arrow, get_angle_from_pos(pos));
-  if (check_in(displayer))
-    sfRenderWindow_drawSprite(displayer->window, displayer->arrow, NULL);
+  if (!check_in(displayer))
+    {
+      displayer->player->hp -= ZONE_DMG;
+      sfRenderWindow_drawSprite(displayer->window, displayer->arrow, NULL);
+    }
 }
 
 void		init_arrow(t_displayer *displayer)

@@ -5,11 +5,8 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-<<<<<<< HEAD:client/src/core/client.c
-** Last update Sun Sep 10 13:14:43 2017 Killian
-=======
+** Last update Sun Sep 10 13:56:57 2017 Killian
 ** Last update Fri Sep  8 20:01:44 2017 Marc PEREZ
->>>>>>> 29937771bfc938a13c7170c11e65c5cc56e2a990:client/src/core/main.c
 */
 
 #include <stdio.h>
@@ -23,6 +20,7 @@
 #include <err.h>
 #include "client.h"
 #include "game.h"
+#include "tekadv.h"
 
 static int	g_socket;
 static char	*g_host;
@@ -101,8 +99,6 @@ void	init_connection(char *host, char *port)
   g_port = port;
   socket_create();
 }
-<<<<<<< HEAD:client/src/core/client.c
-=======
 
 t_player	*receive_data(void)
 {
@@ -120,33 +116,3 @@ t_player	*receive_data(void)
   free(data);
   return (NULL);
 }
-
-int		main(int argc, char **argv)
-{
-  t_player	*data;
-
-  if (argc == 3)
-    {
-      fcntl(0, F_SETFL, fcntl(0, F_GETFL) | O_NONBLOCK); //test
-      init_connection(argv[1], argv[2]);
-      while (1)
-	{
-	  if (!(data = malloc(sizeof(*data)))) //test
-	    { //test
-	      err(1, "Malloc failed"); //test
-	      exit(1); //test
-	    } //test
-	  memset(data, 0, sizeof(*data)); //test
-	  if (read(0, data->name, sizeof(data->name)) != -1) //test
-	    send_data(data);
-	  free(data);//test
-	  if ((data = receive_data()) != NULL)
-	    printf("%s", data->name); //test
-	  free(data);
-	}
-    }
-  else
-    printf("USAGE: %s IP PORT\n", argv[0]);
-  return (0);
-}
->>>>>>> 29937771bfc938a13c7170c11e65c5cc56e2a990:client/src/core/main.c

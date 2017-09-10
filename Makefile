@@ -5,7 +5,7 @@
 ## Login   <killian.gardahaut@epitech.eu>
 ## 
 ## Started on  Wed Sep  6 15:01:02 2017 Killian
-## Last update Thu Sep  7 15:45:07 2017 Killian
+## Last update Sun Sep 10 13:35:27 2017 Killian
 ##
 
 NAME		=	TEK
@@ -27,6 +27,7 @@ MENUDIR		=	$(SRCDIR)/menu
 ENNEMYDIR	=	$(SRCDIR)/ennemy
 HUDDIR		=	$(SRCDIR)/HUD
 ZONEDIR		=	$(SRCDIR)/zones
+NETWORKDIR	=	$(SRCDIR)/network
 
 
 INCDIR		=	include
@@ -35,7 +36,6 @@ RM		=	rm -f
 
 CC		=	gcc
 CFLAGS		=	-W -Wall -Wextra -g3 -lm -O3		\
-			-ansi -pedantic				\
 			-I$(INCDIR)
 
 LDFLAGS		=	-lcsfml-audio				\
@@ -98,6 +98,8 @@ SRC		+=	$(ZONEDIR)/init_zone.c			\
 			$(ZONEDIR)/draw_zone.c			\
 			$(ZONEDIR)/update_zone.c		\
 			$(ZONEDIR)/check_in.c			\
+
+SRC		+=	$(NETWORKDIR)/client.c			\
 
 
 OBJ		=	$(SRC:.c=.o)
