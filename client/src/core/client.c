@@ -5,7 +5,11 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
+<<<<<<< HEAD:client/src/core/client.c
 ** Last update Sun Sep 10 13:14:43 2017 Killian
+=======
+** Last update Fri Sep  8 20:01:44 2017 Marc PEREZ
+>>>>>>> 29937771bfc938a13c7170c11e65c5cc56e2a990:client/src/core/main.c
 */
 
 #include <stdio.h>
@@ -15,33 +19,31 @@
 #include <netdb.h>
 #include <signal.h>
 #include <sys/socket.h>
+#include <fcntl.h>
+#include <err.h>
 #include "client.h"
+#include "game.h"
 
-t_client	g_clients[FD_SETSIZE];
+static int	g_socket;
+static char	*g_host;
+static char	*g_port;
 
-int			make_socket(char *host, char *port)
+static inline void	make_socket(struct addrinfo *p,
+				    struct addrinfo *servinfo)
 {
-  struct addrinfo	hints;
-  struct addrinfo	*servinfo;
-  struct addrinfo	*p;
-  int			sock;
-  int			r;
-
-  memset(&hints, 0, sizeof(hints));
-  hints.ai_family = AF_UNSPEC;
-  hints.ai_socktype = SOCK_STREAM;
-  if ((r = getaddrinfo(host, port, &hints, &servinfo)) != 0)
+  p = servinfo;
+  while (p != NULL)
     {
-      fprintf(stderr, "Host %s at port %s DOWN\n", host, port);
-      exit(1);
-    }
-  for (p = servinfo; p != NULL; p = p->ai_next)
-    {
-      if ((sock = socket(p->ai_family, p->ai_socktype, p->ai_protocol)) == -1)
-	  continue;
-      if (connect(sock, p->ai_addr, p->ai_addrlen) == -1)
+      if ((g_socket =
+	   socket(p->ai_family, p->ai_socktype, p->ai_protocol)) == -1)
 	{
-	  close(sock);
+	  p = p->ai_next;
+	  continue;
+	}
+      if (connect(g_socket, p->ai_addr, p->ai_addrlen) == -1)
+	{
+	  close(g_socket);
+	  p = p->ai_next;
 	  continue;
 	}
       break;
@@ -54,21 +56,97 @@ int			make_socket(char *host, char *port)
     }
   if (servinfo)
     freeaddrinfo(servinfo);
-  return (sock);
 }
 
-void		attack(char *host, char *port)
+static inline int	socket_create(void)
 {
-  static int	socket;
+  struct addrinfo	hints;
+  struct addrinfo	*servinfo;
+  struct addrinfo	*p;
+  int			r;
 
-  if (socket == 0)
+  if (g_socket == 0)
     {
-      socket = make_socket(host, port);
+      memset(&hints, 0, sizeof(hints));
+      hints.ai_family = AF_UNSPEC;
+      hints.ai_socktype = SOCK_STREAM;
+      if ((r = getaddrinfo(g_host, g_port, &hints, &servinfo)) != 0)
+	{
+	  fprintf(stderr, "Host %s at port %s DOWN\n", g_host, g_port);
+	  exit(1);
+	}
+      make_socket(p, servinfo);
+      fcntl(g_socket, F_SETFL, fcntl(g_socket, F_GETFL) | O_NONBLOCK);
     }
-  strcpy(g_clients[0].str, "test");
-  if (send(socket, g_clients[0].str, MAX_STR, 0) <= 0)
-    {
-      close(socket);
-      socket = 0;
-    }
+  return (g_socket);
 }
+
+int	send_data(t_player *data)
+{
+  int	code;
+
+  if ((code = send(g_socket, data, sizeof(*data), 0)) == -1)
+    {
+      printf("Can't send data to socket %i\n", g_socket);
+      close(g_socket);
+      g_socket = 0;
+      socket_create();
+    }
+  return (code);
+}
+
+void	init_connection(char *host, char *port)
+{
+  g_host = host;
+  g_port = port;
+  socket_create();
+}
+<<<<<<< HEAD:client/src/core/client.c
+=======
+
+t_player	*receive_data(void)
+{
+  t_player	*data;
+
+  if (!(data = malloc(sizeof(*data))))
+    {
+      err(1, "Malloc failed");
+      exit(1);
+    }
+  if (read(g_socket, data, sizeof(*data)) > 0)
+    {
+      return (data);
+    }
+  free(data);
+  return (NULL);
+}
+
+int		main(int argc, char **argv)
+{
+  t_player	*data;
+
+  if (argc == 3)
+    {
+      fcntl(0, F_SETFL, fcntl(0, F_GETFL) | O_NONBLOCK); //test
+      init_connection(argv[1], argv[2]);
+      while (1)
+	{
+	  if (!(data = malloc(sizeof(*data)))) //test
+	    { //test
+	      err(1, "Malloc failed"); //test
+	      exit(1); //test
+	    } //test
+	  memset(data, 0, sizeof(*data)); //test
+	  if (read(0, data->name, sizeof(data->name)) != -1) //test
+	    send_data(data);
+	  free(data);//test
+	  if ((data = receive_data()) != NULL)
+	    printf("%s", data->name); //test
+	  free(data);
+	}
+    }
+  else
+    printf("USAGE: %s IP PORT\n", argv[0]);
+  return (0);
+}
+>>>>>>> 29937771bfc938a13c7170c11e65c5cc56e2a990:client/src/core/main.c
