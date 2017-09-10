@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Sun Sep 10 13:40:21 2017 Killian
+** Last update Sun Sep 10 17:09:03 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -49,6 +49,7 @@
 
 # define BACKGROUND "images/background.jpg"
 # define PLAYER "images/players.png"
+# define TEST "images/players1.png"
 # define HOUSE "images/house.png"
 # define AK47 "images/ak47.png"
 # define BULLET "images/bullet.png"

@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:32:50 2017 Killian
-** Last update Fri Sep  8 00:31:24 2017 Killian
+** Last update Sun Sep 10 16:58:24 2017 Killian
 */
 
 #include "tekadv.h"
@@ -21,8 +21,8 @@ t_displayer		*init_displayer()
   float			y;
 
   srand(time(NULL));
-  x = (rand() % MAP_SIZEX) * -1;
-  y = (rand() % MAP_SIZEY) * -1;
+  x = (rand() % 10) * -1;
+  y = (rand() % 10) * -1;
   window = create_window(GAME_NAME, SCREEN_WIDTH, SCREEN_HEIGHT);
   sprite = init_sprite(BACKGROUND, vector2f(x, y), vector2f(1.5, 1.5));
   if ((displayer = malloc(sizeof(t_displayer))) == NULL)
