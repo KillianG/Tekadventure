@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Mon Sep 11 13:56:03 2017 Killian
-** Last update Mon Sep 11 14:11:15 2017 Killian
+** Last update Mon Sep 11 14:15:35 2017 Killian
 */
 
 #include "tekadv.h"
@@ -31,6 +31,7 @@ void		add_players(t_displayer *displayer)
   static int	id = 0;
 
   printf("nbr_players = %d\n", id);
+  printf("id : %d, is in ? %d\n",displayer->received->id,  is_in_ids(displayer->received->id));
   if (displayer->received != NULL && !is_in_ids(displayer->received->id))
     {
       displayer->players[id++] = displayer->received;
