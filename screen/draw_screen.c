@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Mon Sep 11 14:29:26 2017 Killian
+** Last update Mon Sep 11 14:33:13 2017 Killian
 */
 
 #include "tekadv.h"
@@ -15,6 +15,8 @@ void		loop_network(t_displayer *displayer)
   while (1)
     {
       displayer->received = receive_data();
+      if (displayer->received != NULL)
+	printf("id %d is connected\n", displayer->received->id);
       add_players(displayer);
       send_data(displayer->player);
       usleep(1000);
