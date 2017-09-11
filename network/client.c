@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Sun Sep 10 13:56:57 2017 Killian
+** Last update Mon Sep 11 14:03:54 2017 Marc PEREZ
 ** Last update Fri Sep  8 20:01:44 2017 Marc PEREZ
 */
 
@@ -93,11 +93,15 @@ int	send_data(t_player *data)
   return (code);
 }
 
-void	init_connection(char *host, char *port)
+int	init_connection(char *host, char *port)
 {
+  int	id;
+
   g_host = host;
   g_port = port;
-  socket_create();
+  read(socket_create(), &id, sizeof(id));
+  printf("ID: %i\n", id);
+  return (id);
 }
 
 t_player	*receive_data(void)
