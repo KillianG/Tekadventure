@@ -5,10 +5,26 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Mon Sep 11 12:49:43 2017 Killian
+** Last update Mon Sep 11 13:03:50 2017 Killian
 */
 
 #include "tekadv.h"
+
+void		loop_network(t_displayer *displayer)
+{
+  while (1)
+    {
+      send_data(displayer->player);
+    }
+}
+
+void		launch_thread(t_displayer *displayer)
+{
+  sfThread	*thread;
+
+  thread = sfThread_create(loop_network, displayer);
+  sfThread_launch(thread);
+}
 
 void		draw_game()
 {
@@ -18,10 +34,10 @@ void		draw_game()
 
   sprite = init_sprite(TEST, vector2f(0, 0), vector2f(1, 1));
   displayer = init_displayer();
+  launch_thread(displayer);
   while (!sfKeyboard_isKeyPressed(sfKeyEscape))
     {
       update(displayer);
-      send_data(displayer->player);
       distant = receive_data();
       displayer->player = update_player(displayer->player);
       get_entries(displayer);      
