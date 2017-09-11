@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Sun Sep 10 17:51:13 2017 Killian
+** Last update Mon Sep 11 12:49:43 2017 Killian
 */
 
 #include "tekadv.h"
@@ -22,7 +22,6 @@ void		draw_game()
     {
       update(displayer);
       send_data(displayer->player);
-      printf("local player %.2f\n", displayer->player->hp);
       distant = receive_data();
       displayer->player = update_player(displayer->player);
       get_entries(displayer);      
