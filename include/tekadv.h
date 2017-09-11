@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Sun Sep 10 17:09:03 2017 Killian
+** Last update Mon Sep 11 13:50:39 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -103,6 +103,7 @@ typedef struct          s_ennemy
 
 typedef struct          s_player
 {
+  int			id;
   float                 hp;
   sfVector2f            pos;
   int                   has_weapon;
@@ -128,6 +129,7 @@ typedef struct		s_displayer
   t_weapon		*weapons[NB_WEAPONS + 1];
   t_ennemy		*ennemies[NB_ENNEMY + 1];
   sfText		*hp;
+  t_player		**players;
 }			t_displayer;
 
 /* __________ FUNCTIONS _________*/
