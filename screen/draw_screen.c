@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Mon Sep 11 14:13:17 2017 Killian
+** Last update Mon Sep 11 14:29:26 2017 Killian
 */
 
 #include "tekadv.h"
@@ -50,6 +50,7 @@ void		draw_game()
       draw_hand_weapon(displayer);
       continue_shooting(displayer);
       draw_ennemies(displayer);
+      draw_players(displayer);
       draw_zone(displayer);
       draw_arrow(displayer);
       sfRenderWindow_drawText(displayer->window, displayer->hp, NULL);
