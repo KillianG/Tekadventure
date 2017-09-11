@@ -5,18 +5,18 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Mon Sep 11 14:33:13 2017 Killian
+** Last update Mon Sep 11 16:36:07 2017 Killian
 */
 
 #include "tekadv.h"
+
+#include <unistd.h>
 
 void		loop_network(t_displayer *displayer)
 {
   while (1)
     {
       displayer->received = receive_data();
-      if (displayer->received != NULL)
-	printf("id %d is connected\n", displayer->received->id);
       add_players(displayer);
       send_data(displayer->player);
       usleep(1000);
@@ -31,14 +31,11 @@ void		launch_thread(t_displayer *displayer)
   sfThread_launch(thread);
 }
 
-void		draw_game()
+void		draw_game(int id)
 {
   t_displayer	*displayer;
-  t_player	*distant;
-  sfSprite	*sprite;
 
-  sprite = init_sprite(TEST, vector2f(0, 0), vector2f(1, 1));
-  displayer = init_displayer();
+  displayer = init_displayer(id);
   launch_thread(displayer);
   while (!sfKeyboard_isKeyPressed(sfKeyEscape))
     {

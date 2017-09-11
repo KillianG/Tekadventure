@@ -5,14 +5,14 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:32:50 2017 Killian
-** Last update Mon Sep 11 14:08:24 2017 Killian
+** Last update Mon Sep 11 16:24:35 2017 Killian
 */
 
 #include "tekadv.h"
 
 #include <time.h>
 
-t_displayer		*init_displayer()
+t_displayer		*init_displayer(int id)
 {
   t_displayer           *displayer;
   sfRenderWindow        *window;
@@ -29,7 +29,7 @@ t_displayer		*init_displayer()
     return (NULL);
   displayer->window = window;
   displayer->map = sprite;
-  displayer->player = init_player();
+  displayer->player = init_player(id);
   displayer->player->pos.x = x;
   displayer->player->pos.y = y;
   displayer->bullet = init_sprite(BULLET, vector2f(0, 0), vector2f(0.2, 0.2));

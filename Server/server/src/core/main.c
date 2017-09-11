@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 19:09:00 2017 Marc PEREZ
-** Last update Sun Sep 10 13:29:03 2017 Killian
+** Last update Mon Sep 11 21:42:26 2017 Killian
 ** Last update Fri Sep  8 15:19:30 2017 Marc PEREZ
 */
 
@@ -21,6 +21,7 @@
 #include "game.h"
 
 static struct event_base	*g_evbase;
+static int			g_id;
 
 void		buffered_on_read(struct bufferevent *bev, void *arg)
 {
@@ -87,7 +88,9 @@ void			on_accept(int fd, short ev, void *arg)
 		    buffered_on_error, client);
   bufferevent_enable(client->buf_ev, EV_READ);
   TAILQ_INSERT_TAIL(&g_client_tailq_head, client, entries);
-  printf("Accepted connection from %s\n", inet_ntoa(client_addr.sin_addr));
+  printf("Connection: %s (ID: %i)\n", inet_ntoa(client_addr.sin_addr), g_id);
+  write(client_fd, &(g_id), sizeof(g_id));
+  g_id++;
 }
 
 int		main(int argc, char **argv)
