@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Mon Sep 11 13:35:33 2017 Killian
+** Last update Mon Sep 11 14:10:25 2017 Killian
 */
 
 #include "tekadv.h"
@@ -14,6 +14,7 @@ void		loop_network(t_displayer *displayer)
 {
   while (1)
     {
+      displayer->received = receive_data();
       send_data(displayer->player);
       usleep(1000);
     }
@@ -39,18 +40,12 @@ void		draw_game()
   while (!sfKeyboard_isKeyPressed(sfKeyEscape))
     {
       update(displayer);
-      distant = receive_data();
       displayer->player = update_player(displayer->player);
       get_entries(displayer);      
       sfRenderWindow_drawSprite(displayer->window, displayer->map, NULL);
       draw_weapons(displayer);
       draw_houses(displayer);
       sfRenderWindow_drawSprite(displayer->window, displayer->player->sprite, NULL);
-      if (distant != NULL)
-	{
-	  sfSprite_setPosition(sprite, vector2f((distant->pos.x * -1) + SCREEN_WIDTH/2 + displayer->player->pos.x, (distant->pos.y * -1) + SCREEN_HEIGHT/2 + displayer->player->pos.y));
-	  sfRenderWindow_drawSprite(displayer->window, sprite, NULL);
-	}
       draw_hand_weapon(displayer);
       continue_shooting(displayer);
       draw_ennemies(displayer);

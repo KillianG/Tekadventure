@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Mon Sep 11 13:50:39 2017 Killian
+** Last update Mon Sep 11 14:00:23 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -130,6 +130,7 @@ typedef struct		s_displayer
   t_ennemy		*ennemies[NB_ENNEMY + 1];
   sfText		*hp;
   t_player		**players;
+  t_player		*received;
 }			t_displayer;
 
 /* __________ FUNCTIONS _________*/

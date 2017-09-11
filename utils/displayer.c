@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:32:50 2017 Killian
-** Last update Sun Sep 10 16:58:24 2017 Killian
+** Last update Mon Sep 11 14:08:24 2017 Killian
 */
 
 #include "tekadv.h"
@@ -40,5 +40,6 @@ t_displayer		*init_displayer()
   init_weapons(displayer);
   init_ennemies(displayer);
   init_hp(displayer);
+  init_players(displayer);
   return (displayer);
 }

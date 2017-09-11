@@ -5,7 +5,7 @@
 ## Login   <killian.gardahaut@epitech.eu>
 ## 
 ## Started on  Wed Sep  6 15:01:02 2017 Killian
-## Last update Sun Sep 10 13:35:27 2017 Killian
+## Last update Mon Sep 11 14:08:52 2017 Killian
 ##
 
 NAME		=	TEK
@@ -60,6 +60,7 @@ SRC		+=	$(HOUSEDIR)/draw_houses.c		\
 
 SRC		+=	$(PLAYERDIR)/init_player.c		\
 			$(PLAYERDIR)/update_player.c		\
+			$(PLAYERDIR)/players.c			\
 
 SRC		+=	$(UTILSDIR)/angle.c			\
 			$(UTILSDIR)/displayer.c			\
