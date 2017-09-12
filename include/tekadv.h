@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Sun Sep 10 13:40:21 2017 Killian
+** Last update Mon Sep 11 16:28:03 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -16,6 +16,7 @@
 # include <math.h>
 # include <stdlib.h>
 # include <string.h>
+# include <stdio.h>
 
 /* __________ WINDOW UTILS _________ */
 
@@ -49,6 +50,7 @@
 
 # define BACKGROUND "images/background.jpg"
 # define PLAYER "images/players.png"
+# define TEST "images/players1.png"
 # define HOUSE "images/house.png"
 # define AK47 "images/ak47.png"
 # define BULLET "images/bullet.png"
@@ -102,6 +104,7 @@ typedef struct          s_ennemy
 
 typedef struct          s_player
 {
+  int			id;
   float                 hp;
   sfVector2f            pos;
   int                   has_weapon;
@@ -127,12 +130,14 @@ typedef struct		s_displayer
   t_weapon		*weapons[NB_WEAPONS + 1];
   t_ennemy		*ennemies[NB_ENNEMY + 1];
   sfText		*hp;
+  t_player		**players;
+  t_player		*received;
 }			t_displayer;
 
 /* __________ FUNCTIONS _________*/
 
 void		draw_game();
-t_displayer	*init_displayer();
+t_displayer	*init_displayer(int);
 sfRenderWindow	*create_window(char *, int, int);
 sfSprite	*init_sprite(char *, sfVector2f, sfVector2f);
 sfVector2f	vector2f(float, float);
@@ -154,7 +159,7 @@ t_weapon	*init_weapon();
 void		draw_houses(t_displayer *);
 void		update_weapon(t_weapon *, t_displayer *);
 void		interact(t_displayer *);
-int		menu();
+int		menu(int);
 void		draw_hand_weapon(t_displayer *);
 float		get_angle_from_mouse(t_displayer *);
 sfVector2f	move_forward(sfVector2f, float, float);
@@ -180,5 +185,9 @@ void		init_arrow(t_displayer *);
 void		draw_arrow(t_displayer *);
 int		send_data(t_player *);
 t_player	*receive_data(void);
+void		init_players(t_displayer *);
+int		init_connection(char *, char *);
+void		add_players(t_displayer *);
+void		loop_network(t_displayer *);
 
 #endif

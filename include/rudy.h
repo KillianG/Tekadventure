@@ -5,7 +5,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Thu Aug 31 14:18:33 2017 ratch7t
-** Last update Wed Sep  6 19:14:00 2017 Killian
+** Last update Mon Sep 11 16:23:45 2017 Killian
 */
 
 #ifndef RUDY_H_
@@ -63,9 +63,9 @@ typedef struct		s_sprite
 menu
 */
 
-void		draw_game();
+void		draw_game(int nb);
 sfRenderWindow	*create_window_menu(char *, int, int);
-void		menu_loop(t_displayer *, t_sprite *);
+void		menu_loop(t_displayer *, t_sprite *, int);
 int		menu();
 void		get_mouse_on_screen(t_displayer *, t_sprite *);
 

@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:07:25 2017 Marc PEREZ
-** Last update Sun Sep 10 13:57:43 2017 Killian
+** Last update Mon Sep 11 14:03:31 2017 Marc PEREZ
 */
 
 #ifndef CLIENT_H_
@@ -15,9 +15,10 @@
 
 /*
 ** Place this at the beginning of the program
+** Return the ID
 */
 
-void		init_connection(char *host, char *port);
+int		init_connection(char *host, char *port);
 
 /*
 ** Receives 1 malloc'd structure (or NULL)

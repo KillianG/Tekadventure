@@ -5,7 +5,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Tue Sep  5 10:13:22 2017 ratch7t
-** Last update Wed Sep  6 19:15:25 2017 Killian
+** Last update Mon Sep 11 17:55:35 2017 Killian
 */
 
 #include "rudy.h"
@@ -33,7 +33,7 @@ void		get_mouse_on_screen(t_displayer *displayer, t_sprite *sprite)
   sfSprite_setPosition(sprite->cursor, sprite->mouse_pos);
 }
 
-void		menu_loop(t_displayer *displayer, t_sprite *sprite)
+void		menu_loop(t_displayer *displayer, t_sprite *sprite, int id)
 {
   while (!sfKeyboard_isKeyPressed(sfKeyEscape))
     {
@@ -47,7 +47,7 @@ void		menu_loop(t_displayer *displayer, t_sprite *sprite)
 	      if (sfMouse_isButtonPressed(sfMouseLeft))
 		{
 		  sfRenderWindow_close(displayer->window);
-		  draw_game();
+		  draw_game(id);
 		}
 	    }
           else if (sprite->mouse_pos.y <= 270 && sprite->mouse_pos.y > 180)
@@ -66,14 +66,14 @@ void		menu_loop(t_displayer *displayer, t_sprite *sprite)
     }
 }
 
-int		menu()
+int		menu(int id)
 {
   t_displayer	*displayer;
   t_sprite	*sprite;
 
   displayer = init_displayer_menu();
   sprite = init_str_sprite();
-  menu_loop(displayer, sprite);
+  menu_loop(displayer, sprite, id);
   free(displayer);
   free(sprite);
   return (0);
