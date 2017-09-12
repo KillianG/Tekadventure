@@ -5,14 +5,14 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:32:50 2017 Killian
-** Last update Fri Sep  8 00:31:24 2017 Killian
+** Last update Mon Sep 11 16:24:35 2017 Killian
 */
 
 #include "tekadv.h"
 
 #include <time.h>
 
-t_displayer		*init_displayer()
+t_displayer		*init_displayer(int id)
 {
   t_displayer           *displayer;
   sfRenderWindow        *window;
@@ -21,15 +21,15 @@ t_displayer		*init_displayer()
   float			y;
 
   srand(time(NULL));
-  x = (rand() % MAP_SIZEX) * -1;
-  y = (rand() % MAP_SIZEY) * -1;
+  x = (rand() % 10) * -1;
+  y = (rand() % 10) * -1;
   window = create_window(GAME_NAME, SCREEN_WIDTH, SCREEN_HEIGHT);
   sprite = init_sprite(BACKGROUND, vector2f(x, y), vector2f(1.5, 1.5));
   if ((displayer = malloc(sizeof(t_displayer))) == NULL)
     return (NULL);
   displayer->window = window;
   displayer->map = sprite;
-  displayer->player = init_player();
+  displayer->player = init_player(id);
   displayer->player->pos.x = x;
   displayer->player->pos.y = y;
   displayer->bullet = init_sprite(BULLET, vector2f(0, 0), vector2f(0.2, 0.2));
@@ -40,5 +40,6 @@ t_displayer		*init_displayer()
   init_weapons(displayer);
   init_ennemies(displayer);
   init_hp(displayer);
+  init_players(displayer);
   return (displayer);
 }

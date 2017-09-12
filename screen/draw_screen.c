@@ -5,23 +5,41 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Sun Sep 10 13:48:55 2017 Killian
+** Last update Mon Sep 11 16:36:07 2017 Killian
 */
 
 #include "tekadv.h"
 
-void		draw_game()
+#include <unistd.h>
+
+void		loop_network(t_displayer *displayer)
+{
+  while (1)
+    {
+      displayer->received = receive_data();
+      add_players(displayer);
+      send_data(displayer->player);
+      usleep(1000);
+    }
+}
+
+void		launch_thread(t_displayer *displayer)
+{
+  sfThread	*thread;
+
+  thread = sfThread_create(loop_network, displayer);
+  sfThread_launch(thread);
+}
+
+void		draw_game(int id)
 {
   t_displayer	*displayer;
 
-  displayer = init_displayer();
+  displayer = init_displayer(id);
+  launch_thread(displayer);
   while (!sfKeyboard_isKeyPressed(sfKeyEscape))
     {
       update(displayer);
-      send_data(displayer->player);
-      printf("local player %.2f\n", displayer->player->hp);
-      if (receive_data() != NULL && receive_data()->hp != 0)
-	printf("received player %.2f\n", receive_data()->hp);
       displayer->player = update_player(displayer->player);
       get_entries(displayer);      
       sfRenderWindow_drawSprite(displayer->window, displayer->map, NULL);
@@ -31,6 +49,7 @@ void		draw_game()
       draw_hand_weapon(displayer);
       continue_shooting(displayer);
       draw_ennemies(displayer);
+      draw_players(displayer);
       draw_zone(displayer);
       draw_arrow(displayer);
       sfRenderWindow_drawText(displayer->window, displayer->hp, NULL);
