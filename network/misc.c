@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Wed Sep 13 19:58:18 2017 Marc PEREZ
+** Last update Wed Sep 13 20:22:09 2017 Marc PEREZ
 */
 
 #include <unistd.h>
@@ -18,7 +18,7 @@ bool	send_all(int socket, void *buffer, size_t length)
   i = 0;
   while (length > 0)
     {
-      write(socket, buffer, length);
+      i = write(socket, buffer, length);
       if (i <= 0)
 	{
 	  return (false);
@@ -36,7 +36,7 @@ bool	receive_all(int socket, void *buffer, size_t length)
   i = 0;
   while (length > 0)
     {
-      read(socket, buffer, length);
+      i = read(socket, buffer, length);
       if (i <= 0)
 	{
 	  return (false);

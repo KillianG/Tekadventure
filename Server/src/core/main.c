@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 19:09:00 2017 Marc PEREZ
-** Last update Wed Sep 13 19:15:44 2017 Marc PEREZ
+** Last update Wed Sep 13 20:23:50 2017 Marc PEREZ
 */
 
 #include <arpa/inet.h>
@@ -22,7 +22,7 @@
 
 static struct event_base	*g_evbase;
 static int			g_id;
-
+/*
 static inline bool	send_all(int socket, void *buffer, size_t length)
 {
   int			i;
@@ -40,7 +40,7 @@ static inline bool	send_all(int socket, void *buffer, size_t length)
     }
   return (true);
 }
-
+*/
 void		buffered_on_read(struct bufferevent *bev, void *arg)
 {
   t_client	*client;
@@ -108,7 +108,7 @@ void			on_accept(int fd, short ev, void *arg)
   bufferevent_enable(client->buf_ev, EV_READ);
   TAILQ_INSERT_TAIL(&g_client_tailq_head, client, entries);
   printf("Connection: %s (ID: %i)\n", inet_ntoa(client_addr.sin_addr), g_id);
-  if (send_all(client_fd, &(g_id), sizeof(g_id)) == false)
+  if (bufferevent_write(client->buf_ev, &(g_id), sizeof(g_id)) == -1)
     printf("Can't send ID(%i) to %s\n", g_id, inet_ntoa(client_addr.sin_addr));
   g_id++;
 }
