@@ -5,7 +5,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 15:54:36 2017 ratch7t
-** Last update Wed Sep 13 20:37:35 2017 Marc PEREZ
+** Last update Wed Sep 13 20:49:32 2017 Marc PEREZ
 */
 
 #include "rudy.h"
@@ -56,4 +56,3 @@ t_sprite	*init_str_sprite(void)
   sfSprite_setScale(sprit->cursor, vector2f(0.15, 0.15));
   return (sprit);
 }
-

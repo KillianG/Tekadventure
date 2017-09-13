@@ -5,7 +5,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Tue Sep  5 10:13:22 2017 ratch7t
-** Last update Wed Sep 13 20:33:16 2017 Marc PEREZ
+** Last update Wed Sep 13 20:52:27 2017 Marc PEREZ
 */
 
 #include "rudy.h"
@@ -19,9 +19,10 @@ sfRenderWindow		*create_window_menu(char *name, int width, int height)
   mode.height = height;
   mode.bitsPerPixel = 32;
   window = sfRenderWindow_create(mode, name, sfResize | sfClose, NULL);
-  sfRenderWindow_setMouseCursorVisible(window, sfFalse);
   if (window == NULL)
     exit(84);
+  sfRenderWindow_setMouseCursorVisible(window, sfFalse);
+  sfRenderWindow_setVerticalSyncEnabled(window, sfTrue);
   return (window);
 }
 
