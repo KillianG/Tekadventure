@@ -5,11 +5,11 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Wed Sep 13 12:50:18 2017 Killian
-** Last update Fri Sep  8 20:01:44 2017 Marc PEREZ
+** Last update Wed Sep 13 19:24:55 2017 Marc PEREZ
 */
 
 #include <stdio.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
@@ -83,7 +83,7 @@ int	send_data(t_player *data)
 {
   int	code;
 
-  if ((code = send(g_socket, data, sizeof(*data), 0)) == -1)
+  if ((code = send_all(g_socket, data, sizeof(*data))) == false)
     {
       printf("Can't send data to socket %i\n", g_socket);
       close(g_socket);

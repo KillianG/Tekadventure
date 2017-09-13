@@ -5,7 +5,7 @@
 ## Login   <killian.gardahaut@epitech.eu>
 ## 
 ## Started on  Wed Sep  6 15:01:02 2017 Killian
-## Last update Mon Sep 11 14:08:52 2017 Killian
+## Last update Wed Sep 13 19:23:32 2017 Marc PEREZ
 ##
 
 NAME		=	TEK
@@ -101,6 +101,7 @@ SRC		+=	$(ZONEDIR)/init_zone.c			\
 			$(ZONEDIR)/check_in.c			\
 
 SRC		+=	$(NETWORKDIR)/client.c			\
+			$(NETWORKDIR)/misc.c
 
 
 OBJ		=	$(SRC:.c=.o)
