@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 19:09:00 2017 Marc PEREZ
-** Last update Wed Sep 13 20:23:50 2017 Marc PEREZ
+** Last update Wed Sep 13 20:26:58 2017 Marc PEREZ
 */
 
 #include <arpa/inet.h>
@@ -22,25 +22,7 @@
 
 static struct event_base	*g_evbase;
 static int			g_id;
-/*
-static inline bool	send_all(int socket, void *buffer, size_t length)
-{
-  int			i;
 
-  i = 0;
-  while (length > 0)
-    {
-      write(socket, buffer, length);
-      if (i < 1)
-	{
-	  return (false);
-	}
-      buffer += i;
-      length -= i;
-    }
-  return (true);
-}
-*/
 void		buffered_on_read(struct bufferevent *bev, void *arg)
 {
   t_client	*client;

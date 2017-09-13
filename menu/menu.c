@@ -5,15 +5,15 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Tue Sep  5 10:13:22 2017 ratch7t
-** Last update Mon Sep 11 17:55:35 2017 Killian
+** Last update Wed Sep 13 20:33:16 2017 Marc PEREZ
 */
 
 #include "rudy.h"
 
-sfRenderWindow          *create_window_menu(char *name, int width, int height)
+sfRenderWindow		*create_window_menu(char *name, int width, int height)
 {
-  sfRenderWindow        *window;
-  sfVideoMode           mode;
+  sfRenderWindow	*window;
+  sfVideoMode		mode;
 
   mode.width = width;
   mode.height = height;

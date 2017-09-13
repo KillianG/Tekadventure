@@ -5,7 +5,7 @@
 ## Login   <killian.gardahaut@epitech.eu>
 ## 
 ## Started on  Wed Sep  6 15:01:02 2017 Killian
-## Last update Wed Sep 13 20:04:26 2017 Marc PEREZ
+## Last update Wed Sep 13 20:27:39 2017 Marc PEREZ
 ##
 
 NAME		=	TEK
@@ -35,7 +35,7 @@ INCDIR		=	include
 RM		=	rm -f
 
 CC		=	gcc
-CFLAGS		=	-W -Wall -Wextra -g3 -lm -O3		\
+CFLAGS		=	-pipe -W -Wall -Wextra -g3 -lm -O3	\
 			-I$(INCDIR)
 
 LDFLAGS		=	-lcsfml-audio				\
