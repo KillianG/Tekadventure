@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Wed Sep 13 19:24:55 2017 Marc PEREZ
+** Last update Wed Sep 13 19:58:04 2017 Marc PEREZ
 */
 
 #include <stdio.h>
@@ -99,7 +99,11 @@ int	init_connection(char *host, char *port)
 
   g_host = host;
   g_port = port;
-  read(socket_create(), &id, sizeof(id));
+  if (receive_all(socket_create(), &id, sizeof(id)) == false)
+    {
+      printf("ERROR: Failed to receive ID\n");
+      exit(1);
+    }
   printf("ID: %i\n", id);
   return (id);
 }
@@ -113,7 +117,7 @@ t_player	*receive_data(void)
       err(1, "Malloc failed");
       exit(1);
     }
-  if (read(g_socket, data, sizeof(*data)) > 0)
+  if (receive_all(g_socket, data, sizeof(*data)) == true)
     {
       printf("data received = %d\n", data->id);
       return (data);
