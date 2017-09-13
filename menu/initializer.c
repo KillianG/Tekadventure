@@ -5,7 +5,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 15:54:36 2017 ratch7t
-** Last update Wed Sep 13 20:36:49 2017 Marc PEREZ
+** Last update Wed Sep 13 20:37:35 2017 Marc PEREZ
 */
 
 #include "rudy.h"
@@ -41,7 +41,7 @@ t_sprite	*init_str_sprite(void)
   t_sprite	*sprit;
 
   if (!(sprit = malloc(sizeof(t_sprite))))
-    exit (84);
+    exit(84);
   sprit->background = init_sprite_menu(BACKGROUND);
   sprit->nw_game = init_sprite_menu(NEWGAME);
   sprit->multi = init_sprite_menu(MULTI);
