@@ -5,11 +5,11 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 19:09:00 2017 Marc PEREZ
-** Last update Mon Sep 11 21:42:26 2017 Killian
-** Last update Fri Sep  8 15:19:30 2017 Marc PEREZ
+** Last update Wed Sep 13 19:15:44 2017 Marc PEREZ
 */
 
 #include <arpa/inet.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <err.h>
@@ -22,6 +22,24 @@
 
 static struct event_base	*g_evbase;
 static int			g_id;
+
+static inline bool	send_all(int socket, void *buffer, size_t length)
+{
+  int			i;
+
+  i = 0;
+  while (length > 0)
+    {
+      write(socket, buffer, length);
+      if (i < 1)
+	{
+	  return (false);
+	}
+      buffer += i;
+      length -= i;
+    }
+  return (true);
+}
 
 void		buffered_on_read(struct bufferevent *bev, void *arg)
 {
@@ -38,7 +56,8 @@ void		buffered_on_read(struct bufferevent *bev, void *arg)
 	{
 	  if (client != (t_client *)arg)
 	    {
-	      bufferevent_write(client->buf_ev, &data, n);
+	      if (bufferevent_write(client->buf_ev, &data, n) == -1)
+		printf("ERROR: Write has failed.\n");
 	    }
 	}
     }
@@ -89,7 +108,8 @@ void			on_accept(int fd, short ev, void *arg)
   bufferevent_enable(client->buf_ev, EV_READ);
   TAILQ_INSERT_TAIL(&g_client_tailq_head, client, entries);
   printf("Connection: %s (ID: %i)\n", inet_ntoa(client_addr.sin_addr), g_id);
-  write(client_fd, &(g_id), sizeof(g_id));
+  if (send_all(client_fd, &(g_id), sizeof(g_id)) == false)
+    printf("Can't send ID(%i) to %s\n", g_id, inet_ntoa(client_addr.sin_addr));
   g_id++;
 }
 
