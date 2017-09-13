@@ -1,11 +1,11 @@
 /*
-** init_player.c for tekadv in /home/killian/github/tekaventure/player
+1;4803;0c** init_player.c for tekadv in /home/killian/github/tekaventure/player
 ** 
 ** Made by Killian
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 17:59:04 2017 Killian
-** Last update Mon Sep 11 16:24:49 2017 Killian
+** Last update Wed Sep 13 12:56:52 2017 Killian
 */
 
 #include "tekadv.h"
@@ -19,7 +19,8 @@ t_player	*init_player(int id)
   player->sprite = init_sprite(PLAYER,
                                vector2f(SCREEN_WIDTH/2 - 25, SCREEN_HEIGHT/2 - 25),
                                vector2f(1, 1));
-  player->id = id;
+  printf("my_id : %d\n", id);
+  player->id = 0;
   player->hp = 100;
   player->pos.x = 0;
   player->pos.y = 0;

@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Mon Sep 11 16:36:07 2017 Killian
+** Last update Wed Sep 13 12:56:05 2017 Killian
 */
 
 #include "tekadv.h"
@@ -14,12 +14,22 @@
 
 void		loop_network(t_displayer *displayer)
 {
+  int		i;
+
+  i = 0;
   while (1)
     {
+      if (i >= 50)
+	{
+	  reset_players(displayer);
+	  i = 0;
+	}
       displayer->received = receive_data();
-      add_players(displayer);
+      if (displayer->player != NULL)
+	add_players(displayer);
       send_data(displayer->player);
-      usleep(1000);
+      usleep(5000);
+      i++;
     }
 }
 

@@ -5,14 +5,14 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 18:08:13 2017 Killian
-** Last update Mon Sep 11 21:30:37 2017 Killian
+** Last update Wed Sep 13 12:41:27 2017 Killian
 */
 
 #include "tekadv.h"
 
 void	get_entries(t_displayer *displayer)
 {
-  if (sfKeyboard_isKeyPressed(sfKeyQ))
+  if (sfKeyboard_isKeyPressed(sfKeyLeft))
     move_left(displayer);
   if (sfKeyboard_isKeyPressed(sfKeyRight))
     move_right(displayer);
