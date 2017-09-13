@@ -5,15 +5,15 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 15:54:36 2017 ratch7t
-** Last update Wed Sep  6 19:13:43 2017 Killian
+** Last update Wed Sep 13 20:36:49 2017 Marc PEREZ
 */
 
 #include "rudy.h"
 
-sfSprite                *init_sprite_menu(char *path)
+sfSprite	*init_sprite_menu(char *path)
 {
-  sfTexture             *texture;
-  sfSprite              *sprite;
+  sfTexture	*texture;
+  sfSprite	*sprite;
 
   sprite = sfSprite_create();
   if (sprite == NULL)
@@ -26,19 +26,19 @@ sfSprite                *init_sprite_menu(char *path)
   return (sprite);
 }
 
-t_displayer     *init_displayer_menu()
+t_displayer	*init_displayer_menu(void)
 {
-  t_displayer   *disp;
+  t_displayer	*disp;
 
   if (!(disp = malloc(sizeof(t_displayer))))
-    exit (84);
+    exit(84);
   disp->window = create_window_menu(GAME_NAME, SCREEN_WIDTH, SCREEN_HEIGHT);
   return (disp);
 }
 
-t_sprite        *init_str_sprite()
+t_sprite	*init_str_sprite(void)
 {
-  t_sprite      *sprit;
+  t_sprite	*sprit;
 
   if (!(sprit = malloc(sizeof(t_sprite))))
     exit (84);
