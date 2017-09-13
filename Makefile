@@ -5,7 +5,7 @@
 ## Login   <killian.gardahaut@epitech.eu>
 ## 
 ## Started on  Wed Sep  6 15:01:02 2017 Killian
-## Last update Wed Sep 13 20:02:03 2017 Marc PEREZ
+## Last update Wed Sep 13 20:04:26 2017 Marc PEREZ
 ##
 
 NAME		=	TEK
@@ -135,4 +135,4 @@ fclean		:	clean
 re		:	fclean all
 			make re -C Server
 
-.PHONY	: all clean fclean re
+.PHONY	: all title clean fclean re
