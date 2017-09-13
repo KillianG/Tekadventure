@@ -5,7 +5,7 @@
 ## Login   <killian.gardahaut@epitech.eu>
 ## 
 ## Started on  Wed Sep  6 15:01:02 2017 Killian
-## Last update Wed Sep 13 19:23:32 2017 Marc PEREZ
+## Last update Wed Sep 13 20:02:03 2017 Marc PEREZ
 ##
 
 NAME		=	TEK
@@ -107,6 +107,7 @@ SRC		+=	$(NETWORKDIR)/client.c			\
 OBJ		=	$(SRC:.c=.o)
 
 all		:	title $(NAME)
+			make -C Server
 
 title		:
 			@$(ECHO) $(GREEN)"\tTek"$(TEAL)"Adventure\n"$(DEFAULT)
@@ -124,11 +125,14 @@ $(NAME)		:	$(OBJ)
 clean		:
 			@$(RM) $(OBJ)
 			@$(ECHO) $(GREEN) "[OK]" $(TEAL) "clean"
+			make clean -C Server
 
 fclean		:	clean
 			@$(RM) $(NAME)
 			@$(ECHO) $(GREEN) "[OK]" $(TEAL) "fclean"
+			make fclean -C Server
 
 re		:	fclean all
+			make re -C Server
 
 .PHONY	: all clean fclean re
