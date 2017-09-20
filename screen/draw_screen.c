@@ -5,12 +5,11 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Wed Sep 13 12:56:05 2017 Killian
+** Last update Wed Sep 20 17:41:53 2017 Marc PEREZ
 */
 
-#include "tekadv.h"
-
 #include <unistd.h>
+#include "tekadv.h"
 
 void		loop_network(t_displayer *displayer)
 {
@@ -51,7 +50,7 @@ void		draw_game(int id)
     {
       update(displayer);
       displayer->player = update_player(displayer->player);
-      get_entries(displayer);      
+      get_entries(displayer);
       sfRenderWindow_drawSprite(displayer->window, displayer->map, NULL);
       draw_weapons(displayer);
       draw_houses(displayer);
