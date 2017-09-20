@@ -5,7 +5,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Tue Sep  5 10:13:22 2017 ratch7t
-** Last update Wed Sep 20 17:43:31 2017 Marc PEREZ
+** Last update Wed Sep 20 19:07:11 2017 Marc PEREZ
 */
 
 #include "rudy.h"
@@ -72,7 +72,6 @@ int		menu(int id)
   t_displayer	*displayer;
   t_sprite	*sprite;
 
-  exit(123);
   displayer = init_displayer_menu();
   sprite = init_str_sprite();
   menu_loop(displayer, sprite, id);

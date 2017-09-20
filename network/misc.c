@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Wed Sep 20 19:00:14 2017 Marc PEREZ
+** Last update Wed Sep 20 19:10:45 2017 Marc PEREZ
 */
 
 #include <unistd.h>
@@ -41,7 +41,9 @@ bool	receive_all(int socket, void *buffer, size_t length)
       i = read(socket, buffer, length);
       if ((errno == EAGAIN) || (errno == EWOULDBLOCK))
 	{
+#ifdef DEBUG
 	  perror("ERROR");
+#endif
 	  continue;
 	}
       if (i <= 0)

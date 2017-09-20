@@ -5,7 +5,7 @@
 ## Login   <marc.perez@epitech.eu>
 ## 
 ## Started on  Fri Aug 25 13:40:52 2017 Marc PEREZ
-## Last update Sun Sep 10 13:28:27 2017 Killian
+## Last update Wed Sep 20 19:17:53 2017 Marc PEREZ
 ##
 
 NAME		=	../serv
@@ -14,7 +14,7 @@ CC		=	gcc
 
 CFLAGS		=	-pipe -march=native -fopenmp -Ofast -W -Wall -Wextra
 
-CFLAGS_DEBUG	=	-Og -g3 -DDEBUG -W -Wall -Wextra
+CFLAGS_DEBUG	=	-pipe -march=native -Og -g3 -DDEBUG -W -Wall -Wextra
 
 LDLIBS		=	-levent
 
