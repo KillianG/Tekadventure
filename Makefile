@@ -5,7 +5,7 @@
 ## Login   <killian.gardahaut@epitech.eu>
 ## 
 ## Started on  Wed Sep  6 15:01:02 2017 Killian
-## Last update Wed Sep 20 19:17:17 2017 Marc PEREZ
+## Last update Wed Sep 20 19:39:06 2017 Marc PEREZ
 ##
 
 NAME		=	TEK
@@ -137,8 +137,7 @@ fclean		:	clean
 re		:	fclean all
 			make re -C Server
 
-debug		:	$(CFLAGS) =	-pipe -W -Wall -Wextra -g3 -lm -O3	\
-			-I$(INCDIR)
+debug		:	CFLAGS = $(CFLAGS_DEBUG)
 debug		:	fclean all
 			make debug -C Server
 

@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Wed Sep 20 18:59:46 2017 Marc PEREZ
+** Last update Wed Sep 20 19:34:45 2017 Marc PEREZ
 */
 
 #include <stdio.h>
@@ -104,6 +104,7 @@ int	init_connection(char *host, char *port)
       printf("ERROR: Failed to receive ID\n");
       exit(1);
     }
+  id = ntohl(id);
   printf("ID: %i\n", id);
   return (id);
 }
