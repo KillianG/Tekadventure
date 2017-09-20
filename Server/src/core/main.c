@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 19:09:00 2017 Marc PEREZ
-** Last update Wed Sep 20 19:10:23 2017 Marc PEREZ
+** Last update Wed Sep 20 19:20:20 2017 Marc PEREZ
 */
 
 #include <arpa/inet.h>
@@ -91,7 +91,6 @@ void			on_accept(int fd, short ev, void *arg)
   TAILQ_INSERT_TAIL(&g_client_tailq_head, client, entries);
   printf("Connection: %s (ID: %i)\n", inet_ntoa(client_addr.sin_addr), g_id);
   if (write(client->fd,  &(g_id), sizeof(g_id)) == -1)
-    //  if (bufferevent_write(client->buf_ev, &(g_id), sizeof(g_id)) == -1)
     printf("Can't send ID(%i) to %s\n", g_id, inet_ntoa(client_addr.sin_addr));
   g_id++;
 }
