@@ -6,7 +6,7 @@
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
 <<<<<<< HEAD
-** Last update Wed Sep 20 12:54:43 2017 Killian
+** Last update Wed Sep 27 13:16:53 2017 Marc PEREZ
 =======
 ** Last update Wed Sep 20 19:34:45 2017 Marc PEREZ
 >>>>>>> 52e895834fec2ea1e2b1236c91cb14df1bd2cb0c
@@ -78,7 +78,7 @@ static inline int	socket_create(void)
 	  exit(1);
 	}
       make_socket(p, servinfo);
-      fcntl(g_socket, F_SETFL, fcntl(g_socket, F_GETFL) | O_NONBLOCK);
+      //fcntl(g_socket, F_SETFL, fcntl(g_socket, F_GETFL) | O_NONBLOCK);
     }
   return (g_socket);
 }
@@ -110,6 +110,7 @@ int	init_connection(char *host, char *port)
     }
   id = ntohl(id);
   printf("ID: %i\n", id);
+  fcntl(g_socket, F_SETFL, fcntl(g_socket, F_GETFL) | O_NONBLOCK);
   return (id);
 }
 
