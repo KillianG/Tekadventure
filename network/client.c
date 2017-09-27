@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Wed Sep 13 19:58:04 2017 Marc PEREZ
+** Last update Wed Sep 20 12:54:43 2017 Killian
 */
 
 #include <stdio.h>
@@ -102,7 +102,7 @@ int	init_connection(char *host, char *port)
   if (receive_all(socket_create(), &id, sizeof(id)) == false)
     {
       printf("ERROR: Failed to receive ID\n");
-      exit(1);
+      //      exit(1);
     }
   printf("ID: %i\n", id);
   return (id);

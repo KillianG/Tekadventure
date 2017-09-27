@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Mon Sep 11 13:56:03 2017 Killian
-** Last update Wed Sep 13 12:44:05 2017 Killian
+** Last update Wed Sep 20 12:50:34 2017 Killian
 */
 
 #include "tekadv.h"
@@ -42,7 +42,6 @@ void		draw_players(t_displayer *displayer)
     {
       if (displayer->players[i] != NULL && i != displayer->player->id)
 	{
-	  printf("player %d is online\n", i);
 	  sfSprite_setPosition(sprite,
 			       vector2f((displayer->players[i]->pos.x * -1) +
 					SCREEN_WIDTH/2 +

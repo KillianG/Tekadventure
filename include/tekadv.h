@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Mon Sep 11 16:28:03 2017 Killian
+** Last update Sat Sep 23 17:46:18 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -30,7 +30,7 @@
 # define SPEED 0.2
 # define RADIUS 3000
 # define ZONE_DMG 0.001
-# define ZONE_SPEED 0.005
+# define ZONE_SPEED 0.00005
 
 /* __________ MAP __________ */
 
@@ -113,6 +113,7 @@ typedef struct          s_player
   t_weapon		*weapon;
   int			sprite_pos;
   int			shoot;
+  float			angle;
   float			shooting_angle;
 }                       t_player;
 
@@ -188,6 +189,9 @@ t_player	*receive_data(void);
 void		init_players(t_displayer *);
 int		init_connection(char *, char *);
 void		add_players(t_displayer *);
-void		loop_network(t_displayer *);
+void		*loop_network(t_displayer *);
+void		draw_players(t_displayer *);
+void		*loop_update(t_displayer *);
+void		*loop_draw(t_displayer *);
 
 #endif

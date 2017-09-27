@@ -5,7 +5,7 @@
 ## Login   <killian.gardahaut@epitech.eu>
 ## 
 ## Started on  Wed Sep  6 15:01:02 2017 Killian
-## Last update Wed Sep 13 20:27:39 2017 Marc PEREZ
+## Last update Mon Sep 25 13:07:51 2017 Killian
 ##
 
 NAME		=	TEK
@@ -28,6 +28,7 @@ ENNEMYDIR	=	$(SRCDIR)/ennemy
 HUDDIR		=	$(SRCDIR)/HUD
 ZONEDIR		=	$(SRCDIR)/zones
 NETWORKDIR	=	$(SRCDIR)/network
+THREADSDIR	=	$(SRCDIR)/threads
 
 
 INCDIR		=	include
@@ -35,7 +36,7 @@ INCDIR		=	include
 RM		=	rm -f
 
 CC		=	gcc
-CFLAGS		=	-pipe -W -Wall -Wextra -g3 -lm -O3	\
+CFLAGS		=	-pipe -W -Wall -Wextra -g3 -lm		\
 			-I$(INCDIR)
 
 LDFLAGS		=	-lcsfml-audio				\
@@ -101,13 +102,17 @@ SRC		+=	$(ZONEDIR)/init_zone.c			\
 			$(ZONEDIR)/check_in.c			\
 
 SRC		+=	$(NETWORKDIR)/client.c			\
-			$(NETWORKDIR)/misc.c
+			$(NETWORKDIR)/misc.c			\
+
+SRC		+=	$(THREADSDIR)/loop_network.c		\
+			$(THREADSDIR)/loop_update.c		\
+			$(THREADSDIR)/loop_draw.c		\
 
 
 OBJ		=	$(SRC:.c=.o)
 
 all		:	title $(NAME)
-			make -C Server
+			@make -C Server
 
 title		:
 			@$(ECHO) $(GREEN)"\tTek"$(TEAL)"Adventure\n"$(DEFAULT)

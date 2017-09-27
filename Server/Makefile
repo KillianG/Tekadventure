@@ -5,7 +5,7 @@
 ## Login   <marc.perez@epitech.eu>
 ## 
 ## Started on  Fri Aug 25 13:40:52 2017 Marc PEREZ
-## Last update Sun Sep 10 13:28:27 2017 Killian
+## Last update Mon Sep 25 13:07:26 2017 Killian
 ##
 
 NAME		=	../serv
@@ -31,16 +31,16 @@ OBJS		=	$(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	 $(CC) $(LDLIBS) -o $(NAME) $(OBJS)
+	 @$(CC) $(LDLIBS) -o $(NAME) $(OBJS)
 
 debug:	CFLAGS=$(CFLAGS_DEBUG)
 debug:	re
 
 clean:
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 

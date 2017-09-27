@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 20:09:06 2017 Killian
-** Last update Thu Sep  7 10:46:31 2017 Killian
+** Last update Sat Sep 23 17:44:08 2017 Killian
 */
 
 #include "tekadv.h"
@@ -14,7 +14,7 @@ void		draw_hand_weapon(t_displayer *displayer)
 {
   float		angle;
 
-  angle = get_angle_from_mouse(displayer);
+  angle = displayer->player->angle;
   if (displayer->player->weapon == NULL)
     return ;
   sfSprite_setPosition(displayer->player->weapon->sprite,
