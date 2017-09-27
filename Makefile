@@ -5,7 +5,11 @@
 ## Login   <killian.gardahaut@epitech.eu>
 ## 
 ## Started on  Wed Sep  6 15:01:02 2017 Killian
+<<<<<<< HEAD
 ## Last update Mon Sep 25 13:07:51 2017 Killian
+=======
+## Last update Wed Sep 20 19:39:06 2017 Marc PEREZ
+>>>>>>> 52e895834fec2ea1e2b1236c91cb14df1bd2cb0c
 ##
 
 NAME		=	TEK
@@ -36,7 +40,13 @@ INCDIR		=	include
 RM		=	rm -f
 
 CC		=	gcc
+<<<<<<< HEAD
 CFLAGS		=	-pipe -W -Wall -Wextra -g3 -lm		\
+=======
+CFLAGS		=	-pipe -march=native -W -Wall -Wextra -Ofast		\
+			-I$(INCDIR)
+CFLAGS_DEBUG	=	-pipe -march=native -W -Wall -Wextra -Og -g3 -DDEBUG	\
+>>>>>>> 52e895834fec2ea1e2b1236c91cb14df1bd2cb0c
 			-I$(INCDIR)
 
 LDFLAGS		=	-lcsfml-audio				\
@@ -139,5 +149,9 @@ fclean		:	clean
 
 re		:	fclean all
 			make re -C Server
+
+debug		:	CFLAGS = $(CFLAGS_DEBUG)
+debug		:	fclean all
+			make debug -C Server
 
 .PHONY	: all title clean fclean re
