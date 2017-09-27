@@ -5,13 +5,16 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Wed Sep 20 19:44:28 2017 Marc PEREZ
+** Last update Wed Sep 27 15:30:40 2017 Marc PEREZ
 */
 
 #include <unistd.h>
 #include <stdio.h>
 #include <errno.h>
 #include <stdbool.h>
+#include <fcntl.h>
+#include <string.h>
+#include "client.h"
 
 bool	send_all(int socket, void *buffer, size_t length)
 {
@@ -40,12 +43,7 @@ bool	receive_all(int socket, void *buffer, size_t length)
     {
       i = read(socket, buffer, length);
       if ((errno == EAGAIN) || (errno == EWOULDBLOCK))
-	{
-#ifdef DEBUG
-	  perror("ERROR");
-#endif
-	  continue;
-	}
+	continue;
       if (i <= 0)
 	{
 	  return (false);
