@@ -5,11 +5,7 @@
 ## Login   <marc.perez@epitech.eu>
 ## 
 ## Started on  Fri Aug 25 13:40:52 2017 Marc PEREZ
-<<<<<<< HEAD
-## Last update Mon Sep 25 13:07:26 2017 Killian
-=======
-## Last update Wed Sep 20 19:17:53 2017 Marc PEREZ
->>>>>>> 52e895834fec2ea1e2b1236c91cb14df1bd2cb0c
+## Last update Wed Sep 27 13:08:20 2017 Marc PEREZ
 ##
 
 NAME		=	../serv

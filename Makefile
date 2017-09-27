@@ -1,15 +1,11 @@
 ##
-## Makefile for tekadv in /home/killian/github/tekaventure
+## Makefile for tekadventure in /home/segfault/Desktop/tekaventure
 ## 
-## Made by Killian
-## Login   <killian.gardahaut@epitech.eu>
+## Made by Marc PEREZ
+## Login   <marc.perez@epitech.eu>
 ## 
-## Started on  Wed Sep  6 15:01:02 2017 Killian
-<<<<<<< HEAD
-## Last update Mon Sep 25 13:07:51 2017 Killian
-=======
-## Last update Wed Sep 20 19:39:06 2017 Marc PEREZ
->>>>>>> 52e895834fec2ea1e2b1236c91cb14df1bd2cb0c
+## Started on  Wed Sep 27 13:07:15 2017 Marc PEREZ
+## Last update Wed Sep 27 13:07:52 2017 Marc PEREZ
 ##
 
 NAME		=	TEK
@@ -40,13 +36,9 @@ INCDIR		=	include
 RM		=	rm -f
 
 CC		=	gcc
-<<<<<<< HEAD
-CFLAGS		=	-pipe -W -Wall -Wextra -g3 -lm		\
-=======
 CFLAGS		=	-pipe -march=native -W -Wall -Wextra -Ofast		\
 			-I$(INCDIR)
 CFLAGS_DEBUG	=	-pipe -march=native -W -Wall -Wextra -Og -g3 -DDEBUG	\
->>>>>>> 52e895834fec2ea1e2b1236c91cb14df1bd2cb0c
 			-I$(INCDIR)
 
 LDFLAGS		=	-lcsfml-audio				\
