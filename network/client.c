@@ -6,12 +6,13 @@
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
 <<<<<<< HEAD
-** Last update Wed Sep 27 15:35:14 2017 Marc PEREZ
+** Last update Thu Sep 28 14:06:50 2017 Marc PEREZ
 =======
 ** Last update Wed Sep 20 19:34:45 2017 Marc PEREZ
 >>>>>>> 52e895834fec2ea1e2b1236c91cb14df1bd2cb0c
 */
 
+#include <poll.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -116,7 +117,13 @@ int	init_connection(char *host, char *port)
 t_player	*receive_data(void)
 {
   t_player	*data;
+  struct pollfd	fds;
 
+  fds.fd = g_socket;
+  fds.events = POLLIN;
+  poll(&fds, 1, 0);
+  if (!(fds.events & POLLIN))
+    return (NULL);
   if (!(data = malloc(sizeof(*data))))
     {
       err(1, "Malloc failed");
