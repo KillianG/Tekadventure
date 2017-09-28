@@ -6,7 +6,7 @@
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
 <<<<<<< HEAD
-** Last update Thu Sep 28 14:06:50 2017 Marc PEREZ
+** Last update Thu Sep 28 14:21:39 2017 Marc PEREZ
 =======
 ** Last update Wed Sep 20 19:34:45 2017 Marc PEREZ
 >>>>>>> 52e895834fec2ea1e2b1236c91cb14df1bd2cb0c
@@ -83,17 +83,18 @@ static inline int	socket_create(void)
   return (g_socket);
 }
 
-int	send_data(t_player *data)
+int		send_data(t_player *data)
 {
-  int	code;
+  int		code;
+  struct pollfd	fds;
 
+  fds.fd = g_socket;
+  fds.events = POLLOUT;
+  poll(&fds, 1, 0);
+  if (!(fds.events & POLLOUT))
+    return (false);
   if ((code = send_all(g_socket, data, sizeof(*data))) == false)
-    {
-      printf("Can't send data to socket %i\n", g_socket);
-      close(g_socket);
-      g_socket = 0;
-      socket_create();
-    }
+    printf("Can't send data to socket %i\n", g_socket);
   return (code);
 }
 
@@ -116,7 +117,7 @@ int	init_connection(char *host, char *port)
 
 t_player	*receive_data(void)
 {
-  t_player	*data;
+  t_player	*data; 
   struct pollfd	fds;
 
   fds.fd = g_socket;
@@ -124,7 +125,7 @@ t_player	*receive_data(void)
   poll(&fds, 1, 0);
   if (!(fds.events & POLLIN))
     return (NULL);
-  if (!(data = malloc(sizeof(*data))))
+ if (!(data = malloc(sizeof(*data))))
     {
       err(1, "Malloc failed");
       exit(1);
