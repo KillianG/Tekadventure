@@ -15,9 +15,10 @@ int		main(int argc, char **argv)
       my_player->shoot = my_player->id + 1;
       while (1)
 	{
-	  sleep(5);
+	  sleep(3);
 	  send_data(my_player);
-	  his_player = receive_data();
+	  if (!(his_player = receive_data()))
+	    continue;
 	  printf("His player ID:%i, SHOOT:%i\n", his_player->id, his_player->shoot);
 	  if (his_player->shoot == my_player->id)
 	    printf("He shot me\n");
