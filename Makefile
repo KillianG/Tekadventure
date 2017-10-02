@@ -5,7 +5,7 @@
 ## Login   <marc.perez@epitech.eu>
 ## 
 ## Started on  Wed Sep 27 13:07:15 2017 Marc PEREZ
-## Last update Wed Sep 27 13:07:52 2017 Marc PEREZ
+## Last update Mon Oct  2 12:01:26 2017 Killian
 ##
 
 NAME		=	TEK
@@ -16,7 +16,7 @@ GREEN		=	"\033[0;32m"
 TEAL		=	"\033[1;36m"
 RED		=	"\033[0;31m"
 
-SRCDIR		=	.
+SRCDIR		=	Client
 ENTRIESDIR	=	$(SRCDIR)/entries
 HOUSEDIR	=	$(SRCDIR)/house
 PLAYERDIR	=	$(SRCDIR)/player
