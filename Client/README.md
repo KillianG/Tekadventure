@@ -1,2 +1,0 @@
-# tekaventure
-Tekadventure for epitech

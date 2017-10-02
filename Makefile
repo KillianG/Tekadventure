@@ -5,7 +5,7 @@
 ## Login   <marc.perez@epitech.eu>
 ## 
 ## Started on  Wed Sep 27 13:07:15 2017 Marc PEREZ
-## Last update Mon Oct  2 12:01:26 2017 Killian
+## Last update Mon Oct  2 12:14:39 2017 Killian
 ##
 
 NAME		=	TEK
@@ -29,6 +29,7 @@ HUDDIR		=	$(SRCDIR)/HUD
 ZONEDIR		=	$(SRCDIR)/zones
 NETWORKDIR	=	$(SRCDIR)/network
 THREADSDIR	=	$(SRCDIR)/threads
+MANDATORYDIR	=	$(SRCDIR)/mandatory
 
 
 INCDIR		=	include
@@ -109,6 +110,8 @@ SRC		+=	$(NETWORKDIR)/client.c			\
 SRC		+=	$(THREADSDIR)/loop_network.c		\
 			$(THREADSDIR)/loop_update.c		\
 			$(THREADSDIR)/loop_draw.c		\
+
+SRC		+=	$(MANDATORYDIR)/move.c			\
 
 
 OBJ		=	$(SRC:.c=.o)

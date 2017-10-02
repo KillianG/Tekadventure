@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Wed Sep 27 13:11:55 2017 Marc PEREZ
+** Last update Mon Oct  2 12:17:28 2017 Killian
 */
 
 #include <unistd.h>
@@ -35,6 +35,7 @@ void		draw_game(int id)
       sfThread_launch(draw);
       displayer->player->angle = get_angle_from_mouse(displayer);
       get_entries(displayer);
+      move_player_mouse(displayer);
       sfThread_wait(draw);
       update(displayer);
       displayer->player = update_player(displayer->player);

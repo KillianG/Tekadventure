@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Thu Sep 28 15:21:06 2017 Killian
+** Last update Mon Oct  2 12:21:55 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -23,7 +23,7 @@
 # define GAME_NAME "Tekadventure"
 # define SCREEN_WIDTH 800
 # define SCREEN_HEIGHT 800
-# define FONT "utils/font.ttf"
+# define FONT "images/font.ttf"
 
 /* __________ PLAYER UTILS _________ */
 
@@ -193,5 +193,6 @@ void		*loop_network(t_displayer *);
 void		draw_players(t_displayer *);
 void		*loop_update(t_displayer *);
 void		*loop_draw(t_displayer *);
+void		move_player_mouse(t_displayer *);
 
 #endif
