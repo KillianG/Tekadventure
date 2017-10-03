@@ -1,11 +1,11 @@
 /*
-** draw_screen.c for tekadv in /home/killian/github/tekaventure/screen
+1;4402;0c** draw_screen.c for tekadv in /home/killian/github/tekaventure/screen
 ** 
 ** Made by Killian
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Mon Oct  2 16:08:54 2017 Killian
+** Last update Tue Oct  3 15:41:41 2017 root
 */
 
 #include <unistd.h>
@@ -34,22 +34,11 @@ void		draw_game(int id)
     {
       sfThread_launch(draw);
       displayer->player->angle = get_angle_from_mouse(displayer);
-      get_entries(displayer);
       move_player_mouse(displayer);
       sfThread_wait(draw);
+      get_entries(displayer);
       update(displayer);
       displayer->player = update_player(displayer->player);
-      /*sfRenderWindow_drawSprite(displayer->window, displayer->map, NULL);
-      draw_weapons(displayer);
-      draw_houses(displayer);
-      sfRenderWindow_drawSprite(displayer->window, displayer->player->sprite, NULL);
-      draw_hand_weapon(displayer);
-      continue_shooting(displayer);
-      draw_ennemies(displayer);
-      draw_players(displayer);
-      draw_zone(displayer);
-      draw_arrow(displayer);
-      sfRenderWindow_drawText(displayer->window, displayer->hp, NULL);*/
       sfRenderWindow_display(displayer->window);
       sfRenderWindow_clear(displayer->window, sfBlack);
     }

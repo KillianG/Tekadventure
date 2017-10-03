@@ -5,7 +5,7 @@
 ## Login   <marc.perez@epitech.eu>
 ## 
 ## Started on  Wed Sep 27 13:07:15 2017 Marc PEREZ
-## Last update Tue Oct  3 15:03:03 2017 Killian
+## Last update Tue Oct  3 15:26:31 2017 root
 ##
 
 NAME		=	TEK
@@ -89,6 +89,8 @@ SRC		+=	$(WEAPONSDIR)/init_weapon.c		\
 			$(WEAPONSDIR)/draw_weapons.c		\
 			$(WEAPONSDIR)/weapons.c			\
 			$(WEAPONSDIR)/drop_weapon.c		\
+			$(WEAPONSDIR)/fist.c			\
+			$(WEAPONSDIR)/init_fist.c		\
 
 SRC		+=	$(MENUDIR)/initializer.c		\
 			$(MENUDIR)/menu.c			\

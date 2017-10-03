@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Tue Oct  3 15:10:40 2017 Killian
+** Last update Tue Oct  3 15:25:33 2017 root
 */
 
 #ifndef TEKADV_H_
@@ -64,6 +64,7 @@
 # define HELMET2 "images/helmet2.png"
 # define HELMET3 "images/helmet3.png"
 # define AMMO "images/ammo.png"
+# define FIST "images/fist.png"
 
 /* __________ WEAPONS UTILS __________*/
 
@@ -86,6 +87,13 @@
 # define NB_AMMO 20
 
 /* __________ STRUCTURES __________ */
+
+typedef struct          s_fist
+{
+  sfVector2f            pos;
+  sfSprite              *sprite;
+  int                   damages;
+}                       t_fist;
 
 typedef struct		s_ammo
 {
@@ -144,6 +152,7 @@ typedef struct          s_player
   int			shoot;
   float			angle;
   float			shooting_angle;
+  t_fist		*fist;
   t_helmet		*helmet;
 }                       t_player;
 

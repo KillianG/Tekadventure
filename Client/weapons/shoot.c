@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 20:43:14 2017 Killian
-** Last update Mon Oct  2 13:03:53 2017 Killian
+** Last update Tue Oct  3 15:28:38 2017 root
 */
 
 #include "tekadv.h"
@@ -54,6 +54,8 @@ void		shoot(t_displayer *displayer)
 			   vector2f(SCREEN_WIDTH/2 + 5,
 				    SCREEN_HEIGHT/2 + 20));
     }
+  else
+    attack_fist(displayer);
 }
 
 void			continue_shooting(t_displayer *displayer)
