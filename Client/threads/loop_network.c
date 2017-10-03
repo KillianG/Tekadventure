@@ -5,16 +5,18 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep 20 12:44:22 2017 Killian
-** Last update Thu Sep 28 15:28:09 2017 Killian
+** Last update Mon Oct  2 16:12:11 2017 Killian
 */
 
 #include "tekadv.h"
 #include <unistd.h>
 
-void            *loop_network(t_displayer *displayer)
+void            loop_network(void *param)
 {
+  t_displayer	*displayer;
   int           i;
-  
+
+  displayer = param;
   i = 0;
   while (1)
     {

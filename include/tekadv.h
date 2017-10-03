@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Mon Oct  2 12:21:55 2017 Killian
+** Last update Tue Oct  3 15:10:40 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -27,7 +27,7 @@
 
 /* __________ PLAYER UTILS _________ */
 
-# define SPEED 0.2
+# define SPEED 0.4
 # define RADIUS 3000
 # define ZONE_DMG 0.001
 # define ZONE_SPEED 0.00005
@@ -44,12 +44,12 @@
 
 /* __________ HOUSES UTILS __________ */
 
-# define NB_HOUSES 5
+# define NB_HOUSES 10
 
 /* _________ SPRITES ________ */
 
 # define BACKGROUND "images/background.jpg"
-# define PLAYER "images/players.png"
+# define PLAYER "images/player.png"
 # define TEST "images/players1.png"
 # define HOUSE "images/house.png"
 # define AK47 "images/ak47.png"
@@ -60,13 +60,17 @@
 # define MK14 "images/mk14.png"
 # define PKP "images/PKP.png"
 # define ARROW "images/blue_arrow.png"
+# define HELMET1 "images/helmet1.png"
+# define HELMET2 "images/helmet2.png"
+# define HELMET3 "images/helmet3.png"
+# define AMMO "images/ammo.png"
 
 /* __________ WEAPONS UTILS __________*/
 
-# define NB_WEAPONS 4
+# define NB_WEAPONS 30
 # define AK_DMG 15
-# define AUG_DMG 8
-# define FAMAS_DMG 10
+# define AUG_DMG 13
+# define FAMAS_DMG 0.005
 # define M416_DMG 20
 # define MK14_DMG 30
 
@@ -75,7 +79,31 @@
 # define NB_ENNEMY 2
 # define ENNEMY "images/Ganon.png"
 
+/* ________ EQUIPMENT UTILS ________*/
+
+# define NB_HELMET 20
+# define HP_HELMET 20
+# define NB_AMMO 20
+
 /* __________ STRUCTURES __________ */
+
+typedef struct		s_ammo
+{
+  sfVector2f		pos;
+  sfVector2f		start;
+  sfSprite		*sprite;
+  int			amount;
+  int			is_ground;
+}			t_ammo;
+
+typedef struct		s_helmet
+{
+  sfVector2f		pos;
+  sfVector2f		start;
+  sfSprite		*sprite;
+  int			level;
+  int			is_head;
+}			t_helmet;
 
 typedef struct		s_weapon
 {
@@ -104,6 +132,7 @@ typedef struct          s_ennemy
 
 typedef struct          s_player
 {
+  int			ammos;
   int			id;
   float                 hp;
   sfVector2f            pos;
@@ -115,10 +144,12 @@ typedef struct          s_player
   int			shoot;
   float			angle;
   float			shooting_angle;
+  t_helmet		*helmet;
 }                       t_player;
 
 typedef struct		s_displayer
 {
+  t_helmet		*helmets[NB_HELMET + 1];
   sfSprite		*arrow;
   float			blue_radius;
   sfVector2f		blue_start;
@@ -131,8 +162,10 @@ typedef struct		s_displayer
   t_weapon		*weapons[NB_WEAPONS + 1];
   t_ennemy		*ennemies[NB_ENNEMY + 1];
   sfText		*hp;
+  t_ammo		*ammo[NB_AMMO + 1];
   t_player		**players;
   t_player		*received;
+  sfText		*ammunitions;
 }			t_displayer;
 
 /* __________ FUNCTIONS _________*/
@@ -189,10 +222,24 @@ t_player	*receive_data(void);
 void		init_players(t_displayer *);
 int		init_connection(char *, char *);
 void		add_players(t_displayer *);
-void		*loop_network(t_displayer *);
+void		loop_network(void *);
 void		draw_players(t_displayer *);
-void		*loop_update(t_displayer *);
-void		*loop_draw(t_displayer *);
+void		loop_update(void *);
+void		loop_draw(void *);
 void		move_player_mouse(t_displayer *);
+void		init_helmets(t_displayer *);
+t_helmet	*init_helmet(sfVector2f, int);
+void		update_helmets(t_displayer *);
+void		draw_helmets(t_displayer *);
+void		interact_weapon(t_displayer *);
+void		interact_equipment(t_displayer *);
+void		interact_ammo(t_displayer *);
+void		drop_helmet(t_displayer *);
+t_ammo		*init_ammo(sfVector2f, int);
+void		init_ammos(t_displayer *);
+void		draw_ammo(t_displayer *);
+void		update_ammos(t_displayer *);
+void		init_ammo_text(t_displayer *);
+void		update_ammo_text(t_displayer *);
 
 #endif

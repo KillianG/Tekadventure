@@ -5,16 +5,22 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Sat Sep 23 17:10:22 2017 Killian
-** Last update Sat Sep 23 17:43:58 2017 Killian
+** Last update Tue Oct  3 15:14:41 2017 Killian
 */
 
+#include <unistd.h>
 #include "tekadv.h"
 
-void	*loop_draw(t_displayer *displayer)
+void		loop_draw(void *param)
 {
+  t_displayer	*displayer;
+
+  displayer = (t_displayer *)param;
   sfRenderWindow_drawSprite(displayer->window, displayer->map, NULL);
   draw_weapons(displayer);
   draw_houses(displayer);
+  draw_helmets(displayer);
+  draw_ammo(displayer);
   sfRenderWindow_drawSprite(displayer->window, displayer->player->sprite, NULL);
   draw_hand_weapon(displayer);
   continue_shooting(displayer);
@@ -23,5 +29,6 @@ void	*loop_draw(t_displayer *displayer)
   draw_zone(displayer);
   draw_arrow(displayer);
   sfRenderWindow_drawText(displayer->window, displayer->hp, NULL);
+  sfRenderWindow_drawText(displayer->window, displayer->ammunitions, NULL);
   usleep(1000);
 }

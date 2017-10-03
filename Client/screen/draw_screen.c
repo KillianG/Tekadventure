@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Mon Oct  2 12:17:28 2017 Killian
+** Last update Mon Oct  2 16:08:54 2017 Killian
 */
 
 #include <unistd.h>
@@ -16,8 +16,8 @@ void		launch_thread(t_displayer *displayer)
   sfThread	*network;
   sfThread	*update;
 
-  network = sfThread_create(loop_network, displayer);
-  update = sfThread_create(loop_update, displayer);
+  network = sfThread_create(loop_network, (void *)displayer);
+  update = sfThread_create(loop_update, (void *)displayer);
   sfThread_launch(update);
   sfThread_launch(network);
 }
@@ -29,7 +29,7 @@ void		draw_game(int id)
 
   displayer = init_displayer(id);
   launch_thread(displayer);
-  draw = sfThread_create(loop_draw, displayer);
+  draw = sfThread_create(loop_draw, (void *)displayer);
   while (!sfKeyboard_isKeyPressed(sfKeyEscape))
     {
       sfThread_launch(draw);
@@ -39,8 +39,7 @@ void		draw_game(int id)
       sfThread_wait(draw);
       update(displayer);
       displayer->player = update_player(displayer->player);
-      get_entries(displayer);
-      sfRenderWindow_drawSprite(displayer->window, displayer->map, NULL);
+      /*sfRenderWindow_drawSprite(displayer->window, displayer->map, NULL);
       draw_weapons(displayer);
       draw_houses(displayer);
       sfRenderWindow_drawSprite(displayer->window, displayer->player->sprite, NULL);
@@ -50,7 +49,7 @@ void		draw_game(int id)
       draw_players(displayer);
       draw_zone(displayer);
       draw_arrow(displayer);
-      sfRenderWindow_drawText(displayer->window, displayer->hp, NULL);
+      sfRenderWindow_drawText(displayer->window, displayer->hp, NULL);*/
       sfRenderWindow_display(displayer->window);
       sfRenderWindow_clear(displayer->window, sfBlack);
     }

@@ -5,7 +5,7 @@
 ## Login   <marc.perez@epitech.eu>
 ## 
 ## Started on  Wed Sep 27 13:07:15 2017 Marc PEREZ
-## Last update Mon Oct  2 12:14:39 2017 Killian
+## Last update Tue Oct  3 15:03:03 2017 Killian
 ##
 
 NAME		=	TEK
@@ -30,6 +30,8 @@ ZONEDIR		=	$(SRCDIR)/zones
 NETWORKDIR	=	$(SRCDIR)/network
 THREADSDIR	=	$(SRCDIR)/threads
 MANDATORYDIR	=	$(SRCDIR)/mandatory
+EQUIPMENTDIR	=	$(SRCDIR)/equipment
+AMMODIR		=	$(SRCDIR)/ammunitions
 
 
 INCDIR		=	include
@@ -98,6 +100,7 @@ SRC		+=	$(ENNEMYDIR)/ennemies.c			\
 
 SRC		+=	$(HUDDIR)/hp.c				\
 			$(HUDDIR)/arrow.c			\
+			$(HUDDIR)/ammo.c			\
 
 SRC		+=	$(ZONEDIR)/init_zone.c			\
 			$(ZONEDIR)/draw_zone.c			\
@@ -113,6 +116,16 @@ SRC		+=	$(THREADSDIR)/loop_network.c		\
 
 SRC		+=	$(MANDATORYDIR)/move.c			\
 
+SRC		+=	$(EQUIPMENTDIR)/draw_helmets.c		\
+			$(EQUIPMENTDIR)/helmets.c		\
+			$(EQUIPMENTDIR)/init_helmet.c		\
+			$(EQUIPMENTDIR)/update_helmets.c	\
+			$(EQUIPMENTDIR)/drop_helmet.c		\
+
+SRC		+=	$(AMMODIR)/ammo.c			\
+			$(AMMODIR)/draw_ammo.c			\
+			$(AMMODIR)/init_ammo.c			\
+			$(AMMODIR)/update_ammo.c		\
 
 OBJ		=	$(SRC:.c=.o)
 

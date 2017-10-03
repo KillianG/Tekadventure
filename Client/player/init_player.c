@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 17:59:04 2017 Killian
-** Last update Wed Sep 13 14:54:01 2017 Killian
+** Last update Tue Oct  3 15:13:39 2017 Killian
 */
 
 #include "tekadv.h"
@@ -28,5 +28,6 @@ t_player	*init_player(int id)
   player->shoot = 0;
   player->weapon = NULL;
   player->hitbox = int_rect(0, 0, 64, 64);
+  player->ammos = 0;
   return (player);
 }

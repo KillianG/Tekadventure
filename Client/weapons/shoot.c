@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 20:43:14 2017 Killian
-** Last update Thu Sep  7 14:36:56 2017 Killian
+** Last update Mon Oct  2 13:03:53 2017 Killian
 */
 
 #include "tekadv.h"
@@ -62,7 +62,7 @@ void			continue_shooting(t_displayer *displayer)
     return ;
   sfSprite_setPosition(displayer->bullet,
 		       move_forward(sfSprite_getPosition(displayer->bullet),
-				    displayer->player->shooting_angle, 0.8));
+				    displayer->player->shooting_angle, 3));
   if (is_outofbound(sfSprite_getPosition(displayer->bullet)))
         displayer->player->shoot = 0;
   check_hit(displayer);

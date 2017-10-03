@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 18:08:13 2017 Killian
-** Last update Wed Sep 13 12:41:27 2017 Killian
+** Last update Tue Oct  3 15:00:44 2017 Killian
 */
 
 #include "tekadv.h"
@@ -21,7 +21,11 @@ void	get_entries(t_displayer *displayer)
   if (sfKeyboard_isKeyPressed(sfKeyUp))
     move_up(displayer);
   if (sfKeyboard_isKeyPressed(sfKeyE))
-    interact(displayer);
+    {
+      interact_weapon(displayer);
+      interact_equipment(displayer);
+      interact_ammo(displayer);
+    }
   if (sfMouse_isButtonPressed(sfMouseLeft))
     shoot(displayer);
   if (sfKeyboard_isKeyPressed(sfKeyD))

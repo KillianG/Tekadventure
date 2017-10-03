@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 13:35:58 2017 Killian
-** Last update Sat Sep 23 17:18:53 2017 Killian
+** Last update Tue Oct  3 15:10:16 2017 Killian
 */
 
 #include "tekadv.h"
@@ -22,6 +22,9 @@ void	update(t_displayer *displayer)
   update_ennemies(displayer);
   update_zone(displayer);
   update_hp(displayer);
+  update_ammo_text(displayer);
+  update_helmets(displayer);
+  update_ammos(displayer);
   if (displayer->player->hp <= 0)
     {
       printf("T'as perdu grosse m*r*e\n");
