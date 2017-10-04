@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Wed Oct  4 12:56:43 2017 Killian
+** Last update Wed Oct  4 13:40:54 2017 root
 */
 
 #ifndef TEKADV_H_
@@ -220,6 +220,7 @@ void		update_weapons(t_displayer *);
 void		draw_weapons(t_displayer *);
 void		drop_weapon(t_displayer *);
 void		init_fist(t_displayer *);
+void		check_fist_hit(t_displayer *);
 void		attack_fist(t_displayer *);
 t_ennemy	*init_ennemy(sfVector2f);
 void		init_ennemies(t_displayer *);

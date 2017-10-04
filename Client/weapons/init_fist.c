@@ -5,7 +5,7 @@
 ** Login   <kentin.pratelli@epitech.eu>
 ** 
 ** Started on  Tue Oct  3 06:06:48 2017 root
-** Last update Tue Oct  3 17:40:41 2017 root
+** Last update Wed Oct  4 12:00:44 2017 root
 */
 
 #include "tekadv.h"
@@ -22,4 +22,28 @@ void		init_fist(t_displayer *displayer)
 			     vector2f(0.01, 0.01));
   fist->damages = 1;
   displayer->player->fist = fist;
+}
+
+void		check_fist_hit(t_displayer *displayer)
+{
+  sfFloatRect	fist;
+  sfFloatRect	hitbox;
+  sfFloatRect	result;
+  int		cpt;
+  int		collide;
+
+  collide = 0;
+  cpt = -1;
+  fist = sfSprite_getGlobalBounds(displayer->player->fist->sprite);
+  while (displayer->ennemies[++cpt] != NULL && !collide)
+    {
+      hitbox = sfSprite_getGlobalBounds(displayer->ennemies[cpt]->sprite);
+      if (sfFloatRect_intersects(&fist, &hitbox, &result) &&
+	  displayer->ennemies[cpt]->hp > 0)
+	{
+	  displayer->player->shoot = 0;
+	  displayer->ennemies[cpt]->hp -= displayer->player->fist->damages;
+	  collide = 1;
+	}
+    }
 }
