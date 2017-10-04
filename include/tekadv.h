@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Wed Oct  4 23:13:18 2017 Marc PEREZ
+** Last update Thu Oct  5 00:22:54 2017 Marc PEREZ
 */
 
 #ifndef TEKADV_H_
@@ -120,6 +120,7 @@ typedef struct		s_packet
   int			id;
   sfVector2f		pos;
   int			health;
+  _Bool			is_attack;
 }			t_packet;
 
 typedef struct		s_fist
@@ -188,6 +189,9 @@ typedef struct		s_player
   float			shooting_angle;
   t_fist		*fist;
   t_helmet		*helmet;
+  _Bool			is_attack;
+  int			attack_id;
+  int			attack_damage;
 }			t_player;
 
 typedef struct		s_displayer
@@ -266,7 +270,7 @@ float		get_angle_from_pos(sfVector2f);
 void		init_arrow(t_displayer *);
 void		draw_arrow(t_displayer *);
 int		send_data(t_packet *);
-t_packet	*receive_data(void);
+t_packet	*receive_data(t_player *);
 void		init_players(t_displayer *);
 int		init_connection(char *, char *);
 void		add_players(t_displayer *);

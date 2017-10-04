@@ -5,9 +5,10 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 17:59:04 2017 Killian
-** Last update Wed Oct  4 23:37:42 2017 Marc PEREZ
+** Last update Thu Oct  5 00:34:38 2017 Marc PEREZ
 */
 
+#include <stdbool.h>
 #include "tekadv.h"
 
 t_player	*init_player(int id)
@@ -30,5 +31,6 @@ t_player	*init_player(int id)
   player->weapon = NULL;
   player->hitbox = int_rect(0, 0, 64, 64);
   player->ammos = 0;
+  player->is_attack = false;
   return (player);
 }

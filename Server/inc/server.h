@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:07:25 2017 Marc PEREZ
-** Last update Fri Sep  8 15:31:51 2017 Marc PEREZ
+** Last update Thu Oct  5 00:31:15 2017 Marc PEREZ
 */
 
 #ifndef SERVER_H_
@@ -13,6 +13,7 @@
 
 # include <err.h>
 # include <sys/queue.h>
+# include <SFML/Graphics.h>
 
 # define DFL_PORT			12345
 # define DATA_SIZE			8192
@@ -30,5 +31,14 @@ TAILQ_HEAD(, s_client)	g_client_tailq_head;
 
 int	setnonblock(int fd);
 void	init_socket(char *port, int *listen_fd);
+
+
+typedef struct		s_packet
+{
+  int			id;
+  sfVector2f		pos;
+  int			health;
+  _Bool			is_attack;
+}			t_packet;
 
 #endif /* !SERVER_H_ */

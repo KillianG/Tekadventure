@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Wed Oct  4 23:33:25 2017 Marc PEREZ
+** Last update Thu Oct  5 00:23:29 2017 Marc PEREZ
 */
 
 #include <poll.h>
@@ -110,7 +110,7 @@ int	init_connection(char *host, char *port)
   return (id);
 }
 
-t_packet	*receive_data(void)
+t_packet	*receive_data(t_player *my_player)
 {
   struct pollfd	fds;
   t_packet	*data;
@@ -127,6 +127,13 @@ t_packet	*receive_data(void)
     }
   if (receive_all(g_socket, data, sizeof(*data)) == true)
     {
+      if (data->is_attack == true)
+	{
+	  if (data->id == my_player->id)
+	    my_player->hp -= data->health;
+	  free(data);
+	  data = NULL;
+	}
       return (data);
     }
   free(data);

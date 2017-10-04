@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 19:09:00 2017 Marc PEREZ
-** Last update Wed Sep 20 19:35:23 2017 Marc PEREZ
+** Last update Thu Oct  5 00:31:48 2017 Marc PEREZ
 */
 
 #include <arpa/inet.h>
@@ -18,7 +18,6 @@
 #include <event2/event_struct.h>
 #include <event2/bufferevent.h>
 #include "server.h"
-#include "game.h"
 
 static struct event_base	*g_evbase;
 static int			g_id;
@@ -26,7 +25,7 @@ static int			g_id;
 void		buffered_on_read(struct bufferevent *bev, void *arg)
 {
   t_client	*client;
-  t_player	data;
+  t_packet	data;
   size_t	n;
 
   while (1)
