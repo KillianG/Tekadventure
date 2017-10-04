@@ -5,14 +5,14 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Thu Aug 31 14:18:33 2017 ratch7t
-** Last update Mon Sep 11 16:23:45 2017 Killian
+** Last update Wed Oct  4 23:17:09 2017 Marc PEREZ
 */
 
 #ifndef RUDY_H_
 # define RUDY_H_
 
 /*
-Lib
+** Lib
 */
 
 # include <SFML/Graphics.h>
@@ -21,7 +21,7 @@ Lib
 # include <stdio.h>
 
 /*
-Macro
+** Macro
 */
 
 # define BACKGROUND "images/Menu_basic.png"
@@ -35,7 +35,7 @@ Macro
 # define SCREEN_HEIGHT 720
 
 /*
-structures
+** Structures
 */
 
 typedef struct		s_displayer
@@ -56,29 +56,29 @@ typedef struct		s_sprite
 }			t_sprite;
 
 /*
-*****fonctions*******
+** Fonctions
 */
 
 /*
-menu
+** Menu
 */
 
 void		draw_game(int nb);
 sfRenderWindow	*create_window_menu(char *, int, int);
 void		menu_loop(t_displayer *, t_sprite *, int);
-int		menu();
+int		menu(int id);
 void		get_mouse_on_screen(t_displayer *, t_sprite *);
 
 /*
-initializer
+** Initializer
 */
 
 sfSprite	*init_sprite_menu(char *);
-t_displayer	*init_displayer_menu();
-t_sprite	*init_str_sprite();
+t_displayer	*init_displayer_menu(void);
+t_sprite	*init_str_sprite(void);
 
 /*
-vector
+** Vector
 */
 
 sfVector2f	vector2f(float, float);

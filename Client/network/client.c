@@ -6,7 +6,7 @@
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
 <<<<<<< HEAD
-** Last update Wed Oct  4 23:06:05 2017 Marc PEREZ
+** Last update Wed Oct  4 23:14:25 2017 Marc PEREZ
 =======
 ** Last update Wed Sep 20 19:34:45 2017 Marc PEREZ
 >>>>>>> 52e895834fec2ea1e2b1236c91cb14df1bd2cb0c
@@ -24,7 +24,6 @@
 #include <fcntl.h>
 #include <err.h>
 #include "client.h"
-#include "game.h"
 #include "tekadv.h"
 
 static int	g_socket;

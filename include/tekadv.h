@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Wed Oct  4 23:09:24 2017 Marc PEREZ
+** Last update Wed Oct  4 23:13:18 2017 Marc PEREZ
 */
 
 #ifndef TEKADV_H_
@@ -18,35 +18,47 @@
 # include <string.h>
 # include <stdio.h>
 
-/* __________ WINDOW UTILS _________ */
+/*
+** __________ WINDOW UTILS _________
+*/
 
 # define GAME_NAME "Tekadventure"
 # define SCREEN_WIDTH 1080
 # define SCREEN_HEIGHT 720
 # define FONT "images/font.ttf"
 
-/* __________ PLAYER UTILS _________ */
+/*
+** __________ PLAYER UTILS _________
+*/
 
 # define SPEED 0.4
 # define RADIUS 3000
 # define ZONE_DMG 0.001
 # define ZONE_SPEED 0.00005
 
-/* __________ MAP __________ */
+/*
+** __________ MAP __________
+*/
 
 # define MAP_SIZEX 4000
 # define MAP_SIZEY 4000
 
-/* __________ MATH UTILS _________ */
+/*
+** __________ MATH UTILS _________
+*/
 
 # define TO_RAD(a) (M_PI * a / 180)
 # define SQUARE(a) (a*a)
 
-/* __________ HOUSES UTILS __________ */
+/*
+** __________ HOUSES UTILS __________
+*/
 
 # define NB_HOUSES 10
 
-/* _________ SPRITES ________ */
+/*
+** _________ SPRITES ________
+*/
 
 # define BACKGROUND "images/background.jpg"
 # define PLAYER "images/player.png"
@@ -73,7 +85,9 @@
 # define AMMO "images/ammo.png"
 # define FIST "images/fist.png"
 
-/* __________ WEAPONS UTILS __________*/
+/*
+** __________ WEAPONS UTILS __________
+*/
 
 # define NB_WEAPONS 30
 # define AK_DMG 15
@@ -82,18 +96,24 @@
 # define M416_DMG 20
 # define MK14_DMG 30
 
-/* __________ ENNEMY UTILS _________ */
+/*
+** __________ ENNEMY UTILS _________
+*/
 
 # define NB_ENNEMY 2
 # define ENNEMY "images/Ganon.png"
 
-/* ________ EQUIPMENT UTILS ________*/
+/*
+** ________ EQUIPMENT UTILS ________
+*/
 
 # define NB_HELMET 20
 # define HP_HELMET 20
 # define NB_AMMO 20
 
-/* __________ STRUCTURES __________ */
+/*
+** __________ STRUCTURES __________
+*/
 
 typedef struct		s_packet
 {
@@ -191,7 +211,9 @@ typedef struct		s_displayer
   sfText		*ammunitions;
 }			t_displayer;
 
-/* __________ FUNCTIONS _________*/
+/*
+** __________ FUNCTIONS _________
+*/
 
 void		draw_game();
 t_displayer	*init_displayer(int);
