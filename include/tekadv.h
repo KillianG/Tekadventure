@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Wed Oct  4 17:19:31 2017 Killian
+** Last update Wed Oct  4 23:09:24 2017 Marc PEREZ
 */
 
 #ifndef TEKADV_H_
@@ -102,12 +102,12 @@ typedef struct		s_packet
   int			health;
 }			t_packet;
 
-typedef struct          s_fist
+typedef struct		s_fist
 {
-  sfVector2f            pos;
-  sfSprite              *sprite;
-  int                   damages;
-}                       t_fist;
+  sfVector2f		pos;
+  sfSprite		*sprite;
+  int			damages;
+}			t_fist;
 
 typedef struct		s_ammo
 {
@@ -144,23 +144,23 @@ typedef struct		s_house
   sfVector2f		start;
 }			t_house;
 
-typedef struct          s_ennemy
+typedef struct		s_ennemy
 {
-  int                   hp;
-  sfVector2f            pos;
+  int			hp;
+  sfVector2f		pos;
   sfVector2f		start;
-  sfSprite              *sprite;
-}                       t_ennemy;
+  sfSprite		*sprite;
+}			t_ennemy;
 
-typedef struct          s_player
+typedef struct		s_player
 {
   int			ammos;
   int			id;
-  float                 hp;
-  sfVector2f            pos;
-  int                   has_weapon;
-  sfSprite              *sprite;
-  sfIntRect             hitbox;
+  float			hp;
+  sfVector2f		pos;
+  int			has_weapon;
+  sfSprite		*sprite;
+  sfIntRect		hitbox;
   t_weapon		*weapon;
   int			sprite_pos;
   int			shoot;
@@ -168,7 +168,7 @@ typedef struct          s_player
   float			shooting_angle;
   t_fist		*fist;
   t_helmet		*helmet;
-}                       t_player;
+}			t_player;
 
 typedef struct		s_displayer
 {
@@ -268,5 +268,6 @@ void		update_ammos(t_displayer *);
 void		init_ammo_text(t_displayer *);
 void		update_ammo_text(t_displayer *);
 t_packet	*new_packet(t_player *);
+void	change_helmet(t_displayer *displayer, int lvl);
 
 #endif

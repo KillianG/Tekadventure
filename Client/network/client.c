@@ -6,7 +6,7 @@
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
 <<<<<<< HEAD
-** Last update Wed Oct  4 12:50:43 2017 Killian
+** Last update Wed Oct  4 23:06:05 2017 Marc PEREZ
 =======
 ** Last update Wed Sep 20 19:34:45 2017 Marc PEREZ
 >>>>>>> 52e895834fec2ea1e2b1236c91cb14df1bd2cb0c
@@ -125,7 +125,7 @@ t_packet	*receive_data(void)
   poll(&fds, 1, 0);
   if (!(fds.events & POLLIN))
     return (NULL);
- if (!(data = malloc(sizeof(*data))))
+  if (!(data = malloc(sizeof(*data))))
     {
       err(1, "Malloc failed");
       exit(1);
