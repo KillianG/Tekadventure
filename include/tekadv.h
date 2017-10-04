@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Wed Oct  4 12:17:38 2017 Killian
+** Last update Wed Oct  4 12:34:28 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -71,7 +71,7 @@
 # define NB_WEAPONS 30
 # define AK_DMG 15
 # define AUG_DMG 13
-# define FAMAS_DMG 0.005
+# define FAMAS_DMG 5
 # define M416_DMG 20
 # define MK14_DMG 30
 
@@ -92,7 +92,8 @@ typedef struct		s_packet
 {
   int			id;
   sfVector2f		pos;
-}			t_packer;
+  int			health
+}			t_packet;
 
 typedef struct          s_fist
 {

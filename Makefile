@@ -5,10 +5,10 @@
 ## Login   <marc.perez@epitech.eu>
 ## 
 ## Started on  Wed Sep 27 13:07:15 2017 Marc PEREZ
-## Last update Tue Oct  3 15:26:31 2017 root
+## Last update Wed Oct  4 12:19:38 2017 Killian
 ##
 
-NAME		=	TEK
+NAME		=	tekadventure
 
 ECHO		=	/bin/echo -e
 DEFAULT		=	"\033[00m"
