@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 14:37:40 2017 Killian
-** Last update Thu Sep  7 16:40:45 2017 Killian
+** Last update Wed Oct  4 15:39:04 2017 Killian
 */
 
 #include "tekadv.h"
@@ -22,7 +22,7 @@ t_weapon	*init_weapon(sfVector2f pos, int id)
   weapon->sprite = init_sprite(AK47, vector2f(pos.x, pos.y), vector2f(0.25, 0.25));
   weapon->damages = 10;
   if (id == 0 && (weapon->damages = AK_DMG))
-    weapon->sprite = init_sprite(AK47, vector2f(pos.x, pos.y), vector2f(0.25, 0.25));
+    weapon->sprite = init_sprite(AK47, vector2f(pos.x, pos.y), vector2f(0.1, 0.1));
   if (id == 1 && (weapon->damages = AUG_DMG))
     weapon->sprite = init_sprite(AUG, vector2f(pos.x, pos.y), vector2f(0.25, 0.25));
   if (id == 2 && (weapon->damages = FAMAS_DMG))

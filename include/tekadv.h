@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Wed Oct  4 13:40:54 2017 root
+** Last update Wed Oct  4 17:19:31 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -21,8 +21,8 @@
 /* __________ WINDOW UTILS _________ */
 
 # define GAME_NAME "Tekadventure"
-# define SCREEN_WIDTH 800
-# define SCREEN_HEIGHT 800
+# define SCREEN_WIDTH 1080
+# define SCREEN_HEIGHT 720
 # define FONT "images/font.ttf"
 
 /* __________ PLAYER UTILS _________ */
@@ -50,6 +50,13 @@
 
 # define BACKGROUND "images/background.jpg"
 # define PLAYER "images/player.png"
+# define PLAYERT1 "images/playert1.png"
+# define PLAYERT2 "images/playert2.png"
+# define PLAYERT3 "images/playert3.png"
+# define PLAYERT0POING "images/playert0poing.png"
+# define PLAYERT1POING "images/playert1poing.png"
+# define PLAYERT2POING "images/playert2poing.png"
+# define PLAYERT3POING "images/playert3poing.png"
 # define TEST "images/players1.png"
 # define HOUSE "images/house.png"
 # define AK47 "images/ak47.png"

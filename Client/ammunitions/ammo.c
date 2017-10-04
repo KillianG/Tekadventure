@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Mon Oct  2 13:59:16 2017 Killian
-** Last update Tue Oct  3 14:31:35 2017 Killian
+** Last update Wed Oct  4 14:03:19 2017 Killian
 */
 
 #include <time.h>
@@ -20,7 +20,7 @@ void		init_ammos(t_displayer *displayer)
     {
       displayer->ammo[i++] = init_ammo(vector2f(rand() % MAP_SIZEX,
 						     rand() % MAP_SIZEY),
-					    rand() % 20);
+					    rand() % 20 + 2);
     }
   displayer->ammo[i] = NULL;
 }

@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 16:47:58 2017 Killian
-** Last update Tue Oct  3 15:57:25 2017 Killian
+** Last update Wed Oct  4 16:59:21 2017 Killian
 */
 
 #include "tekadv.h"
@@ -25,6 +25,7 @@ void		interact_ammo(t_displayer *displayer)
 	{
 	  displayer->player->ammos += displayer->ammo[curr_w]->amount;
 	  displayer->ammo[curr_w]->is_ground = 0;
+	  displayer->ammo[curr_w]->start = vector2f(-30, -30);
 	  sfSleep(sfMilliseconds(250));
 	  break;
 	}
@@ -44,6 +45,7 @@ void		interact_equipment(t_displayer *displayer)
       helmet = sfSprite_getGlobalBounds(displayer->helmets[curr_w]->sprite);
       if (sfFloatRect_intersects(&player, &helmet, NULL))
 	{
+	  change_helmet(displayer, displayer->helmets[curr_w]->level);
 	  displayer->player->hp += displayer->helmets[curr_w]->level * HP_HELMET;
 	  drop_helmet(displayer);
 	  displayer->helmets[curr_w]->is_head = 1;

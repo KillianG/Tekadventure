@@ -5,7 +5,7 @@
 ** Login   <kentin.pratelli@epitech.eu>
 ** 
 ** Started on  Tue Oct  3 06:06:48 2017 root
-** Last update Wed Oct  4 12:00:44 2017 root
+** Last update Wed Oct  4 17:31:56 2017 Killian
 */
 
 #include "tekadv.h"
@@ -34,7 +34,7 @@ void		check_fist_hit(t_displayer *displayer)
 
   collide = 0;
   cpt = -1;
-  fist = sfSprite_getGlobalBounds(displayer->player->fist->sprite);
+  fist = sfSprite_getGlobalBounds(displayer->player->sprite);
   while (displayer->ennemies[++cpt] != NULL && !collide)
     {
       hitbox = sfSprite_getGlobalBounds(displayer->ennemies[cpt]->sprite);

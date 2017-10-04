@@ -5,7 +5,7 @@
 ## Login   <marc.perez@epitech.eu>
 ## 
 ## Started on  Wed Sep 27 13:07:15 2017 Marc PEREZ
-## Last update Wed Oct  4 12:54:35 2017 Killian
+## Last update Wed Oct  4 16:56:36 2017 Killian
 ##
 
 NAME		=	tekadventure
@@ -124,6 +124,7 @@ SRC		+=	$(EQUIPMENTDIR)/draw_helmets.c		\
 			$(EQUIPMENTDIR)/init_helmet.c		\
 			$(EQUIPMENTDIR)/update_helmets.c	\
 			$(EQUIPMENTDIR)/drop_helmet.c		\
+			$(EQUIPMENTDIR)/change_helmet.c		\
 
 SRC		+=	$(AMMODIR)/ammo.c			\
 			$(AMMODIR)/draw_ammo.c			\

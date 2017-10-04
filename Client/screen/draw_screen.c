@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Wed Oct  4 12:11:00 2017 Killian
+** Last update Wed Oct  4 15:26:35 2017 Killian
 */
 
 #include <unistd.h>
@@ -41,7 +41,7 @@ void		draw_game(int id)
       update(displayer);
       displayer->player = update_player(displayer->player);
       sfRenderWindow_display(displayer->window);
-      sfRenderWindow_clear(displayer->window, sfBlack);
+      //      sfRenderWindow_clear(displayer->window, sfBlack);
     }
   exit(1);
 }
