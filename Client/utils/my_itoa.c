@@ -5,16 +5,16 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Thu Sep  7 13:57:30 2017 Killian
-** Last update Thu Sep  7 13:59:30 2017 Killian
+** Last update Wed Oct  4 23:19:52 2017 Marc PEREZ
 */
 
 #include "tekadv.h"
 
-char            *my_itoa(int nb)
+char		*my_itoa(int nb)
 {
-  int           len;
-  char          *str;
-  int           tmp;
+  int		len;
+  char		*str;
+  int		tmp;
 
   tmp = nb;
   len = 0;
@@ -25,7 +25,8 @@ char            *my_itoa(int nb)
       tmp /= 10;
       len++;
     }
-  str = malloc(sizeof(*str) * (len + 1));
+  if (!(str = malloc(sizeof(*str) * (len + 1))))
+    return (NULL);
   str[len] = '\0';
   while (len--)
     {

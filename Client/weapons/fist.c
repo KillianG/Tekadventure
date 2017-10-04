@@ -5,7 +5,7 @@
 ** Login   <kentin.pratelli@epitech.eu>
 ** 
 ** Started on  Mon Oct  2 13:08:21 2017 root
-** Last update Wed Oct  4 17:25:46 2017 Killian
+** Last update Wed Oct  4 23:26:11 2017 Marc PEREZ
 */
 
 #include "tekadv.h"
@@ -27,7 +27,7 @@ void		attack_fist(t_displayer *displayer)
 					    vector2f(SCREEN_WIDTH / 2 - 25,
 						     SCREEN_HEIGHT / 2 - 25),
 					    vector2f(1, 1));
-  else if (displayer->player->helmet->level == 2)
+  else if (displayer->player->helmet->level == 3)
     displayer->player->sprite = init_sprite(PLAYERT3POING,
 					    vector2f(SCREEN_WIDTH / 2 - 25,
 						     SCREEN_HEIGHT / 2 - 25),

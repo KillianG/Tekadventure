@@ -5,12 +5,11 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:32:50 2017 Killian
-** Last update Tue Oct  3 15:36:22 2017 root
+** Last update Wed Oct  4 23:21:52 2017 Marc PEREZ
 */
 
-#include "tekadv.h"
-
 #include <time.h>
+#include "tekadv.h"
 
 t_displayer		*init_displayer_part2(t_displayer *displayer)
 {
@@ -29,8 +28,8 @@ t_displayer		*init_displayer_part2(t_displayer *displayer)
 
 t_displayer		*init_displayer(int id)
 {
-  t_displayer           *displayer;
-  sfRenderWindow        *window;
+  t_displayer		*displayer;
+  sfRenderWindow	*window;
   sfSprite		*sprite;
   float			x;
   float			y;

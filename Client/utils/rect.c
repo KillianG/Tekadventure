@@ -5,14 +5,15 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:09:49 2017 Killian
-** Last update Wed Aug 30 18:03:45 2017 Killian
+** Last update Wed Oct  4 23:20:58 2017 Marc PEREZ
 */
 
 #include "tekadv.h"
 
-sfFloatRect	float_rect(float top, float left, float width, float height)
+sfFloatRect	float_rect(float top, float left,
+			   float width, float height)
 {
-  sfFloatRect     rect;
+  sfFloatRect	rect;
 
   rect.top = top;
   rect.left = left;
@@ -32,7 +33,8 @@ sfIntRect	int_rect(int top, int left, int width, int height)
   return (rect);
 }
 
-void	init_rect(sfIntRect *rect, sfVector2i top_left, sfVector2i width_height)
+void	init_rect(sfIntRect *rect, sfVector2i top_left,
+		  sfVector2i width_height)
 {
   rect->top = top_left.x;
   rect->left = top_left.y;
