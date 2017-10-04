@@ -1,11 +1,11 @@
 /*
-1;4402;0c** draw_screen.c for tekadv in /home/killian/github/tekaventure/screen
+** draw_screen.c for tekadv in /home/killian/github/tekaventure/screen
 ** 
 ** Made by Killian
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Wed Oct  4 15:26:35 2017 Killian
+** Last update Wed Oct  4 23:42:18 2017 Marc PEREZ
 */
 
 #include <unistd.h>
@@ -24,8 +24,8 @@ void		launch_thread(t_displayer *displayer)
 
 void		draw_game(int id)
 {
-  t_displayer	*displayer;
   sfThread	*draw;
+  t_displayer	*displayer;
 
   displayer = init_displayer(id);
   launch_thread(displayer);

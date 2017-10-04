@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Thu Sep  7 15:37:13 2017 Killian
-** Last update Sat Sep  9 14:59:47 2017 Killian
+** Last update Wed Oct  4 23:33:57 2017 Marc PEREZ
 */
 
 #include "tekadv.h"
@@ -27,7 +27,8 @@ void		init_arrow(t_displayer *displayer)
 {
   sfSprite	*arrow;
 
-  arrow = init_sprite(ARROW, vector2f(SCREEN_WIDTH/2, SCREEN_HEIGHT/2), vector2f(0.5, 0.5));
+  arrow = init_sprite(ARROW, vector2f(SCREEN_WIDTH/2, SCREEN_HEIGHT/2),
+		      vector2f(0.5, 0.5));
   sfSprite_setOrigin(arrow, vector2f(0, -50));
   displayer->arrow = arrow;
 }

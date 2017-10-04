@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Sat Sep 23 17:10:22 2017 Killian
-** Last update Wed Oct  4 16:43:40 2017 Killian
+** Last update Wed Oct  4 23:41:50 2017 Marc PEREZ
 */
 
 #include <unistd.h>
@@ -21,7 +21,8 @@ void		loop_draw(void *param)
   draw_houses(displayer);
   draw_helmets(displayer);
   draw_ammo(displayer);
-  sfRenderWindow_drawSprite(displayer->window, displayer->player->sprite, NULL);
+  sfRenderWindow_drawSprite(displayer->window,
+			    displayer->player->sprite, NULL);
   draw_hand_weapon(displayer);
   continue_shooting(displayer);
   draw_ennemies(displayer);

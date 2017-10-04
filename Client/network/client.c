@@ -5,11 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-<<<<<<< HEAD
-** Last update Wed Oct  4 23:14:25 2017 Marc PEREZ
-=======
-** Last update Wed Sep 20 19:34:45 2017 Marc PEREZ
->>>>>>> 52e895834fec2ea1e2b1236c91cb14df1bd2cb0c
+** Last update Wed Oct  4 23:33:25 2017 Marc PEREZ
 */
 
 #include <poll.h>
@@ -84,8 +80,8 @@ static inline int	socket_create(void)
 
 int		send_data(t_packet *data)
 {
-  int		code;
   struct pollfd	fds;
+  int		code;
 
   fds.fd = g_socket;
   fds.events = POLLOUT;
@@ -116,8 +112,8 @@ int	init_connection(char *host, char *port)
 
 t_packet	*receive_data(void)
 {
-  t_packet	*data;
   struct pollfd	fds;
+  t_packet	*data;
 
   fds.fd = g_socket;
   fds.events = POLLIN;

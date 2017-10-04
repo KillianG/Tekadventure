@@ -5,22 +5,22 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep 20 12:44:22 2017 Killian
-** Last update Wed Oct  4 12:54:59 2017 Killian
+** Last update Wed Oct  4 23:41:10 2017 Marc PEREZ
 */
 
-#include "tekadv.h"
 #include <unistd.h>
+#include "tekadv.h"
 
-void            loop_network(void *param)
+void		loop_network(void *param)
 {
   t_displayer	*displayer;
-  int           i;
+  int		i;
 
   displayer = param;
   i = 0;
   if (i >= 50)
     {
-      //      reset_players(displayer);                                                            
+      //      reset_players(displayer);
       i = 0;
     }
   displayer->received = receive_data();
@@ -29,5 +29,5 @@ void            loop_network(void *param)
       add_players(displayer);
     }
   send_data(new_packet(displayer->player));
-  i++;
+  ++i;
 }

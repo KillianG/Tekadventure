@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:12:50 2017 Killian
-** Last update Thu Sep  7 15:44:14 2017 Killian
+** Last update Wed Oct  4 23:43:52 2017 Marc PEREZ
 */
 
 #include "tekadv.h"
@@ -29,12 +29,12 @@ float		get_angle_from_mouse(t_displayer *displayer)
   return (angle);
 }
 
-float           get_angle_from_pos(sfVector2f pos)
+float	get_angle_from_pos(sfVector2f pos)
 {
-  float         x;
-  float         y;
-  float         angle;
-  float         length;
+  float	x;
+  float	y;
+  float	angle;
+  float	length;
 
   x = pos.x - SCREEN_WIDTH / 2;
   y = pos.y - SCREEN_HEIGHT / 2;

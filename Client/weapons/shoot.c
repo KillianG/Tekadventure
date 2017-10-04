@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 20:43:14 2017 Killian
-** Last update Wed Oct  4 17:57:18 2017 Killian
+** Last update Wed Oct  4 23:34:48 2017 Marc PEREZ
 */
 
 #include "tekadv.h"
@@ -34,7 +34,7 @@ void		check_hit(t_displayer *displayer)
     }
 }
 
-int     is_outofbound(sfVector2f pos)
+int	is_outofbound(sfVector2f pos)
 {
   if (pos.x > SCREEN_WIDTH || pos.x < 0)
     return (1);
@@ -51,7 +51,8 @@ void		shoot(t_displayer *displayer)
 	{
 	  displayer->player->ammos -= 1;
 	  displayer->player->shoot = 1;
-	  sfSprite_setRotation(displayer->bullet, get_angle_from_mouse(displayer));
+	  sfSprite_setRotation(displayer->bullet,
+			       get_angle_from_mouse(displayer));
 	  displayer->player->shooting_angle = get_angle_from_mouse(displayer);
 	  sfSprite_setPosition(displayer->bullet,
 			       vector2f(SCREEN_WIDTH/2 + 5,
@@ -66,7 +67,7 @@ void		shoot(t_displayer *displayer)
     }
 }
 
-void			continue_shooting(t_displayer *displayer)
+void	continue_shooting(t_displayer *displayer)
 {
   if (!displayer->player->shoot)
     return ;

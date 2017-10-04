@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Mon Sep 11 13:56:03 2017 Killian
-** Last update Wed Oct  4 12:57:56 2017 Killian
+** Last update Wed Oct  4 23:39:05 2017 Marc PEREZ
 */
 
 #include "tekadv.h"
@@ -34,7 +34,7 @@ void		reset_players(t_displayer *displayer)
 void		draw_players(t_displayer *displayer)
 {
   sfSprite	*sprite;
-  
+
   sprite = init_sprite(TEST, vector2f(0, 0), vector2f(1, 1));
   if (displayer->received != NULL)
     {
@@ -55,7 +55,8 @@ void		init_players(t_displayer *displayer)
   int		i;
 
   i = 0;
-  players = malloc(sizeof(t_player *) * 50);
+  if (!(players = malloc(sizeof(t_player *) * 50)))
+    exit(84);
   players[0] = NULL;
   while (i < 50)
     {
