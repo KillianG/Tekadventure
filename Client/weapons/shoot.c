@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 20:43:14 2017 Killian
-** Last update Tue Oct  3 15:53:33 2017 root
+** Last update Wed Oct  4 11:18:32 2017 Killian
 */
 
 #include "tekadv.h"
@@ -47,12 +47,16 @@ void		shoot(t_displayer *displayer)
 {
   if (!displayer->player->shoot && displayer->player->has_weapon)
     {
-      displayer->player->shoot = 1;
-      sfSprite_setRotation(displayer->bullet, get_angle_from_mouse(displayer));
-      displayer->player->shooting_angle = get_angle_from_mouse(displayer);
-      sfSprite_setPosition(displayer->bullet,
-			   vector2f(SCREEN_WIDTH/2 + 5,
-				    SCREEN_HEIGHT/2 + 20));
+      if (displayer->player->ammos > 0)
+	{
+	  displayer->player->ammos -= 1;
+	  displayer->player->shoot = 1;
+	  sfSprite_setRotation(displayer->bullet, get_angle_from_mouse(displayer));
+	  displayer->player->shooting_angle = get_angle_from_mouse(displayer);
+	  sfSprite_setPosition(displayer->bullet,
+			       vector2f(SCREEN_WIDTH/2 + 5,
+					SCREEN_HEIGHT/2 + 20));
+	}
     }
   else
     attack_fist(displayer);
