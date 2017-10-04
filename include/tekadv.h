@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Tue Oct  3 16:28:22 2017 root
+** Last update Wed Oct  4 12:17:38 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -87,6 +87,12 @@
 # define NB_AMMO 20
 
 /* __________ STRUCTURES __________ */
+
+typedef struct		s_packet
+{
+  int			id;
+  sfVector2f		pos;
+}			t_packer;
 
 typedef struct          s_fist
 {
