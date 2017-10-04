@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Wed Oct  4 12:34:28 2017 Killian
+** Last update Wed Oct  4 12:56:43 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -92,7 +92,7 @@ typedef struct		s_packet
 {
   int			id;
   sfVector2f		pos;
-  int			health
+  int			health;
 }			t_packet;
 
 typedef struct          s_fist
@@ -179,8 +179,8 @@ typedef struct		s_displayer
   t_ennemy		*ennemies[NB_ENNEMY + 1];
   sfText		*hp;
   t_ammo		*ammo[NB_AMMO + 1];
-  t_player		**players;
-  t_player		*received;
+  t_packet		**players;
+  t_packet		*received;
   sfText		*ammunitions;
 }			t_displayer;
 
@@ -235,8 +235,8 @@ int		check_in(t_displayer *);
 float		get_angle_from_pos(sfVector2f);
 void		init_arrow(t_displayer *);
 void		draw_arrow(t_displayer *);
-int		send_data(t_player *);
-t_player	*receive_data(void);
+int		send_data(t_packet *);
+t_packet	*receive_data(void);
 void		init_players(t_displayer *);
 int		init_connection(char *, char *);
 void		add_players(t_displayer *);
@@ -259,5 +259,6 @@ void		draw_ammo(t_displayer *);
 void		update_ammos(t_displayer *);
 void		init_ammo_text(t_displayer *);
 void		update_ammo_text(t_displayer *);
+t_packet	*new_packet(t_player *);
 
 #endif

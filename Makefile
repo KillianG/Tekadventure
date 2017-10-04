@@ -5,7 +5,7 @@
 ## Login   <marc.perez@epitech.eu>
 ## 
 ## Started on  Wed Sep 27 13:07:15 2017 Marc PEREZ
-## Last update Wed Oct  4 12:19:38 2017 Killian
+## Last update Wed Oct  4 12:54:35 2017 Killian
 ##
 
 NAME		=	tekadventure
@@ -111,6 +111,7 @@ SRC		+=	$(ZONEDIR)/init_zone.c			\
 
 SRC		+=	$(NETWORKDIR)/client.c			\
 			$(NETWORKDIR)/misc.c			\
+			$(NETWORKDIR)/packet.c			\
 
 SRC		+=	$(THREADSDIR)/loop_network.c		\
 			$(THREADSDIR)/loop_update.c		\

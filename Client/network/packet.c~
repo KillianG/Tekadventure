@@ -1,0 +1,19 @@
+/*
+** packet.c for tekadv in /home/killian/github/tekaventure
+** 
+** Made by Killian
+** Login   <killian.gardahaut@epitech.eu>
+** 
+** Started on  Wed Oct  4 12:52:36 2017 Killian
+** Last update Wed Oct  4 12:53:28 2017 Killian
+*/
+
+#include "tekadv.h"
+
+t_packet	*new_packet(t_player *player)
+{
+  t_packet	*packet;
+
+  packet->id = player->id;
+  packet->pos = player->pos;
+}

@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep 20 12:44:22 2017 Killian
-** Last update Wed Oct  4 12:10:43 2017 Killian
+** Last update Wed Oct  4 12:54:59 2017 Killian
 */
 
 #include "tekadv.h"
@@ -28,6 +28,6 @@ void            loop_network(void *param)
     {
       add_players(displayer);
     }
-  send_data(displayer->player);
+  send_data(new_packet(displayer->player));
   i++;
 }

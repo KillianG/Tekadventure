@@ -6,7 +6,7 @@
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
 <<<<<<< HEAD
-** Last update Thu Sep 28 15:22:47 2017 Killian
+** Last update Wed Oct  4 12:50:43 2017 Killian
 =======
 ** Last update Wed Sep 20 19:34:45 2017 Marc PEREZ
 >>>>>>> 52e895834fec2ea1e2b1236c91cb14df1bd2cb0c
@@ -83,7 +83,7 @@ static inline int	socket_create(void)
   return (g_socket);
 }
 
-int		send_data(t_player *data)
+int		send_data(t_packet *data)
 {
   int		code;
   struct pollfd	fds;
@@ -115,9 +115,9 @@ int	init_connection(char *host, char *port)
   return (id);
 }
 
-t_player	*receive_data(void)
+t_packet	*receive_data(void)
 {
-  t_player	*data; 
+  t_packet	*data;
   struct pollfd	fds;
 
   fds.fd = g_socket;
@@ -132,7 +132,6 @@ t_player	*receive_data(void)
     }
   if (receive_all(g_socket, data, sizeof(*data)) == true)
     {
-      printf("data received = %d %.2f\n", data->id, data->pos.x);
       return (data);
     }
   free(data);
