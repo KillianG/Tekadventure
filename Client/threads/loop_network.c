@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep 20 12:44:22 2017 Killian
-** Last update Thu Oct  5 00:26:28 2017 Marc PEREZ
+** Last update Thu Oct  5 13:55:37 2017 Killian
 */
 
 #include <unistd.h>
@@ -14,20 +14,15 @@
 void		loop_network(void *param)
 {
   t_displayer	*displayer;
-  int		i;
 
   displayer = param;
-  i = 0;
-  if (i >= 50)
+  while (1)
     {
-      //      reset_players(displayer);
-      i = 0;
+      displayer->received = receive_data(displayer->player);
+      if (displayer->player != NULL)
+	{
+	  add_players(displayer);
+	}
+      send_data(new_packet(displayer->player));
     }
-  displayer->received = receive_data(displayer->player);
-  if (displayer->player != NULL)
-    {
-      add_players(displayer);
-    }
-  send_data(new_packet(displayer->player));
-  ++i;
 }

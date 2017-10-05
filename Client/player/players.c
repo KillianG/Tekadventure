@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Mon Sep 11 13:56:03 2017 Killian
-** Last update Wed Oct  4 23:39:05 2017 Marc PEREZ
+** Last update Thu Oct  5 12:58:35 2017 Killian
 */
 
 #include "tekadv.h"
@@ -16,18 +16,6 @@ void		add_players(t_displayer *displayer)
   if (displayer->received != NULL)
     {
       displayer->players[displayer->received->id] = displayer->received;
-    }
-}
-
-void		reset_players(t_displayer *displayer)
-{
-  int		i;
-
-  i = 0;
-  while (i < 50)
-    {
-      displayer->players[i] = NULL;
-      i++;
     }
 }
 
