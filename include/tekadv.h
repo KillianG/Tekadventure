@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Thu Oct  5 00:22:54 2017 Marc PEREZ
+** Last update Thu Oct  5 11:54:46 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -60,7 +60,7 @@
 ** _________ SPRITES ________
 */
 
-# define BACKGROUND "images/background.jpg"
+# define BACKGROUND "images/background.png"
 # define PLAYER "images/player.png"
 # define PLAYERT1 "images/playert1.png"
 # define PLAYERT2 "images/playert2.png"
@@ -294,6 +294,7 @@ void		update_ammos(t_displayer *);
 void		init_ammo_text(t_displayer *);
 void		update_ammo_text(t_displayer *);
 t_packet	*new_packet(t_player *);
-void	change_helmet(t_displayer *displayer, int lvl);
+void		change_helmet(t_displayer *displayer, int lvl);
+void		attack(int, int);
 
 #endif

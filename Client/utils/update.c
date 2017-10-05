@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 13:35:58 2017 Killian
-** Last update Tue Oct  3 15:10:16 2017 Killian
+** Last update Thu Oct  5 11:53:10 2017 Killian
 */
 
 #include "tekadv.h"
@@ -14,6 +14,11 @@ void	update(t_displayer *displayer)
 {
   int	curr_house;
 
+  if (displayer->player->hp <= 0)
+    {
+      printf("T'as perdu grosse m*r*e\n");
+      exit(0);
+    }
   curr_house = -1;
   while (displayer->houses[++curr_house] != NULL)
     update_house(displayer->houses[curr_house], displayer);
@@ -25,9 +30,4 @@ void	update(t_displayer *displayer)
   update_ammo_text(displayer);
   update_helmets(displayer);
   update_ammos(displayer);
-  if (displayer->player->hp <= 0)
-    {
-      printf("T'as perdu grosse m*r*e\n");
-      exit(0);
-    }
 }

@@ -5,10 +5,19 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 20:43:14 2017 Killian
-** Last update Wed Oct  4 23:34:48 2017 Marc PEREZ
+** Last update Thu Oct  5 11:55:11 2017 Killian
 */
 
 #include "tekadv.h"
+
+sfVector2f	center(sfVector2f pos, t_displayer *displayer)
+{
+  sfVector2f	result;
+
+  result.x = (pos.x * -1) + SCREEN_WIDTH / 2 + displayer->player->pos.x;
+  result.y = (pos.y * -1) + SCREEN_HEIGHT / 2 + displayer->player->pos.y;
+  return (result);
+}
 
 void		check_hit(t_displayer *displayer)
 {
@@ -17,20 +26,28 @@ void		check_hit(t_displayer *displayer)
   sfFloatRect	result;
   int		cpt;
   int		collide;
+  sfSprite	*sprite;
 
   collide = 0;
   cpt = -1;
   bullet = sfSprite_getGlobalBounds(displayer->bullet);
-  while (displayer->ennemies[++cpt] != NULL && !collide)
+  while (++cpt != 10 && !collide)
     {
-      hitbox = sfSprite_getGlobalBounds(displayer->ennemies[cpt]->sprite);
-      if (sfFloatRect_intersects(&bullet, &hitbox, &result) &&
-	  displayer->ennemies[cpt]->hp > 0)
-        {
-	  displayer->player->shoot = 0;
-	  displayer->ennemies[cpt]->hp -= displayer->player->weapon->damages;
-          collide = 1;
-        }
+      if (displayer->players[cpt] != NULL)
+	{
+	  sprite = init_sprite(TEST, center(displayer->players[cpt]->pos, displayer),
+			       vector2f(1, 1));
+	  hitbox = sfSprite_getGlobalBounds(sprite);
+	  if (sfFloatRect_intersects(&bullet, &hitbox, &result) &&
+	      displayer->players[cpt]->health > 0)
+	    {
+	      displayer->player->shoot = 0;
+	      attack(displayer->player->weapon->damages, cpt);
+	      if (displayer->players[cpt]->health <= 0)
+		displayer->players[cpt] = NULL;
+	      collide = 1;
+	    }
+	}
     }
 }
 

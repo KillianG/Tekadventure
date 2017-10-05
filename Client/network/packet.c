@@ -5,11 +5,24 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Oct  4 12:52:36 2017 Killian
-** Last update Thu Oct  5 00:24:22 2017 Marc PEREZ
+** Last update Thu Oct  5 11:53:28 2017 Killian
 */
 
 #include <stdbool.h>
 #include "tekadv.h"
+
+void		attack(int damages, int id)
+{
+  t_packet	*attack;
+
+  if ((attack = malloc(sizeof(t_packet))) == NULL)
+    return ;
+  attack->id = id;
+  attack->pos = vector2f(0, 0);
+  attack->health = damages;
+  attack->is_attack = true;
+  send_data(attack);
+}
 
 t_packet	*new_packet(t_player *player)
 {
