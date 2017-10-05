@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep 20 12:44:22 2017 Killian
-** Last update Thu Oct  5 13:55:37 2017 Killian
+** Last update Thu Oct  5 14:02:05 2017 Killian
 */
 
 #include <unistd.h>
@@ -24,5 +24,6 @@ void		loop_network(void *param)
 	  add_players(displayer);
 	}
       send_data(new_packet(displayer->player));
+      sfSleep(sfMilliseconds(100));
     }
 }
