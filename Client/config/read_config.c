@@ -5,7 +5,7 @@
 ** Login   <kentin.pratelli@epitech.eu>
 ** 
 ** Started on  Fri Oct  6 15:33:52 2017 root
-** Last update Fri Oct  6 17:38:53 2017 root
+** Last update Fri Oct  6 17:41:02 2017 root
 */
 
 #include <stdio.h>
@@ -26,7 +26,7 @@ int	my_strstr(char *buffer, char *str)
 	  ++j;
 	}
       if (str[j] == '\0' && ((buffer[i + 1] >= 'a' && buffer[i + 1] <= 'z')
-			     || (buffer[i + 1] >= 'A' && buffer[i + 1] <= 'Z')))
+			  || (buffer[i + 1] >= 'A' && buffer[i + 1] <= 'Z')))
 	return (i + 1);
       j = 0;
       ++i;
