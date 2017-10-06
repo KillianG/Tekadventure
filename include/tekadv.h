@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Thu Oct  5 15:02:00 2017 Killian
+** Last update Fri Oct  6 16:24:10 2017 root
 */
 
 #ifndef TEKADV_H_
@@ -115,6 +115,12 @@
 # define NB_AMMO 20
 
 /*
+** ________ CONFIG ________
+*/
+
+# define CONFIG "config.ini"
+
+/*
 ** __________ STRUCTURES __________
 */
 
@@ -125,6 +131,16 @@ typedef struct		s_packet
   int			health;
   _Bool			is_attack;
 }			t_packet;
+
+typedef struct		s_config
+{
+  int			up;
+  int			left;
+  int			down;
+  int			right;
+  int			take;
+  int			drop;
+}			t_config;
 
 typedef struct		s_fist
 {
@@ -218,6 +234,7 @@ typedef struct		s_displayer
   t_packet		**players;
   t_packet		*received;
   sfText		*ammunitions;
+  t_config		*config;
 }			t_displayer;
 
 /*
@@ -301,5 +318,7 @@ void		update_ammo_text(t_displayer *);
 t_packet	*new_packet(t_player *);
 void		change_helmet(t_displayer *displayer, int lvl);
 void		attack(int, int);
+void		read_config(t_displayer *);
+char		*read_file(char *);
 
 #endif

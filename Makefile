@@ -5,7 +5,7 @@
 ## Login   <marc.perez@epitech.eu>
 ## 
 ## Started on  Wed Sep 27 13:07:15 2017 Marc PEREZ
-## Last update Wed Oct  4 16:56:36 2017 Killian
+## Last update Fri Oct  6 16:07:35 2017 root
 ##
 
 NAME		=	tekadventure
@@ -32,6 +32,7 @@ THREADSDIR	=	$(SRCDIR)/threads
 MANDATORYDIR	=	$(SRCDIR)/mandatory
 EQUIPMENTDIR	=	$(SRCDIR)/equipment
 AMMODIR		=	$(SRCDIR)/ammunitions
+CONFIG		=	$(SRCDIR)/config
 
 
 INCDIR		=	include
@@ -130,6 +131,9 @@ SRC		+=	$(AMMODIR)/ammo.c			\
 			$(AMMODIR)/draw_ammo.c			\
 			$(AMMODIR)/init_ammo.c			\
 			$(AMMODIR)/update_ammo.c		\
+
+SRC		+=	$(CONFIG)/read_config.c			\
+			$(CONFIG)/read_file.c			\
 
 OBJ		=	$(SRC:.c=.o)
 

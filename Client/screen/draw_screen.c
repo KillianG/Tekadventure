@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Thu Oct  5 15:56:56 2017 Killian
+** Last update Fri Oct  6 17:13:00 2017 root
 */
 
 #include <unistd.h>
@@ -28,6 +28,7 @@ void		draw_game(int id)
   t_displayer	*displayer;
 
   displayer = init_displayer(id);
+  read_config(displayer);
   launch_thread(displayer);
   draw = sfThread_create(loop_draw, (void *)displayer);
   while (!sfKeyboard_isKeyPressed(sfKeyEscape))
