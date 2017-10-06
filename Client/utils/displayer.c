@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:32:50 2017 Killian
-** Last update Wed Oct  4 23:21:52 2017 Marc PEREZ
+** Last update Thu Oct  5 15:03:23 2017 Killian
 */
 
 #include <time.h>
@@ -43,6 +43,8 @@ t_displayer		*init_displayer(int id)
     return (NULL);
   displayer->window = window;
   displayer->map = sprite;
+  displayer->map1 = init_sprite(BACKGROUND1, vector2f(x, y), vector2f(1.5, 1.5));
+  displayer->map2 = init_sprite(BACKGROUND2, vector2f(x, y), vector2f(1.5, 1.5));
   displayer->player = init_player(id);
   displayer->player->pos.x = x;
   displayer->player->pos.y = y;

@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Mon Sep 11 13:56:03 2017 Killian
-** Last update Thu Oct  5 12:58:35 2017 Killian
+** Last update Thu Oct  5 15:04:43 2017 Killian
 */
 
 #include "tekadv.h"
@@ -22,18 +22,24 @@ void		add_players(t_displayer *displayer)
 void		draw_players(t_displayer *displayer)
 {
   sfSprite	*sprite;
+  int		i;
 
-  sprite = init_sprite(TEST, vector2f(0, 0), vector2f(1, 1));
-  if (displayer->received != NULL)
+  i = 0;
+  while (i < NB_PLAYERS)
     {
-      sfSprite_setPosition(sprite,
-			   vector2f((displayer->received->pos.x * -1) +
-				    SCREEN_WIDTH/2 +
-				    displayer->player->pos.x,
-				    (displayer->received->pos.y * -1) +
-				    SCREEN_HEIGHT/2 +
-				    displayer->player->pos.y));
-      sfRenderWindow_drawSprite(displayer->window, sprite, NULL);
+      if (displayer->players[i] != NULL)
+	{
+	  sprite = init_sprite(TEST, vector2f(0, 0), vector2f(1, 1));
+	  sfSprite_setPosition(sprite,
+			       vector2f((displayer->players[i]->pos.x * -1) +
+					SCREEN_WIDTH/2 +
+					displayer->player->pos.x,
+					(displayer->players[i]->pos.y * -1) +
+					SCREEN_HEIGHT/2 +
+					displayer->player->pos.y));
+	  sfRenderWindow_drawSprite(displayer->window, sprite, NULL);
+	}
+      i++;
     }
 }
 

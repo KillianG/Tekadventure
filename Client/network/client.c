@@ -5,7 +5,7 @@
 ** Login   <marc.perez@epitech.eu>
 ** 
 ** Started on  Fri Aug 25 14:08:20 2017 Marc PEREZ
-** Last update Thu Oct  5 00:23:29 2017 Marc PEREZ
+** Last update Thu Oct  5 14:39:20 2017 Killian
 */
 
 #include <poll.h>
@@ -134,6 +134,7 @@ t_packet	*receive_data(t_player *my_player)
 	  free(data);
 	  data = NULL;
 	}
+      printf("data = %d\n", data->id);
       return (data);
     }
   free(data);

@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Thu Oct  5 11:54:46 2017 Killian
+** Last update Thu Oct  5 15:02:00 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -60,7 +60,9 @@
 ** _________ SPRITES ________
 */
 
-# define BACKGROUND "images/background.png"
+# define BACKGROUND "images/couche0.png"
+# define BACKGROUND1 "images/couche1.png"
+# define BACKGROUND2 "images/couche2.png"
 # define PLAYER "images/player.png"
 # define PLAYERT1 "images/playert1.png"
 # define PLAYERT2 "images/playert2.png"
@@ -101,6 +103,7 @@
 */
 
 # define NB_ENNEMY 2
+# define NB_PLAYERS 10
 # define ENNEMY "images/Ganon.png"
 
 /*
@@ -180,7 +183,7 @@ typedef struct		s_player
   float			hp;
   sfVector2f		pos;
   int			has_weapon;
-  sfSprite		*sprite;
+  sfSprite		*sprite;;
   sfIntRect		hitbox;
   t_weapon		*weapon;
   int			sprite_pos;
@@ -204,6 +207,8 @@ typedef struct		s_displayer
   sfSprite		*bullet;
   sfRenderWindow	*window;
   sfSprite		*map;
+  sfSprite		*map1;
+  sfSprite		*map2;
   t_player		*player;
   t_house		*houses[NB_HOUSES + 1];
   t_weapon		*weapons[NB_WEAPONS + 1];
