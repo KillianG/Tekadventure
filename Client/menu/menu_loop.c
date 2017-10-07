@@ -5,7 +5,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Thu Sep 21 13:17:22 2017 ratch7t
-** Last update Sat Oct  7 14:42:32 2017 ratch7t
+** Last update Sat Oct  7 14:49:08 2017 ratch7t
 */
 
 #include "rudy.h"
@@ -28,7 +28,7 @@ int		right_screen_option(t_displayer *displayer, t_sprite *sprite)
   if (sprite->mouse_pos.y <= 560 && sprite->mouse_pos.y > 520)
     {
       sfRenderWindow_drawSprite(displayer->window, sprite->option, NULL);
-      if (sfMouse_isButtonPressed(sfMouseLeft));
+      //if (sfMouse_isButtonPressed(sfMouseLeft));
 	//play_zombie(displayer, sprite); 
     }
   else if (sprite->mouse_pos.y <= 605 && sprite->mouse_pos.y > 565)
