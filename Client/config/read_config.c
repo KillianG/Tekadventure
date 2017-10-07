@@ -5,7 +5,7 @@
 ** Login   <kentin.pratelli@epitech.eu>
 ** 
 ** Started on  Fri Oct  6 15:33:52 2017 root
-** Last update Fri Oct  6 17:41:02 2017 root
+** Last update Fri Oct  6 22:41:20 2017 root
 */
 
 #include <stdio.h>
@@ -17,9 +17,9 @@ int	my_strstr(char *buffer, char *str)
   int	j;
 
   i = 0;
-  j = 0;
   while (buffer[i])
     {
+      j = 0;
       while (buffer[i] == str[j])
 	{
 	  ++i;
@@ -28,7 +28,6 @@ int	my_strstr(char *buffer, char *str)
       if (str[j] == '\0' && ((buffer[i + 1] >= 'a' && buffer[i + 1] <= 'z')
 			  || (buffer[i + 1] >= 'A' && buffer[i + 1] <= 'Z')))
 	return (i + 1);
-      j = 0;
       ++i;
     }
   return (-1);

@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Fri Oct  6 16:24:10 2017 root
+** Last update Fri Oct  6 22:50:56 2017 root
 */
 
 #ifndef TEKADV_H_
@@ -119,6 +119,13 @@
 */
 
 # define CONFIG "config.ini"
+# define LINE0 "KEYS:\n"
+# define LINE1 "\tUP:Z\n"
+# define LINE2 "\tLEFT:Q\n"
+# define LINE3 "\tDOWN:S\n"
+# define LINE4 "\tRIGHT:D\n"
+# define LINE5 "\tTAKE:E\n"
+# define LINE6 "\tDROP:A\n"
 
 /*
 ** __________ STRUCTURES __________
