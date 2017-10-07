@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 12:25:29 2017 Killian
-** Last update Tue Oct  3 14:04:03 2017 Killian
+** Last update Sat Oct  7 14:46:10 2017 Killian
 */
 
 #include <time.h>
@@ -18,7 +18,7 @@ t_displayer	*init_houses(t_displayer *displayer)
   i = -1;
   while (++i < NB_HOUSES)
     {
-      displayer->houses[i] = init_house(vector2f(rand() % MAP_SIZEX, rand() % MAP_SIZEY),
+      displayer->houses[i] = init_house(vector2f(300, 300),
 				displayer);
     }
   displayer->houses[i] = NULL;
