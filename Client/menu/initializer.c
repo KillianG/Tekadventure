@@ -5,7 +5,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 15:54:36 2017 ratch7t
-** Last update Sat Oct  7 13:11:58 2017 ratch7t
+** Last update Sat Oct  7 17:44:47 2017 ratch7t
 */
 
 #include "rudy.h"
@@ -47,7 +47,6 @@ t_sprite	*init_str_sprite(void)
   sprit->option = init_sprite_menu(MENU_OPTION);
   sprit->exit = init_sprite_menu(EXIT);
   sprit->cursor = init_sprite_menu(MOUSE);
-  init_zombie_start(sprit);
   sfSprite_setScale(sprit->cursor, vector2f(0.05, 0.05));
   return (sprit);
 }

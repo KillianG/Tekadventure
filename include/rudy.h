@@ -5,7 +5,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Thu Aug 31 14:18:33 2017 ratch7t
-** Last update Sat Oct  7 13:41:25 2017 ratch7t
+** Last update Sat Oct  7 17:47:10 2017 ratch7t
 */
 
 #ifndef RUDY_H_
@@ -65,7 +65,9 @@ zombie
 # define ZOMBIE_29 "images/zombie/menu_zombie_29.png"
 # define ZOMBIE_30 "images/zombie/menu_zombie_30.png"
 # define ZOMBIE_31 "images/zombie/menu_zombie_31.png"
-
+/*
+cursor
+*/
 # define MOUSE "images/cursor.png"
 
 # define SCREEN_WIDTH 1080
@@ -89,37 +91,6 @@ typedef struct		s_sprite
   sfSprite		*cursor;
   sfVector2f		mouse_pos;
   sfVector2i		mouse;
-  sfSprite		*zomb_01;
-  sfSprite		*zomb_02;
-  sfSprite		*zomb_03;
-  sfSprite		*zomb_04;
-  sfSprite		*zomb_05;
-  sfSprite		*zomb_06;
-  sfSprite		*zomb_07;
-  sfSprite		*zomb_08;
-  sfSprite		*zomb_09;
-  sfSprite		*zomb_10;
-  sfSprite		*zomb_11;
-  sfSprite		*zomb_12;
-  sfSprite		*zomb_13;
-  sfSprite		*zomb_14;
-  sfSprite		*zomb_15;
-  sfSprite		*zomb_16;
-  sfSprite		*zomb_17;
-  sfSprite		*zomb_18;
-  sfSprite		*zomb_19;
-  sfSprite		*zomb_20;
-  sfSprite		*zomb_21;
-  sfSprite		*zomb_22;
-  sfSprite		*zomb_23;
-  sfSprite		*zomb_24;
-  sfSprite		*zomb_25;
-  sfSprite		*zomb_26;
-  sfSprite		*zomb_27;
-  sfSprite		*zomb_28;
-  sfSprite		*zomb_29;
-  sfSprite		*zomb_30;
-  sfSprite		*zomb_31;
 }			t_sprite;
 
 /*
@@ -154,8 +125,6 @@ sfVector2f	vector2f(float, float);
 zombie
 */
 
-void		init_zombie_start(t_sprite *);
-void		init_zombie_end(t_sprite *);
 int		play_zombie(t_displayer *, t_sprite *);
 
 #endif /* !RUDY_H_ */

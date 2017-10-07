@@ -5,111 +5,63 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Sat Oct  7 12:35:14 2017 ratch7t
-** Last update Sat Oct  7 14:00:07 2017 ratch7t
+** Last update Sat Oct  7 18:03:19 2017 ratch7t
 */
 
 #include "rudy.h"
 
-void		init_zombie_start(t_sprite *sprit)
+sfSprite	**play_zombie_norm(sfSprite **sprite_tab)
 {
-  sprit->zomb_01 = init_sprite_menu(ZOMBIE_1);
-  sprit->zomb_02 = init_sprite_menu(ZOMBIE_2);
-  sprit->zomb_03 = init_sprite_menu(ZOMBIE_3);
-  sprit->zomb_04 = init_sprite_menu(ZOMBIE_4);
-  sprit->zomb_05 = init_sprite_menu(ZOMBIE_5);
-  sprit->zomb_06 = init_sprite_menu(ZOMBIE_6);
-  sprit->zomb_07 = init_sprite_menu(ZOMBIE_7);
-  sprit->zomb_08 = init_sprite_menu(ZOMBIE_8);
-  sprit->zomb_09 = init_sprite_menu(ZOMBIE_9);
-  sprit->zomb_10 = init_sprite_menu(ZOMBIE_10);
-  sprit->zomb_11 = init_sprite_menu(ZOMBIE_11);
-  sprit->zomb_12 = init_sprite_menu(ZOMBIE_12);
-  sprit->zomb_13 = init_sprite_menu(ZOMBIE_13);
-  sprit->zomb_14 = init_sprite_menu(ZOMBIE_14);
-  sprit->zomb_15 = init_sprite_menu(ZOMBIE_15);
-  init_zombie_end(sprit);
-}
-void		init_zombie_end(t_sprite *sprit)
-{
-  sprit->zomb_16 = init_sprite_menu(ZOMBIE_16);
-  sprit->zomb_17 = init_sprite_menu(ZOMBIE_17);
-  sprit->zomb_18 = init_sprite_menu(ZOMBIE_18);
-  sprit->zomb_19 = init_sprite_menu(ZOMBIE_19);
-  sprit->zomb_20 = init_sprite_menu(ZOMBIE_20);
-  sprit->zomb_21 = init_sprite_menu(ZOMBIE_21);
-  sprit->zomb_22 = init_sprite_menu(ZOMBIE_22);
-  sprit->zomb_23 = init_sprite_menu(ZOMBIE_23);
-  sprit->zomb_24 = init_sprite_menu(ZOMBIE_24);
-  sprit->zomb_25 = init_sprite_menu(ZOMBIE_25);
-  sprit->zomb_26 = init_sprite_menu(ZOMBIE_26);
-  sprit->zomb_27 = init_sprite_menu(ZOMBIE_27);
-  sprit->zomb_28 = init_sprite_menu(ZOMBIE_28);
-  sprit->zomb_29 = init_sprite_menu(ZOMBIE_29);
-  sprit->zomb_30 = init_sprite_menu(ZOMBIE_30);
-  sprit->zomb_31 = init_sprite_menu(ZOMBIE_31);
+  sfVector2f	pos;
+  sfVector2f	scale;
+
+  pos = vector2f(0, 0);
+  scale = vector2f(1, 1);
+  sprite_tab[15] = init_sprite(ZOMBIE_16, pos, scale);
+  sprite_tab[16] = init_sprite(ZOMBIE_17, pos, scale);
+  sprite_tab[17] = init_sprite(ZOMBIE_18, pos, scale);
+  sprite_tab[18] = init_sprite(ZOMBIE_19, pos, scale);
+  sprite_tab[19] = init_sprite(ZOMBIE_20, pos, scale);
+  sprite_tab[20] = init_sprite(ZOMBIE_21, pos, scale);
+  sprite_tab[21] = init_sprite(ZOMBIE_22, pos, scale);
+  sprite_tab[22] = init_sprite(ZOMBIE_23, pos, scale);
+  sprite_tab[23] = init_sprite(ZOMBIE_24, pos, scale);
+  sprite_tab[24] = init_sprite(ZOMBIE_25, pos, scale);
+  sprite_tab[25] = init_sprite(ZOMBIE_26, pos, scale);
+  sprite_tab[26] = init_sprite(ZOMBIE_27, pos, scale);
+  sprite_tab[27] = init_sprite(ZOMBIE_28, pos, scale);
+  sprite_tab[28] = init_sprite(ZOMBIE_29, pos, scale);
+  sprite_tab[29] = init_sprite(ZOMBIE_30, pos, scale);
+  sprite_tab[30] = init_sprite(ZOMBIE_31, pos, scale);
+  sprite_tab[31] = '\0';
+  return (sprite_tab);
 }
 
-int		play_zombie(t_displayer *displayer, t_sprite *sprit)
+sfSprite	**play_zombie(void)
 {
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_02, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_03, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_04, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_05, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_06, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_07, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_08, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_09, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_10, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_11, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_12, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_13, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_14, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_15, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_16, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_17, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_18, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_19, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_20, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_21, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_22, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_23, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_24, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_25, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_26, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_27, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_28, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_29, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_30, NULL);
-  usleep(1000000);
-  sfRenderWindow_drawSprite(displayer->window, sprit->zomb_31, NULL);
-  usleep(1000000);
-  return (0);
+  sfSprite	**sprite_tab;
+  sfVector2f	pos;
+  sfVector2f	scale;
+
+  pos = vector2f(0, 0);
+  scale = vector2f(1, 1);
+  if (!(sprite_tab = malloc(sizeof(sfSprite *) * 32)))
+    return (NULL);
+  sprite_tab[0] = init_sprite(ZOMBIE_1, pos, scale);
+  sprite_tab[1] = init_sprite(ZOMBIE_2, pos, scale);
+  sprite_tab[2] = init_sprite(ZOMBIE_3, pos, scale);
+  sprite_tab[3] = init_sprite(ZOMBIE_4, pos, scale);
+  sprite_tab[4] = init_sprite(ZOMBIE_5, pos, scale);
+  sprite_tab[5] = init_sprite(ZOMBIE_6, pos, scale);
+  sprite_tab[6] = init_sprite(ZOMBIE_7, pos, scale);
+  sprite_tab[7] = init_sprite(ZOMBIE_8, pos, scale);
+  sprite_tab[8] = init_sprite(ZOMBIE_9, pos, scale);
+  sprite_tab[9] = init_sprite(ZOMBIE_10, pos, scale);
+  sprite_tab[10] = init_sprite(ZOMBIE_11, pos, scale);
+  sprite_tab[11] = init_sprite(ZOMBIE_12, pos, scale);
+  sprite_tab[12] = init_sprite(ZOMBIE_13, pos, scale);
+  sprite_tab[13] = init_sprite(ZOMBIE_14, pos, scale);
+  sprite_tab[14] = init_sprite(ZOMBIE_15, pos, scale);
+  sprite_tab = play_zombie_norm(sprite_tab);
+  return (sprite_tab);
 }
