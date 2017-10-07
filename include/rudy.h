@@ -5,7 +5,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Thu Aug 31 14:18:33 2017 ratch7t
-** Last update Sat Oct  7 17:47:10 2017 ratch7t
+** Last update Sat Oct  7 18:13:27 2017 ratch7t
 */
 
 #ifndef RUDY_H_
@@ -125,6 +125,7 @@ sfVector2f	vector2f(float, float);
 zombie
 */
 
-int		play_zombie(t_displayer *, t_sprite *);
+sfSprite	**play_zombie(void);
+sfSprite	**play_zombie_norm(sfSprite **);
 
 #endif /* !RUDY_H_ */
