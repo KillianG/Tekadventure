@@ -5,7 +5,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 15:54:36 2017 ratch7t
-** Last update Wed Sep 13 20:49:32 2017 Marc PEREZ
+** Last update Sat Oct  7 13:11:58 2017 ratch7t
 */
 
 #include "rudy.h"
@@ -42,17 +42,12 @@ t_sprite	*init_str_sprite(void)
 
   if (!(sprit = malloc(sizeof(t_sprite))))
     exit(84);
-  sprit->background = init_sprite_menu(BACKGROUND);
-  sprit->nw_game = init_sprite_menu(NEWGAME);
-  sprit->multi = init_sprite_menu(MULTI);
-  sprit->option = init_sprite_menu(OPTION);
+  sprit->background = init_sprite_menu(MENU_STANDARD);
+  sprit->nw_game = init_sprite_menu(MENU_PLAY);
+  sprit->option = init_sprite_menu(MENU_OPTION);
   sprit->exit = init_sprite_menu(EXIT);
   sprit->cursor = init_sprite_menu(MOUSE);
-  sfSprite_setScale(sprit->background, vector2f(1.5, 1.5));
-  sfSprite_setScale(sprit->nw_game, vector2f(1.5, 1.5));
-  sfSprite_setScale(sprit->multi, vector2f(1.5, 1.5));
-  sfSprite_setScale(sprit->option, vector2f(1.5, 1.5));
-  sfSprite_setScale(sprit->exit, vector2f(1.5, 1.5));
-  sfSprite_setScale(sprit->cursor, vector2f(0.15, 0.15));
+  init_zombie_start(sprit);
+  sfSprite_setScale(sprit->cursor, vector2f(0.05, 0.05));
   return (sprit);
 }
