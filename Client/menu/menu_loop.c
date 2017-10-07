@@ -5,7 +5,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Thu Sep 21 13:17:22 2017 ratch7t
-** Last update Sat Oct  7 17:44:17 2017 ratch7t
+** Last update Sat Oct  7 18:34:05 2017 Killian
 */
 
 #include "rudy.h"
@@ -28,6 +28,8 @@ int		right_screen_option(t_displayer *displayer, t_sprite *sprite)
   if (sprite->mouse_pos.y <= 560 && sprite->mouse_pos.y > 520)
     {
       sfRenderWindow_drawSprite(displayer->window, sprite->option, NULL);
+      if (sfMouse_isButtonPressed(sfMouseLeft))
+	displayer->zombies = 1;
     }
   else if (sprite->mouse_pos.y <= 605 && sprite->mouse_pos.y > 565)
     {
@@ -40,6 +42,11 @@ int		right_screen_option(t_displayer *displayer, t_sprite *sprite)
 
 int		menu_loop(t_displayer *displayer, t_sprite *sprite, int id)
 {
+  sfSprite	**zombies;
+  int		nb;
+
+  nb = 0;
+  zombies = play_zombie();
   while (!sfKeyboard_isKeyPressed(sfKeyEscape))
     {
       sfRenderWindow_drawSprite(displayer->window, sprite->background, NULL);
@@ -51,8 +58,12 @@ int		menu_loop(t_displayer *displayer, t_sprite *sprite, int id)
 	  left_screen_option(displayer, sprite, id);
 	}
       sfRenderWindow_drawSprite(displayer->window, sprite->cursor, NULL);
-      sfRenderWindow_drawSprite(displayer->window, sprite->zomb_01, NULL);
+      if (!displayer->zombies || nb)
+	sfRenderWindow_drawSprite(displayer->window, sprite->zomb_01, NULL);
+      else
+	nb = draw_animation(zombies, displayer);
       sfRenderWindow_display(displayer->window);
+      sfSleep(sfMilliseconds(20));
     }
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 15:54:36 2017 ratch7t
-** Last update Sat Oct  7 17:44:47 2017 ratch7t
+** Last update Sat Oct  7 18:20:11 2017 Killian
 */
 
 #include "rudy.h"
@@ -33,6 +33,7 @@ t_displayer	*init_displayer_menu(void)
   if (!(disp = malloc(sizeof(t_displayer))))
     exit(84);
   disp->window = create_window_menu(GAME_NAME, SCREEN_WIDTH, SCREEN_HEIGHT);
+  disp->zombies = 0;
   return (disp);
 }
 
@@ -42,6 +43,7 @@ t_sprite	*init_str_sprite(void)
 
   if (!(sprit = malloc(sizeof(t_sprite))))
     exit(84);
+  sprit->zomb_01 = init_sprite_menu(ZOMBIE_1);
   sprit->background = init_sprite_menu(MENU_STANDARD);
   sprit->nw_game = init_sprite_menu(MENU_PLAY);
   sprit->option = init_sprite_menu(MENU_OPTION);

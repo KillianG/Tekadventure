@@ -5,7 +5,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Thu Aug 31 14:18:33 2017 ratch7t
-** Last update Sat Oct  7 18:13:27 2017 ratch7t
+** Last update Sat Oct  7 18:26:30 2017 Killian
 */
 
 #ifndef RUDY_H_
@@ -80,10 +80,12 @@ structures
 typedef struct		s_displayer
 {
   sfRenderWindow	*window;
+  int			zombies;
 }			t_displayer;
 
 typedef struct		s_sprite
 {
+  sfSprite		*zomb_01;
   sfSprite		*background;
   sfSprite		*nw_game;
   sfSprite		*option;
@@ -106,6 +108,7 @@ sfRenderWindow	*create_window_menu(char *, int, int);
 int		menu_loop(t_displayer *, t_sprite *, int);
 int		menu();
 void		get_mouse_on_screen(t_displayer *, t_sprite *);
+sfSprite	*init_sprite(char *, sfVector2f, sfVector2f);
 
 /*
 initializer

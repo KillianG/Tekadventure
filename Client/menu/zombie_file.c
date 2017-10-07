@@ -5,10 +5,23 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Sat Oct  7 12:35:14 2017 ratch7t
-** Last update Sat Oct  7 18:03:19 2017 ratch7t
+** Last update Sat Oct  7 18:34:26 2017 Killian
 */
 
 #include "rudy.h"
+
+int            draw_animation(sfSprite **sprites, t_displayer *displayer)
+{
+  static int    ptr = 0;
+
+  if (ptr < 0)
+    return (1);
+  if (sprites[ptr] != NULL)
+    sfRenderWindow_drawSprite(displayer->window, sprites[ptr++], NULL);
+  else
+    ptr = -1;
+  return (0);
+}
 
 sfSprite	**play_zombie_norm(sfSprite **sprite_tab)
 {
@@ -33,7 +46,7 @@ sfSprite	**play_zombie_norm(sfSprite **sprite_tab)
   sprite_tab[28] = init_sprite(ZOMBIE_29, pos, scale);
   sprite_tab[29] = init_sprite(ZOMBIE_30, pos, scale);
   sprite_tab[30] = init_sprite(ZOMBIE_31, pos, scale);
-  sprite_tab[31] = '\0';
+  sprite_tab[31] = NULL;
   return (sprite_tab);
 }
 

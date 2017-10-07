@@ -7,7 +7,7 @@
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
 <<<<<<< HEAD
-** Last update Sat Oct  7 15:41:49 2017 Killian
+** Last update Sat Oct  7 18:26:17 2017 Killian
 =======
 ** Last update Fri Oct  6 22:50:56 2017 root
 >>>>>>> 673a1625d64c0da6a2c282a0a439b063b08c129f
@@ -332,5 +332,6 @@ void		change_helmet(t_displayer *displayer, int lvl);
 void		attack(int, int);
 void		read_config(t_displayer *);
 char		*read_file(char *);
+sfSprite	**play_zombie();
 
 #endif
