@@ -5,7 +5,7 @@
 ## Login   <marc.perez@epitech.eu>
 ## 
 ## Started on  Wed Sep 27 13:07:15 2017 Marc PEREZ
-## Last update Fri Oct  6 16:07:35 2017 root
+## Last update Sat Oct  7 14:36:42 2017 ratch7t
 ##
 
 NAME		=	tekadventure
@@ -95,6 +95,8 @@ SRC		+=	$(WEAPONSDIR)/init_weapon.c		\
 
 SRC		+=	$(MENUDIR)/initializer.c		\
 			$(MENUDIR)/menu.c			\
+			$(MENUDIR)/zombie_file.c			\
+			$(MENUDIR)/menu_loop.c			\
 
 SRC		+=	$(ENNEMYDIR)/ennemies.c			\
 			$(ENNEMYDIR)/init_ennemy.c		\

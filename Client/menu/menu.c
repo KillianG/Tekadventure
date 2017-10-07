@@ -1,3 +1,4 @@
+
 /*
 ** menu.c for tekadventure in /home/ratch7t/Documents/semester_2/github/tekaventure/src
 ** 
@@ -5,7 +6,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Tue Sep  5 10:13:22 2017 ratch7t
-** Last update Fri Oct  6 17:12:37 2017 root
+** Last update Sat Oct  7 13:15:06 2017 ratch7t
 */
 
 #include "rudy.h"
@@ -34,44 +35,11 @@ void		get_mouse_on_screen(t_displayer *displayer, t_sprite *sprite)
   sfSprite_setPosition(sprite->cursor, sprite->mouse_pos);
 }
 
-void		menu_loop(t_displayer *displayer, t_sprite *sprite, int id)
-{
-  while (!sfKeyboard_isKeyPressed(sfKeyEscape))
-    {
-      sfRenderWindow_drawSprite(displayer->window, sprite->background, NULL);
-      get_mouse_on_screen(displayer, sprite);
-      if (sprite->mouse_pos.x <= 600 && sprite->mouse_pos.x > 50)
-	{
-          if (sprite->mouse_pos.y <= 140 && sprite->mouse_pos.y > 60)
-	    {
-	      sfRenderWindow_drawSprite(displayer->window, sprite->nw_game, NULL);
-	      if (sfMouse_isButtonPressed(sfMouseLeft))
-		{
-		  sfRenderWindow_close(displayer->window);
-		  draw_game(id);
-		}
-	    }
-          else if (sprite->mouse_pos.y <= 270 && sprite->mouse_pos.y > 180)
-            sfRenderWindow_drawSprite(displayer->window, sprite->multi, NULL);
-          else if (sprite->mouse_pos.y <= 370 && sprite->mouse_pos.y > 280)
-            sfRenderWindow_drawSprite(displayer->window, sprite->option, NULL);
-          else if (sprite->mouse_pos.y <= 490 && sprite->mouse_pos.y > 390)
-            {
-              sfRenderWindow_drawSprite(displayer->window, sprite->exit, NULL);
-              if (sfMouse_isButtonPressed(sfMouseLeft))
-		break;
-            }
-        }
-      sfRenderWindow_drawSprite(displayer->window, sprite->cursor, NULL);
-      sfRenderWindow_display(displayer->window);
-    }
-}
-
 int		menu(int id)
 {
   t_displayer	*displayer;
   t_sprite	*sprite;
-
+  
   displayer = init_displayer_menu();
   sprite = init_str_sprite();
   menu_loop(displayer, sprite, id);

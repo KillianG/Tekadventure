@@ -5,37 +5,74 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Thu Aug 31 14:18:33 2017 ratch7t
-** Last update Wed Oct  4 23:17:09 2017 Marc PEREZ
+** Last update Sat Oct  7 13:41:25 2017 ratch7t
 */
 
 #ifndef RUDY_H_
 # define RUDY_H_
 
 /*
-** Lib
+Lib
 */
 
 # include <SFML/Graphics.h>
 # include <SFML/Window.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <unistd.h>
 
 /*
-** Macro
+Macro
 */
 
-# define BACKGROUND "images/Menu_basic.png"
-# define NEWGAME "images/Menu_new_game.png"
-# define MULTI "images/Menu_multi_player.png"
-# define OPTION "images/Menu_options.png"
-# define EXIT "images/Menu_exit.png"
+# define MENU_STANDARD "images/menu_nz_standard.png"
+# define MENU_PLAY "images/menu_nz_play.png"
+# define MENU_OPTION "images/menu_nz_option.png"
+# define EXIT "images/menu_nz_exit.png"
 # define GAME_NAME "MENU"
+
+/*
+zombie
+*/
+# define ZOMBIE_1 "images/zombie/menu_zombie_01.png"
+# define ZOMBIE_2 "images/zombie/menu_zombie_02.png"
+# define ZOMBIE_3 "images/zombie/menu_zombie_03.png"
+# define ZOMBIE_4 "images/zombie/menu_zombie_04.png"
+# define ZOMBIE_5 "images/zombie/menu_zombie_05.png"
+# define ZOMBIE_6 "images/zombie/menu_zombie_06.png"
+# define ZOMBIE_7 "images/zombie/menu_zombie_07.png"
+# define ZOMBIE_8 "images/zombie/menu_zombie_08.png"
+# define ZOMBIE_9 "images/zombie/menu_zombie_09.png"
+# define ZOMBIE_10 "images/zombie/menu_zombie_10.png"
+# define ZOMBIE_11 "images/zombie/menu_zombie_11.png"
+# define ZOMBIE_12 "images/zombie/menu_zombie_12.png"
+# define ZOMBIE_13 "images/zombie/menu_zombie_13.png"
+# define ZOMBIE_14 "images/zombie/menu_zombie_14.png"
+# define ZOMBIE_15 "images/zombie/menu_zombie_15.png"
+# define ZOMBIE_16 "images/zombie/menu_zombie_16.png"
+# define ZOMBIE_17 "images/zombie/menu_zombie_17.png"
+# define ZOMBIE_18 "images/zombie/menu_zombie_18.png"
+# define ZOMBIE_19 "images/zombie/menu_zombie_19.png"
+# define ZOMBIE_20 "images/zombie/menu_zombie_20.png"
+# define ZOMBIE_21 "images/zombie/menu_zombie_21.png"
+# define ZOMBIE_22 "images/zombie/menu_zombie_22.png"
+# define ZOMBIE_23 "images/zombie/menu_zombie_23.png"
+# define ZOMBIE_24 "images/zombie/menu_zombie_24.png"
+# define ZOMBIE_25 "images/zombie/menu_zombie_25.png"
+# define ZOMBIE_26 "images/zombie/menu_zombie_26.png"
+# define ZOMBIE_27 "images/zombie/menu_zombie_27.png"
+# define ZOMBIE_28 "images/zombie/menu_zombie_28.png"
+# define ZOMBIE_29 "images/zombie/menu_zombie_29.png"
+# define ZOMBIE_30 "images/zombie/menu_zombie_30.png"
+# define ZOMBIE_31 "images/zombie/menu_zombie_31.png"
+
 # define MOUSE "images/cursor.png"
-# define SCREEN_WIDTH 1280
+
+# define SCREEN_WIDTH 1080
 # define SCREEN_HEIGHT 720
 
 /*
-** Structures
+structures
 */
 
 typedef struct		s_displayer
@@ -47,40 +84,78 @@ typedef struct		s_sprite
 {
   sfSprite		*background;
   sfSprite		*nw_game;
-  sfSprite		*multi;
   sfSprite		*option;
   sfSprite		*exit;
   sfSprite		*cursor;
   sfVector2f		mouse_pos;
   sfVector2i		mouse;
+  sfSprite		*zomb_01;
+  sfSprite		*zomb_02;
+  sfSprite		*zomb_03;
+  sfSprite		*zomb_04;
+  sfSprite		*zomb_05;
+  sfSprite		*zomb_06;
+  sfSprite		*zomb_07;
+  sfSprite		*zomb_08;
+  sfSprite		*zomb_09;
+  sfSprite		*zomb_10;
+  sfSprite		*zomb_11;
+  sfSprite		*zomb_12;
+  sfSprite		*zomb_13;
+  sfSprite		*zomb_14;
+  sfSprite		*zomb_15;
+  sfSprite		*zomb_16;
+  sfSprite		*zomb_17;
+  sfSprite		*zomb_18;
+  sfSprite		*zomb_19;
+  sfSprite		*zomb_20;
+  sfSprite		*zomb_21;
+  sfSprite		*zomb_22;
+  sfSprite		*zomb_23;
+  sfSprite		*zomb_24;
+  sfSprite		*zomb_25;
+  sfSprite		*zomb_26;
+  sfSprite		*zomb_27;
+  sfSprite		*zomb_28;
+  sfSprite		*zomb_29;
+  sfSprite		*zomb_30;
+  sfSprite		*zomb_31;
 }			t_sprite;
 
 /*
-** Fonctions
+*****fonctions*******
 */
 
 /*
-** Menu
+menu
 */
 
-void		draw_game(int nb);
+void		draw_game(int);
 sfRenderWindow	*create_window_menu(char *, int, int);
-void		menu_loop(t_displayer *, t_sprite *, int);
-int		menu(int id);
+int		menu_loop(t_displayer *, t_sprite *, int);
+int		menu();
 void		get_mouse_on_screen(t_displayer *, t_sprite *);
 
 /*
-** Initializer
+initializer
 */
 
 sfSprite	*init_sprite_menu(char *);
-t_displayer	*init_displayer_menu(void);
-t_sprite	*init_str_sprite(void);
+t_displayer	*init_displayer_menu();
+t_sprite	*init_str_sprite();
 
 /*
-** Vector
+vector
 */
 
 sfVector2f	vector2f(float, float);
+
+/*
+zombie
+*/
+
+void		init_zombie_start(t_sprite *);
+void		init_zombie_end(t_sprite *);
+int		play_zombie(t_displayer *, t_sprite *);
 
 #endif /* !RUDY_H_ */
