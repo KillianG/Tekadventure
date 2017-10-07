@@ -1,3 +1,4 @@
+
 /*
 ** tekadv.h for tekadv in /home/killian/github/tekaventure/include
 ** 
@@ -5,7 +6,11 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
+<<<<<<< HEAD
+** Last update Sat Oct  7 15:41:49 2017 Killian
+=======
 ** Last update Fri Oct  6 22:50:56 2017 root
+>>>>>>> 673a1625d64c0da6a2c282a0a439b063b08c129f
 */
 
 #ifndef TEKADV_H_

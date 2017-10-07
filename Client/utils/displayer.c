@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:32:50 2017 Killian
-** Last update Thu Oct  5 15:03:23 2017 Killian
+** Last update Sat Oct  7 14:54:33 2017 Killian
 */
 
 #include <time.h>
@@ -48,7 +48,7 @@ t_displayer		*init_displayer(int id)
   displayer->player = init_player(id);
   displayer->player->pos.x = x;
   displayer->player->pos.y = y;
-  displayer->bullet = init_sprite(BULLET, vector2f(0, 0), vector2f(0.2, 0.2));
+  displayer->bullet = init_sprite(BULLET, vector2f(0, 0), vector2f(0.1, 0.1));
   displayer->blue_radius = RADIUS;
   init_ammo_text(displayer);
   displayer = init_displayer_part2(displayer);
