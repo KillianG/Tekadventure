@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:31:30 2017 Killian
-** Last update Fri Oct  6 17:13:00 2017 root
+** Last update Sun Oct  8 14:48:48 2017 Killian
 */
 
 #include <unistd.h>
@@ -13,13 +13,10 @@
 
 void		launch_thread(t_displayer *displayer)
 {
-  sfThread	*network;
   sfThread	*update;
 
-  //network = sfThread_create(loop_network, (void *)displayer);
   update = sfThread_create(loop_update, (void *)displayer);
   sfThread_launch(update);
-  //sfThread_launch(network);
 }
 
 void		draw_game(int id)
@@ -36,8 +33,7 @@ void		draw_game(int id)
       sfThread_launch(draw);
       loop_network((void *)displayer);
       displayer->player->angle = get_angle_from_mouse(displayer);
-      move_player_mouse(displayer);
-      sfThread_wait(draw);
+      //sfThread_wait(draw);
       get_entries(displayer);
       update(displayer);
       displayer->player = update_player(displayer->player);

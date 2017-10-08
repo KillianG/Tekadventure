@@ -5,7 +5,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Sat Oct  7 12:35:14 2017 ratch7t
-** Last update Sat Oct  7 18:34:26 2017 Killian
+** Last update Sun Oct  8 15:27:43 2017 Killian
 */
 
 #include "rudy.h"
@@ -20,7 +20,7 @@ int            draw_animation(sfSprite **sprites, t_displayer *displayer)
     sfRenderWindow_drawSprite(displayer->window, sprites[ptr++], NULL);
   else
     ptr = -1;
-  return (0);
+  return (-1);
 }
 
 sfSprite	**play_zombie_norm(sfSprite **sprite_tab)

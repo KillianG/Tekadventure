@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 20:43:14 2017 Killian
-** Last update Thu Oct  5 11:55:11 2017 Killian
+** Last update Sat Oct  7 18:44:20 2017 Killian
 */
 
 #include "tekadv.h"
@@ -33,7 +33,7 @@ void		check_hit(t_displayer *displayer)
   bullet = sfSprite_getGlobalBounds(displayer->bullet);
   while (++cpt != 10 && !collide)
     {
-      if (displayer->players[cpt] != NULL)
+      if (displayer->players[cpt] != NULL && cpt != displayer->player->id)
 	{
 	  sprite = init_sprite(TEST, center(displayer->players[cpt]->pos, displayer),
 			       vector2f(1, 1));

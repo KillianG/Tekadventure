@@ -6,7 +6,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Tue Sep  5 10:13:22 2017 ratch7t
-** Last update Sat Oct  7 13:15:06 2017 ratch7t
+** Last update Sun Oct  8 15:25:04 2017 Killian
 */
 
 #include "rudy.h"
@@ -43,7 +43,5 @@ int		menu(int id)
   displayer = init_displayer_menu();
   sprite = init_str_sprite();
   menu_loop(displayer, sprite, id);
-  free(displayer);
-  free(sprite);
   return (0);
 }

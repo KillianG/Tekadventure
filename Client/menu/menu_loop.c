@@ -5,7 +5,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Thu Sep 21 13:17:22 2017 ratch7t
-** Last update Sat Oct  7 18:34:05 2017 Killian
+** Last update Sun Oct  8 15:35:03 2017 Killian
 */
 
 #include "rudy.h"
@@ -18,6 +18,8 @@ void		left_screen_option(t_displayer *displayer, t_sprite *sprite, int id)
       if (sfMouse_isButtonPressed(sfMouseLeft))
 	{
 	  sfRenderWindow_close(displayer->window);
+	  free(displayer);
+	  free(sprite);
 	  draw_game(id);
 	}
     }
@@ -46,7 +48,6 @@ int		menu_loop(t_displayer *displayer, t_sprite *sprite, int id)
   int		nb;
 
   nb = 0;
-  zombies = play_zombie();
   while (!sfKeyboard_isKeyPressed(sfKeyEscape))
     {
       sfRenderWindow_drawSprite(displayer->window, sprite->background, NULL);
@@ -58,10 +59,19 @@ int		menu_loop(t_displayer *displayer, t_sprite *sprite, int id)
 	  left_screen_option(displayer, sprite, id);
 	}
       sfRenderWindow_drawSprite(displayer->window, sprite->cursor, NULL);
-      if (!displayer->zombies || nb)
+      if (!displayer->zombies || nb == 2)
 	sfRenderWindow_drawSprite(displayer->window, sprite->zomb_01, NULL);
       else
-	nb = draw_animation(zombies, displayer);
+	{
+	  if (nb == 0)
+	    zombies = play_zombie();
+	  nb = draw_animation(zombies, displayer);
+	}
+      if (nb == 1)
+	{
+	  nb = 2;
+	  free(zombies);
+	}
       sfRenderWindow_display(displayer->window);
       sfSleep(sfMilliseconds(20));
     }

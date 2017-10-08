@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Mon Sep 11 13:56:03 2017 Killian
-** Last update Thu Oct  5 15:04:43 2017 Killian
+** Last update Sat Oct  7 18:39:58 2017 Killian
 */
 
 #include "tekadv.h"
@@ -27,7 +27,7 @@ void		draw_players(t_displayer *displayer)
   i = 0;
   while (i < NB_PLAYERS)
     {
-      if (displayer->players[i] != NULL)
+      if (displayer->players[i] != NULL && i != displayer->player->id)
 	{
 	  sprite = init_sprite(TEST, vector2f(0, 0), vector2f(1, 1));
 	  sfSprite_setPosition(sprite,
