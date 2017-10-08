@@ -1,4 +1,3 @@
-
 /*
 ** tekadv.h for tekadv in /home/killian/github/tekaventure/include
 ** 
@@ -6,11 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-<<<<<<< HEAD
-** Last update Sat Oct  7 18:26:17 2017 Killian
-=======
-** Last update Fri Oct  6 22:50:56 2017 root
->>>>>>> 673a1625d64c0da6a2c282a0a439b063b08c129f
+** Last update Sun Oct  8 18:41:29 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -18,6 +13,7 @@
 
 # include <SFML/Graphics.h>
 # include <SFML/Window.h>
+# include <SFML/Audio.h>
 # include <math.h>
 # include <stdlib.h>
 # include <string.h>
@@ -31,6 +27,8 @@
 # define SCREEN_WIDTH 1080
 # define SCREEN_HEIGHT 720
 # define FONT "images/font.ttf"
+# define MUSIC "music/music.ogg"
+# define SHOOT "music/shoot.ogg"
 
 /*
 ** __________ PLAYER UTILS _________
@@ -38,15 +36,15 @@
 
 # define SPEED 0.4
 # define RADIUS 3000
-# define ZONE_DMG 0.001
-# define ZONE_SPEED 0.00005
+# define ZONE_DMG 0.005
+# define ZONE_SPEED 0.0005
 
 /*
 ** __________ MAP __________
 */
 
-# define MAP_SIZEX 4000
-# define MAP_SIZEY 4000
+# define MAP_SIZEX 6000
+# define MAP_SIZEY 6000
 
 /*
 ** __________ MATH UTILS _________
@@ -254,6 +252,8 @@ typedef struct		s_displayer
 */
 
 void		draw_game();
+void		start_music();
+void		start_shoot();
 t_displayer	*init_displayer(int);
 sfRenderWindow	*create_window(char *, int, int);
 sfSprite	*init_sprite(char *, sfVector2f, sfVector2f);
@@ -333,5 +333,6 @@ void		attack(int, int);
 void		read_config(t_displayer *);
 char		*read_file(char *);
 sfSprite	**play_zombie();
+int		draw_animation(sfSprite **, t_displayer *);
 
 #endif

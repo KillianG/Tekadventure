@@ -5,7 +5,7 @@
 ## Login   <marc.perez@epitech.eu>
 ## 
 ## Started on  Wed Sep 27 13:07:15 2017 Marc PEREZ
-## Last update Sat Oct  7 14:36:42 2017 ratch7t
+## Last update Sun Oct  8 18:04:17 2017 Killian
 ##
 
 NAME		=	tekadventure
@@ -80,6 +80,7 @@ SRC		+=	$(UTILSDIR)/angle.c			\
 			$(UTILSDIR)/move_forward.c		\
 			$(UTILSDIR)/collide.c			\
 			$(UTILSDIR)/my_itoa.c			\
+			$(UTILSDIR)/music.c			\
 
 SRC		+=	$(SCREENDIR)/draw_screen.c		\
 

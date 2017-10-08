@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Sep  6 20:43:14 2017 Killian
-** Last update Sat Oct  7 18:44:20 2017 Killian
+** Last update Sun Oct  8 18:28:09 2017 Killian
 */
 
 #include "tekadv.h"
@@ -66,6 +66,7 @@ void		shoot(t_displayer *displayer)
     {
       if (displayer->player->ammos > 0)
 	{
+	  start_shoot();
 	  displayer->player->ammos -= 1;
 	  displayer->player->shoot = 1;
 	  sfSprite_setRotation(displayer->bullet,

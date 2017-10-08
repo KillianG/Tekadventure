@@ -5,7 +5,7 @@
 ** Login   <rudy.simon@epitech.eu>
 ** 
 ** Started on  Thu Aug 31 14:18:33 2017 ratch7t
-** Last update Sat Oct  7 18:26:30 2017 Killian
+** Last update Sun Oct  8 15:44:47 2017 Killian
 */
 
 #ifndef RUDY_H_
@@ -109,6 +109,7 @@ int		menu_loop(t_displayer *, t_sprite *, int);
 int		menu();
 void		get_mouse_on_screen(t_displayer *, t_sprite *);
 sfSprite	*init_sprite(char *, sfVector2f, sfVector2f);
+int		draw_animation(sfSprite **, t_displayer *);
 
 /*
 initializer

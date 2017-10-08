@@ -5,23 +5,18 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Mon Oct  2 12:04:48 2017 Killian
-** Last update Sun Oct  8 14:44:14 2017 Killian
+** Last update Sun Oct  8 15:38:30 2017 Killian
 */
 
 #include "tekadv.h"
 
 void	move_player_mouse(t_displayer *displayer)
 {
-  
-  if (sfMouse_isButtonPressed(sfMouseRight))
-    {
-      displayer->player->pos = move_forward(displayer->player->pos,
-					    displayer->player->angle,
-					    SPEED * -1);
-      if (collide(displayer))
-	displayer->player->pos = move_forward(displayer->player->pos,
-					      displayer->player->angle,
-					      SPEED);
-      update_map(displayer);
-    }
+  displayer->player->pos = move_forward(displayer->player->pos,
+    displayer->player->angle,
+    SPEED * -1);
+  if (collide(displayer))
+    displayer->player->pos = move_forward(displayer->player->pos,
+    displayer->player->angle,
+    SPEED);
 }
