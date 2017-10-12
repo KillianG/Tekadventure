@@ -1,14 +1,14 @@
 ##
-## Makefile for tekadv in /home/killian/github/tekaventure
+## Makefile for tekadventure in /home/segfault/Desktop/tekaventure
 ## 
-## Made by Killian
-## Login   <killian.gardahaut@epitech.eu>
+## Made by Marc PEREZ
+## Login   <marc.perez@epitech.eu>
 ## 
-## Started on  Wed Sep  6 15:01:02 2017 Killian
-## Last update Mon Sep 11 14:08:52 2017 Killian
+## Started on  Wed Sep 27 13:07:15 2017 Marc PEREZ
+## Last update Sun Oct  8 18:04:17 2017 Killian
 ##
 
-NAME		=	TEK
+NAME		=	tekadventure
 
 ECHO		=	/bin/echo -e
 DEFAULT		=	"\033[00m"
@@ -16,7 +16,7 @@ GREEN		=	"\033[0;32m"
 TEAL		=	"\033[1;36m"
 RED		=	"\033[0;31m"
 
-SRCDIR		=	.
+SRCDIR		=	Client
 ENTRIESDIR	=	$(SRCDIR)/entries
 HOUSEDIR	=	$(SRCDIR)/house
 PLAYERDIR	=	$(SRCDIR)/player
@@ -28,6 +28,11 @@ ENNEMYDIR	=	$(SRCDIR)/ennemy
 HUDDIR		=	$(SRCDIR)/HUD
 ZONEDIR		=	$(SRCDIR)/zones
 NETWORKDIR	=	$(SRCDIR)/network
+THREADSDIR	=	$(SRCDIR)/threads
+MANDATORYDIR	=	$(SRCDIR)/mandatory
+EQUIPMENTDIR	=	$(SRCDIR)/equipment
+AMMODIR		=	$(SRCDIR)/ammunitions
+CONFIG		=	$(SRCDIR)/config
 
 
 INCDIR		=	include
@@ -35,7 +40,9 @@ INCDIR		=	include
 RM		=	rm -f
 
 CC		=	gcc
-CFLAGS		=	-W -Wall -Wextra -g3 -lm -O3		\
+CFLAGS		=	-pipe -march=native -W -Wall -Wextra -Ofast		\
+			-I$(INCDIR)
+CFLAGS_DEBUG	=	-pipe -march=native -W -Wall -Wextra -Og -g3 -DDEBUG	\
 			-I$(INCDIR)
 
 LDFLAGS		=	-lcsfml-audio				\
@@ -73,6 +80,7 @@ SRC		+=	$(UTILSDIR)/angle.c			\
 			$(UTILSDIR)/move_forward.c		\
 			$(UTILSDIR)/collide.c			\
 			$(UTILSDIR)/my_itoa.c			\
+			$(UTILSDIR)/music.c			\
 
 SRC		+=	$(SCREENDIR)/draw_screen.c		\
 
@@ -83,9 +91,13 @@ SRC		+=	$(WEAPONSDIR)/init_weapon.c		\
 			$(WEAPONSDIR)/draw_weapons.c		\
 			$(WEAPONSDIR)/weapons.c			\
 			$(WEAPONSDIR)/drop_weapon.c		\
+			$(WEAPONSDIR)/fist.c			\
+			$(WEAPONSDIR)/init_fist.c		\
 
 SRC		+=	$(MENUDIR)/initializer.c		\
 			$(MENUDIR)/menu.c			\
+			$(MENUDIR)/zombie_file.c			\
+			$(MENUDIR)/menu_loop.c			\
 
 SRC		+=	$(ENNEMYDIR)/ennemies.c			\
 			$(ENNEMYDIR)/init_ennemy.c		\
@@ -94,6 +106,7 @@ SRC		+=	$(ENNEMYDIR)/ennemies.c			\
 
 SRC		+=	$(HUDDIR)/hp.c				\
 			$(HUDDIR)/arrow.c			\
+			$(HUDDIR)/ammo.c			\
 
 SRC		+=	$(ZONEDIR)/init_zone.c			\
 			$(ZONEDIR)/draw_zone.c			\
@@ -101,11 +114,34 @@ SRC		+=	$(ZONEDIR)/init_zone.c			\
 			$(ZONEDIR)/check_in.c			\
 
 SRC		+=	$(NETWORKDIR)/client.c			\
+			$(NETWORKDIR)/misc.c			\
+			$(NETWORKDIR)/packet.c			\
 
+SRC		+=	$(THREADSDIR)/loop_network.c		\
+			$(THREADSDIR)/loop_update.c		\
+			$(THREADSDIR)/loop_draw.c		\
+
+SRC		+=	$(MANDATORYDIR)/move.c			\
+
+SRC		+=	$(EQUIPMENTDIR)/draw_helmets.c		\
+			$(EQUIPMENTDIR)/helmets.c		\
+			$(EQUIPMENTDIR)/init_helmet.c		\
+			$(EQUIPMENTDIR)/update_helmets.c	\
+			$(EQUIPMENTDIR)/drop_helmet.c		\
+			$(EQUIPMENTDIR)/change_helmet.c		\
+
+SRC		+=	$(AMMODIR)/ammo.c			\
+			$(AMMODIR)/draw_ammo.c			\
+			$(AMMODIR)/init_ammo.c			\
+			$(AMMODIR)/update_ammo.c		\
+
+SRC		+=	$(CONFIG)/read_config.c			\
+			$(CONFIG)/read_file.c			\
 
 OBJ		=	$(SRC:.c=.o)
 
 all		:	title $(NAME)
+			@make -C Server
 
 title		:
 			@$(ECHO) $(GREEN)"\tTek"$(TEAL)"Adventure\n"$(DEFAULT)
@@ -123,11 +159,18 @@ $(NAME)		:	$(OBJ)
 clean		:
 			@$(RM) $(OBJ)
 			@$(ECHO) $(GREEN) "[OK]" $(TEAL) "clean"
+			make clean -C Server
 
 fclean		:	clean
 			@$(RM) $(NAME)
 			@$(ECHO) $(GREEN) "[OK]" $(TEAL) "fclean"
+			make fclean -C Server
 
 re		:	fclean all
+			make re -C Server
 
-.PHONY	: all clean fclean re
+debug		:	CFLAGS = $(CFLAGS_DEBUG)
+debug		:	fclean all
+			make debug -C Server
+
+.PHONY	: all title clean fclean re

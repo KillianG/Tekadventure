@@ -5,7 +5,7 @@
 ** Login   <killian.gardahaut@epitech.eu>
 ** 
 ** Started on  Wed Aug 30 16:16:52 2017 Killian
-** Last update Mon Sep 11 16:28:03 2017 Killian
+** Last update Sun Oct  8 18:41:29 2017 Killian
 */
 
 #ifndef TEKADV_H_
@@ -13,43 +13,67 @@
 
 # include <SFML/Graphics.h>
 # include <SFML/Window.h>
+# include <SFML/Audio.h>
 # include <math.h>
 # include <stdlib.h>
 # include <string.h>
 # include <stdio.h>
 
-/* __________ WINDOW UTILS _________ */
+/*
+** __________ WINDOW UTILS _________
+*/
 
 # define GAME_NAME "Tekadventure"
-# define SCREEN_WIDTH 800
-# define SCREEN_HEIGHT 800
-# define FONT "utils/font.ttf"
+# define SCREEN_WIDTH 1080
+# define SCREEN_HEIGHT 720
+# define FONT "images/font.ttf"
+# define MUSIC "music/music.ogg"
+# define SHOOT "music/shoot.ogg"
 
-/* __________ PLAYER UTILS _________ */
+/*
+** __________ PLAYER UTILS _________
+*/
 
-# define SPEED 0.2
+# define SPEED 0.4
 # define RADIUS 3000
-# define ZONE_DMG 0.001
-# define ZONE_SPEED 0.005
+# define ZONE_DMG 0.005
+# define ZONE_SPEED 0.0005
 
-/* __________ MAP __________ */
+/*
+** __________ MAP __________
+*/
 
-# define MAP_SIZEX 4000
-# define MAP_SIZEY 4000
+# define MAP_SIZEX 6000
+# define MAP_SIZEY 6000
 
-/* __________ MATH UTILS _________ */
+/*
+** __________ MATH UTILS _________
+*/
 
 # define TO_RAD(a) (M_PI * a / 180)
 # define SQUARE(a) (a*a)
 
-/* __________ HOUSES UTILS __________ */
+/*
+** __________ HOUSES UTILS __________
+*/
 
-# define NB_HOUSES 5
+# define NB_HOUSES 10
 
-/* _________ SPRITES ________ */
+/*
+** _________ SPRITES ________
+*/
 
-# define BACKGROUND "images/background.jpg"
-# define PLAYER "images/players.png"
+# define BACKGROUND "images/couche0.png"
+# define BACKGROUND1 "images/couche1.png"
+# define BACKGROUND2 "images/couche2.png"
+# define PLAYER "images/player.png"
+# define PLAYERT1 "images/playert1.png"
+# define PLAYERT2 "images/playert2.png"
+# define PLAYERT3 "images/playert3.png"
+# define PLAYERT0POING "images/playert0poing.png"
+# define PLAYERT1POING "images/playert1poing.png"
+# define PLAYERT2POING "images/playert2poing.png"
+# define PLAYERT3POING "images/playert3poing.png"
 # define TEST "images/players1.png"
 # define HOUSE "images/house.png"
 # define AK47 "images/ak47.png"
@@ -60,22 +84,98 @@
 # define MK14 "images/mk14.png"
 # define PKP "images/PKP.png"
 # define ARROW "images/blue_arrow.png"
+# define HELMET1 "images/helmet1.png"
+# define HELMET2 "images/helmet2.png"
+# define HELMET3 "images/helmet3.png"
+# define AMMO "images/ammo.png"
+# define FIST "images/fist.png"
 
-/* __________ WEAPONS UTILS __________*/
+/*
+** __________ WEAPONS UTILS __________
+*/
 
-# define NB_WEAPONS 4
+# define NB_WEAPONS 30
 # define AK_DMG 15
-# define AUG_DMG 8
-# define FAMAS_DMG 10
+# define AUG_DMG 13
+# define FAMAS_DMG 5
 # define M416_DMG 20
 # define MK14_DMG 30
 
-/* __________ ENNEMY UTILS _________ */
+/*
+** __________ ENNEMY UTILS _________
+*/
 
 # define NB_ENNEMY 2
+# define NB_PLAYERS 10
 # define ENNEMY "images/Ganon.png"
 
-/* __________ STRUCTURES __________ */
+/*
+** ________ EQUIPMENT UTILS ________
+*/
+
+# define NB_HELMET 20
+# define HP_HELMET 20
+# define NB_AMMO 20
+
+/*
+** ________ CONFIG ________
+*/
+
+# define CONFIG "config.ini"
+# define LINE0 "KEYS:\n"
+# define LINE1 "\tUP:Z\n"
+# define LINE2 "\tLEFT:Q\n"
+# define LINE3 "\tDOWN:S\n"
+# define LINE4 "\tRIGHT:D\n"
+# define LINE5 "\tTAKE:E\n"
+# define LINE6 "\tDROP:A\n"
+
+/*
+** __________ STRUCTURES __________
+*/
+
+typedef struct		s_packet
+{
+  int			id;
+  sfVector2f		pos;
+  int			health;
+  _Bool			is_attack;
+}			t_packet;
+
+typedef struct		s_config
+{
+  int			up;
+  int			left;
+  int			down;
+  int			right;
+  int			take;
+  int			drop;
+}			t_config;
+
+typedef struct		s_fist
+{
+  sfVector2f		pos;
+  sfSprite		*sprite;
+  int			damages;
+}			t_fist;
+
+typedef struct		s_ammo
+{
+  sfVector2f		pos;
+  sfVector2f		start;
+  sfSprite		*sprite;
+  int			amount;
+  int			is_ground;
+}			t_ammo;
+
+typedef struct		s_helmet
+{
+  sfVector2f		pos;
+  sfVector2f		start;
+  sfSprite		*sprite;
+  int			level;
+  int			is_head;
+}			t_helmet;
 
 typedef struct		s_weapon
 {
@@ -94,30 +194,38 @@ typedef struct		s_house
   sfVector2f		start;
 }			t_house;
 
-typedef struct          s_ennemy
+typedef struct		s_ennemy
 {
-  int                   hp;
-  sfVector2f            pos;
+  int			hp;
+  sfVector2f		pos;
   sfVector2f		start;
-  sfSprite              *sprite;
-}                       t_ennemy;
+  sfSprite		*sprite;
+}			t_ennemy;
 
-typedef struct          s_player
+typedef struct		s_player
 {
+  int			ammos;
   int			id;
-  float                 hp;
-  sfVector2f            pos;
-  int                   has_weapon;
-  sfSprite              *sprite;
-  sfIntRect             hitbox;
+  float			hp;
+  sfVector2f		pos;
+  int			has_weapon;
+  sfSprite		*sprite;;
+  sfIntRect		hitbox;
   t_weapon		*weapon;
   int			sprite_pos;
   int			shoot;
+  float			angle;
   float			shooting_angle;
-}                       t_player;
+  t_fist		*fist;
+  t_helmet		*helmet;
+  _Bool			is_attack;
+  int			attack_id;
+  int			attack_damage;
+}			t_player;
 
 typedef struct		s_displayer
 {
+  t_helmet		*helmets[NB_HELMET + 1];
   sfSprite		*arrow;
   float			blue_radius;
   sfVector2f		blue_start;
@@ -125,18 +233,27 @@ typedef struct		s_displayer
   sfSprite		*bullet;
   sfRenderWindow	*window;
   sfSprite		*map;
+  sfSprite		*map1;
+  sfSprite		*map2;
   t_player		*player;
   t_house		*houses[NB_HOUSES + 1];
   t_weapon		*weapons[NB_WEAPONS + 1];
   t_ennemy		*ennemies[NB_ENNEMY + 1];
   sfText		*hp;
-  t_player		**players;
-  t_player		*received;
+  t_ammo		*ammo[NB_AMMO + 1];
+  t_packet		**players;
+  t_packet		*received;
+  sfText		*ammunitions;
+  t_config		*config;
 }			t_displayer;
 
-/* __________ FUNCTIONS _________*/
+/*
+** __________ FUNCTIONS _________
+*/
 
 void		draw_game();
+void		start_music();
+void		start_shoot();
 t_displayer	*init_displayer(int);
 sfRenderWindow	*create_window(char *, int, int);
 sfSprite	*init_sprite(char *, sfVector2f, sfVector2f);
@@ -169,6 +286,9 @@ t_displayer	*init_weapons(t_displayer *);
 void		update_weapons(t_displayer *);
 void		draw_weapons(t_displayer *);
 void		drop_weapon(t_displayer *);
+void		init_fist(t_displayer *);
+void		check_fist_hit(t_displayer *);
+void		attack_fist(t_displayer *);
 t_ennemy	*init_ennemy(sfVector2f);
 void		init_ennemies(t_displayer *);
 void		draw_ennemies(t_displayer *);
@@ -183,11 +303,36 @@ int		check_in(t_displayer *);
 float		get_angle_from_pos(sfVector2f);
 void		init_arrow(t_displayer *);
 void		draw_arrow(t_displayer *);
-int		send_data(t_player *);
-t_player	*receive_data(void);
+int		send_data(t_packet *);
+t_packet	*receive_data(t_player *);
 void		init_players(t_displayer *);
 int		init_connection(char *, char *);
 void		add_players(t_displayer *);
-void		loop_network(t_displayer *);
+void		loop_network(void *);
+void		draw_players(t_displayer *);
+void		loop_update(void *);
+void		loop_draw(void *);
+void		move_player_mouse(t_displayer *);
+void		init_helmets(t_displayer *);
+t_helmet	*init_helmet(sfVector2f, int);
+void		update_helmets(t_displayer *);
+void		draw_helmets(t_displayer *);
+void		interact_weapon(t_displayer *);
+void		interact_equipment(t_displayer *);
+void		interact_ammo(t_displayer *);
+void		drop_helmet(t_displayer *);
+t_ammo		*init_ammo(sfVector2f, int);
+void		init_ammos(t_displayer *);
+void		draw_ammo(t_displayer *);
+void		update_ammos(t_displayer *);
+void		init_ammo_text(t_displayer *);
+void		update_ammo_text(t_displayer *);
+t_packet	*new_packet(t_player *);
+void		change_helmet(t_displayer *displayer, int lvl);
+void		attack(int, int);
+void		read_config(t_displayer *);
+char		*read_file(char *);
+sfSprite	**play_zombie();
+int		draw_animation(sfSprite **, t_displayer *);
 
 #endif
