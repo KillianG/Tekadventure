@@ -96,7 +96,7 @@ SRC		+=	$(WEAPONSDIR)/init_weapon.c		\
 
 SRC		+=	$(MENUDIR)/initializer.c		\
 			$(MENUDIR)/menu.c			\
-			$(MENUDIR)/zombie_file.c			\
+			$(MENUDIR)/zombie_file.c		\
 			$(MENUDIR)/menu_loop.c			\
 
 SRC		+=	$(ENNEMYDIR)/ennemies.c			\
